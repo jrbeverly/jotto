@@ -5,66 +5,66 @@ package jotto.core;
  */
 public final class JSecret {
 
-    private final Jotto _jotto;
-    private final JWord _secret;
+	private final Jotto _jotto;
+	private final JWord _secret;
 
-    /**
-     * Initializes a secret word for the jotto game
+	/**
+	 * Initializes a secret word for the jotto game
 	 *
-     */
-    public JSecret(Jotto jotto, JWord secret) {
-    	assert jotto != null && secret != null;
-    	
-        _jotto = jotto;
-        _secret = secret;
-    }
+	 */
+	public JSecret(Jotto jotto, JWord secret) {
+		assert jotto != null && secret != null;
 
-    /**
-     * Returns the number of attempts at the secret word in the jotto game
+		_jotto = jotto;
+		_secret = secret;
+	}
+
+	/**
+	 * Returns the number of attempts at the secret word in the jotto game
 	 *
-     */
-    public int getAttempts() {
-        return _jotto.getAttempts();
-    }
+	 */
+	public int getAttempts() {
+		return _jotto.getAttempts();
+	}
 
-    /**
-     * Guesses a word against the secret word
+	/**
+	 * Guesses a word against the secret word
 	 *
-     */
-    public JGuess guess(String data) {
-    	assert data != null;
-    	
-        //gets the text of the secret
-        String secret = _secret.getWord();
+	 */
+	public JGuess guess(String data) {
+		assert data != null;
 
-        //initializes the matches
-        JMatch[] matches = new JMatch[secret.length()];
-        for (int i = 0; i < secret.length(); i++) {
-            matches[i] = JMatch.NONE;
-        }
+		// gets the text of the secret
+		String secret = _secret.getWord();
 
-        //determines the exact matches with the words
-        for (int i = 0; i < secret.length(); i++) {
-            if (secret.charAt(i) == data.charAt(i)) {
-                matches[i] = JMatch.EXACT;
-            }
-        }
+		// initializes the matches
+		JMatch[] matches = new JMatch[secret.length()];
+		for (int i = 0; i < secret.length(); i++) {
+			matches[i] = JMatch.NONE;
+		}
 
-        //determines the matches based on partial/none
-        for (int i = 0; i < secret.length(); i++) {
-            if (matches[i] != JMatch.NONE) {
-                continue;
-            }
+		// determines the exact matches with the words
+		for (int i = 0; i < secret.length(); i++) {
+			if (secret.charAt(i) == data.charAt(i)) {
+				matches[i] = JMatch.EXACT;
+			}
+		}
 
-            for (int r = 0; r < data.length(); r++) {
-                if (data.charAt(r) == secret.charAt(i)) {
-                    matches[r] = JMatch.PARTIAL;
-                    break;
-                }
-            }
-        }
+		// determines the matches based on partial/none
+		for (int i = 0; i < secret.length(); i++) {
+			if (matches[i] != JMatch.NONE) {
+				continue;
+			}
 
-        //returns a JGuess instance
-        return new JGuess(data, matches);
-    }
+			for (int r = 0; r < data.length(); r++) {
+				if (data.charAt(r) == secret.charAt(i)) {
+					matches[r] = JMatch.PARTIAL;
+					break;
+				}
+			}
+		}
+
+		// returns a JGuess instance
+		return new JGuess(data, matches);
+	}
 }

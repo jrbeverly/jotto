@@ -5,24 +5,24 @@ package jotto.core;
  */
 public enum JGameState {
 
-    /**
-     * The game is idle, no match is in progress
-     */
-    IDLE,
-    /**
-     * A game is currently in progress
-     */
-    PLAYING,
-    /**
-     * The game is over, the player has yielded
-     */
-    YIELDED,
-    /**
-     * The game is over, the player has lost
-     */
-    LOST,
-    /**
-     * The game is over, the player has won
-     */
-    WON
+	/**
+	 * The game is idle, no match is in progress
+	 */
+	IDLE,
+	/**
+	 * A game is currently in progress
+	 */
+	PLAYING,
+	/**
+	 * The game is over, the player has yielded
+	 */
+	YIELDED,
+	/**
+	 * The game is over, the player has lost
+	 */
+	LOST,
+	/**
+	 * The game is over, the player has won
+	 */
+	WON
 }

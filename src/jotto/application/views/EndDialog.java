@@ -1,4 +1,4 @@
-package jotto.views;
+package jotto.application.views;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -24,14 +24,15 @@ public class EndDialog extends JDialog implements ActionListener {
 		pnlInfo.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(pnlInfo, BorderLayout.CENTER);
 		pnlInfo.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel lblImage = new JLabel("");
 		pnlInfo.add(lblImage, BorderLayout.NORTH);
 		lblImage.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImage.setIcon(new ImageIcon(EndDialog.class
-				.getResource("/jotto/resources/difficulty/difficulty_insane.png")));
+		lblImage.setIcon(new ImageIcon(
+				EndDialog.class
+						.getResource("/jotto/resources/difficulty/difficulty_insane.png")));
 
-		JLabel lblMessage = new JLabel("Would you like to play again?l");
+		JLabel lblMessage = new JLabel("Would you like to play again?");
 		lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMessage.setFont(new Font("Tahoma", Font.BOLD, 18));
 		pnlInfo.add(lblMessage, BorderLayout.SOUTH);
@@ -42,22 +43,22 @@ public class EndDialog extends JDialog implements ActionListener {
 
 		JButton okButton = new JButton("Play Again?");
 		JButton cancelButton = new JButton("Exit");
-		
+
 		okButton.addActionListener(this);
-		
+
 		buttonPane.add(okButton);
 		buttonPane.add(cancelButton);
 		getRootPane().setDefaultButton(okButton);
-	
+
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
-		});		
+		});
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
-	      dispose();
-	  }
+		dispose();
+	}
 
 }

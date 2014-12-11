@@ -5,113 +5,128 @@ package jotto.core;
  */
 public final class JGuess {
 
-    private final String _guess;
-    private final JMatch[] _matches;
-    private final int _partial;
-    private final int _exact;
+	private final String _guess;
+	private final JMatch[] _matches;
+	private final int _partial;
+	private final int _exact;
 
-    /**
-     * Initializes a guess based on the text and match qualifications
+	/**
+	 * Initializes a guess based on the text and match qualifications
 	 *
-     */
-    public JGuess(String guess, JMatch[] matches) {
-    	assert guess != null && matches != null;
-    	
-        _guess = guess;
-        _matches = matches;
+	 * @param guess
+	 *            The string text that you are guessing.
+	 * @param matches
+	 *            The matches of the string.
+	 */
+	public JGuess(String guess, JMatch[] matches) {
+		assert guess != null && matches != null;
 
-        int partial = 0;
-        int exact = 0;
+		_guess = guess;
+		_matches = matches;
 
-        // computes number of exact/partials
-        for (int i = 0; i < matches.length; i++) {
-            switch (matches[i]) {
-                case EXACT:
-                    exact++;
-                    break;
-                case PARTIAL:
-                    partial++;
-                    break;
-                default:
-                    break;
-            }
-        }
+		int partial = 0;
+		int exact = 0;
 
-        _partial = partial;
-        _exact = exact;
-    }
+		// computes number of exact/partials
+		for (int i = 0; i < matches.length; i++) {
+			switch (matches[i]) {
+			case EXACT:
+				exact++;
+				break;
+			case PARTIAL:
+				partial++;
+				break;
+			default:
+				break;
+			}
+		}
 
-    /**
-     * The number of partial matches present for this guess
+		_partial = partial;
+		_exact = exact;
+	}
+
+	/**
+	 * The number of partial matches present for this guess
 	 *
-     */
-    public int getPartial() {
-        return _partial;
-    }
+	 * @return
+	 */
+	public int getPartial() {
+		return _partial;
+	}
 
-    /**
-     * The number of exact matches present for this guess
+	/**
+	 * The number of exact matches present for this guess
 	 *
-     */
-    public int getExact() {
-        return _exact;
-    }
+	 * @return
+	 */
+	public int getExact() {
+		return _exact;
+	}
 
-    /**
-     * Length of a guess
+	/**
+	 * Length of a guess
 	 *
-     */
-    public int getWordSize() {
-        return _guess.length();
-    }
+	 * @return
+	 */
+	public int getWordSize() {
+		return _guess.length();
+	}
 
-    /**
-     * Determines if the guess is correct
+	/**
+	 * Determines if the guess is correct
 	 *
-     */
-    public Boolean isCorrect() {
-        return _exact == _matches.length;
-    }
+	 * @return
+	 */
+	public Boolean isCorrect() {
+		return _exact == _matches.length;
+	}
 
-    /**
-     * Returns a match for a specified character index
+	/**
+	 * Returns a match for a specified character index
 	 *
-     */
-    public JMatch getMatch(int index) {
-    	assert index >= 0 && index < _matches.length;
-        return _matches[index];
-    }
+	 * @param index
+	 * @return
+	 */
+	public JMatch getMatch(int index) {
+		assert index >= 0 && index < _matches.length;
+		return _matches[index];
+	}
 
-    /**
-     * Gets the character at the specified index
+	/**
+	 * Gets the character at the specified index
 	 *
-     */
-    public char getChar(int index) {
-    	assert index >= 0 && index < _guess.length();
-        return _guess.charAt(index);
-    }
+	 * @param index
+	 * @return
+	 */
+	public char getChar(int index) {
+		assert index >= 0 && index < _guess.length();
+		return _guess.charAt(index);
+	}
 
-    /**
-     * Gets the word that was guessed
+	/**
+	 * Gets the word that was guessed
 	 *
-     */
-    public String getGuess() {
-        return _guess;
-    }
+	 * @return
+	 */
+	public String getGuess() {
+		return _guess;
+	}
 
-    /**
-     * Gets the guess as a character array
+	/**
+	 * Gets the guess as a character array
 	 *
-     */
-    public char[] getCharacters() {
-        return _guess.toCharArray();
-    }
+	 * @return
+	 */
+	public char[] getCharacters() {
+		return _guess.toCharArray();
+	}
 
-    /**
-     * Gets the matches specified for each character
+	/**
+	 * Gets the matches specified for each character
 	 *
-     */
-    public JMatch[] getMatches() {
-        return _matches;
-    }
+	 * @return The matches of each character within the guess.
+	 */
+	public JMatch[] getMatches() {
+		return _matches;
+	}
 }

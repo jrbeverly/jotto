@@ -10,11 +10,12 @@ public class JottoEventMap {
 
 	private final ArrayList<JottoListener> _listeners;
 	private final Jotto _game;
-	
+
 	/**
 	 * 
 	 * 
-	 * @param game The jotto game
+	 * @param game
+	 *            The jotto game
 	 * */
 	public JottoEventMap(Jotto game) {
 		assert game != null;
@@ -26,7 +27,8 @@ public class JottoEventMap {
 	/**
 	 * Adds a game event listeners to the jotto events map
 	 * 
-	 * @param listener The listener to add to the event map
+	 * @param listener
+	 *            The listener to add to the event map
 	 */
 	public void addListener(JottoListener listener) {
 		assert listener != null;

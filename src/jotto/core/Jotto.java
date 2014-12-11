@@ -9,17 +9,16 @@ import jotto.core.listeners.JottoEventMap;
 public final class Jotto {
 
 	private final JDictionary _dictionary;
-
 	private final JHistory _history;
 	private final int _maximumAttempts = 10;
 
 	private JSecret _secret;
 	private JGameState _state;
-	private int _attempts = 0;
-	private Boolean _secretGuessed = false;
-
 	private JottoEventMap _eventMap;
 	private JCharset _characters;
+
+	private Boolean _secretGuessed = false;
+	private int _attempts = 0;
 
 	/**
 	 * Initializes the jotto game based on a dictionary and secret word
@@ -29,6 +28,7 @@ public final class Jotto {
 		assert dictionary != null;
 
 		_dictionary = dictionary;
+		_characters = dictionary.getCharset();
 		_eventMap = new JottoEventMap(this);
 		_history = new JHistory(this);
 		_state = JGameState.IDLE;
@@ -55,7 +55,7 @@ public final class Jotto {
 	 *
 	 */
 	public int getWordSize() {
-		return _dictionary.getWordSize();
+		return _dictionary.size();
 	}
 
 	/**
@@ -184,7 +184,7 @@ public final class Jotto {
 			return JValidation.INVALID_SIZE;
 		} else if (!_dictionary.isWordPresent(word)) {
 			return JValidation.NOT_IN_DICTIONARY;
-		} else if (JWord.isValid(word)) {
+		} else if (_characters.isValid(word)) {
 			return JValidation.INVALID_CHARACTER;
 		} else if (_history.hasGuessed(word)) {
 			return JValidation.PREVIOUSLY_GUESSED;
@@ -217,7 +217,7 @@ public final class Jotto {
 		_history.add(guess);
 		_attempts++;
 
-		_eventMap.onPlayerGuess(guess);
+		_eventMap.onTurnGuess(guess);
 
 		_secretGuessed = guess.isCorrect();
 

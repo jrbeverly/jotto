@@ -1,22 +1,19 @@
-package jotto.views;
+package jotto.application.views;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 
-import java.awt.*;
-
-import javax.swing.border.EtchedBorder;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import jotto.core.JGameState;
-import jotto.core.JGuess;
 import jotto.core.Jotto;
-import Jotto.core.Listeners.JottoListener;
+import jotto.core.listeners.StateListener;
 
-public class Letterboard extends JPanel implements JottoListener {
-
-	/*
-	 * User Annotation || Automated
-	 */
+public class Letterboard extends JPanel implements StateListener {
 
 	private static final long serialVersionUID = 1L;
 	private static final int ALPHABET = 26;
@@ -28,7 +25,7 @@ public class Letterboard extends JPanel implements JottoListener {
 
 	private Color _isEliminated = new Color(232, 10, 28); // red
 	private Color _isPartial = Color.ORANGE;
-	private Color _isExact =  new Color(42, 185, 7); // green
+	private Color _isExact = new Color(42, 185, 7); // green
 	private Color _default = Color.BLACK;
 
 	private JLabel[] _labels;
@@ -50,12 +47,11 @@ public class Letterboard extends JPanel implements JottoListener {
 			add(_labels[i]);
 			ch++;
 		}
-		
+
 		_default = _labels[0].getBackground();
 	}
-	
-	public void reset()
-	{
+
+	public void reset() {
 		for (int i = 0; i < ALPHABET; i++) {
 			_labels[i].setBackground(_default);
 		}
@@ -75,7 +71,7 @@ public class Letterboard extends JPanel implements JottoListener {
 
 		_labels[index].setBackground(_isEliminated);
 	}
-	
+
 	public void setExact(char ch) {
 		int index = ch - START;
 		if (index < 0 && index >= ALPHABET) {
@@ -94,67 +90,18 @@ public class Letterboard extends JPanel implements JottoListener {
 		_labels[index].setBackground(_isPartial);
 	}
 
-	@Override
-	public void onCharacterEliminated(char character) {
+	public void onCharacterEliminated(Jotto jotto, char character) {
 		setEliminated(character);
 	}
 
-	@Override
-	public void onCharacterExact(char character) {
+	public void onCharacterExact(Jotto jotto, char character) {
 		setExact(character);
 
 	}
 
 	@Override
-	public Jotto getGame() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void onGameStateChanged(JGameState oldState, JGameState newState) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onMatchStart() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onMatchOver() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onPlayerYield() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onPlayerWin() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onPlayerLoss() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onPlayerWrong(JGuess guess) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onPlayerGuess(JGuess guess) {
+	public void onGameStateChanged(Jotto jotto, JGameState oldState,
+			JGameState newState) {
 		// TODO Auto-generated method stub
 
 	}

@@ -9,137 +9,161 @@ import java.util.Arrays;
  */
 public class JHistory {
 
-    private final ArrayList<JGuess> _guesses;
-    private final Jotto _jotto;
-    private final JCharset _characters;
-    private final JMatch[] _letters;
-    private final char[] _known;
+	private final ArrayList<JGuess> _guesses;
+	private final Jotto _jotto;
+	private final JCharset _characters;
+	private final JMatch[] _letters;
+	private final char[] _known;
 
-    /**
-     * Initializes the history of a jotto game
-     */
-    public JHistory(Jotto jotto) {
-    	assert jotto != null;
-    	
-        _jotto = jotto;
-        _characters = _jotto.getCharset();
-        _guesses = new ArrayList<JGuess>();
-        _letters = new JMatch[JWord.ALPHABET];
-        _known = new char[jotto.getWordSize()];
+	/**
+	 * Initializes the history of a jotto game
+	 * 
+	 * @param jotto
+	 */
+	public JHistory(Jotto jotto) {
+		assert jotto != null;
 
-        clear();
-    }
+		_jotto = jotto;
+		_characters = _jotto.getCharset();
 
-    /**
-     * Adds a guess to the history of the jotto game
-     */
-    public void add(JGuess guess) {
-    	assert guess != null;
-    	
-        _guesses.add(guess);
+		_guesses = new ArrayList<JGuess>();
+		_known = new char[jotto.getWordSize()];
+		_letters = new JMatch[_characters.getCount()];
 
-        for (JGuess ges : _guesses) {
-            if (ges.getPartial() == 0 && ges.getExact() == 0) {
-                for (int l = 0; l < _jotto.getWordSize(); l++) {
-                    setState(JMatch.ELIMINATED, ges.getChar(l));
-                }
-            } else {
-                for (int l = 0; l < _jotto.getWordSize(); l++) {
-                    if (ges.getMatch(l) == JMatch.EXACT) {
-                        _known[l] = ges.getChar(l);
+		clear();
+	}
 
-                        setState(JMatch.EXACT, ges.getChar(l));
-                    }
-                }
-            }
-        }
-    }
+	/**
+	 * Adds a guess to the history of the jotto game
+	 * 
+	 * @param guess
+	 */
+	public void add(JGuess guess) {
+		assert guess != null;
 
-    private void setState(JMatch match, char character) {
-    	assert match != null;
-    	
-        int index = JWord.getIndex(character);
-        switch (match) {
-            case ELIMINATED:
-                _jotto.getEventMap().onCharacterEliminated(character);
-                break;
-            case EXACT:
-                _jotto.getEventMap().onCharacterExact(character);
-                break;
-            default:
-                break;
-        }
-        _letters[index] = match;
-    }
+		_guesses.add(guess);
 
-    /**
-     * Gets the letters that are matched
-     */
-    public JMatch[] getConfirms() {
-        return _letters;
-    }
+		for (JGuess ges : _guesses) {
+			if (ges.getPartial() == 0 && ges.getExact() == 0) {
+				for (int l = 0; l < _jotto.getWordSize(); l++) {
+					setState(JMatch.ELIMINATED, ges.getChar(l));
+				}
+			} else {
+				for (int l = 0; l < _jotto.getWordSize(); l++) {
+					if (ges.getMatch(l) == JMatch.EXACT) {
+						_known[l] = ges.getChar(l);
 
-    /**
-     * Get the match set for the specific character
-     */
-    public JMatch getCharacterMatch(char character) {
-        int index = JWord.getIndex(character);
-        if (index != -1 || index < 0 || index >= _letters.length) {
-            return null;
-        }
+						setState(JMatch.EXACT, ges.getChar(l));
+					}
+				}
+			}
+		}
+	}
 
-        return _letters[index];
-    }
+	/**
+	 * 
+	 * @param match
+	 * @param character
+	 */
+	private void setState(JMatch match, char character) {
+		assert match != null;
 
-    /**
-     * Gets a list of letters that are partial (suggested to guess)
-     */
-    public String getSuggestions() {
-        StringBuilder buffer = new StringBuilder();
+		int index = _characters.getIndex(character);
+		switch (match) {
+		case ELIMINATED:
+			_jotto.getEventMap().onCharacterEliminated(character);
+			break;
+		case EXACT:
+			_jotto.getEventMap().onCharacterExact(character);
+			break;
+		default:
+			break;
+		}
+		_letters[index] = match;
+	}
 
-        for (JGuess guess : _guesses) {
-            for (int i = 0; i < _jotto.getWordSize(); i++) {
-                JMatch match = guess.getMatch(i);
-                if ((match == JMatch.EXACT) || (match == JMatch.PARTIAL)) {
-                    if (buffer.indexOf(guess.getChar(i) + "") == -1) {
-                        buffer.append(guess.getChar(i));
-                    }
-                }
-            }
-        }
+	/**
+	 * Gets the letters that are matched
+	 * 
+	 * @return
+	 */
+	public JMatch[] getConfirms() {
+		return _letters;
+	}
 
-        char[] data = buffer.toString().toCharArray();
-        Arrays.sort(data);
-        return new String(data);
-    }
+	/**
+	 * Get the match set for the specific character
+	 * 
+	 * @param character
+	 * @return
+	 */
+	public JMatch getCharacterMatch(char character) {
+		int index = _characters.getIndex(character);
+		if (index != -1 || index < 0 || index >= _letters.length) {
+			return null;
+		}
 
-    /**
-     * Gets the letters that are confirmed
-     */
-    public String getKnown() {
-        return new String(_known.clone());
-    }
+		return _letters[index];
+	}
 
-    public boolean hasGuessed(String word) {
-    	assert word != null;
-    	
-        for (JGuess guess : _guesses) {
-            if (guess.getGuess().equals(word)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	/**
+	 * Gets a list of letters that are partial (suggested to guess)
+	 * 
+	 * @return
+	 */
+	public String getSuggestions() {
+		StringBuilder buffer = new StringBuilder();
 
-    public void clear() {
-        for (int i = 0; i < _known.length; i++) {
-            _known[i] = JWord.UNKNOWN_CHAR;
-        }
+		for (JGuess guess : _guesses) {
+			for (int i = 0; i < _jotto.getWordSize(); i++) {
+				JMatch match = guess.getMatch(i);
+				if ((match == JMatch.EXACT) || (match == JMatch.PARTIAL)) {
+					if (buffer.indexOf(guess.getChar(i) + "") == -1) {
+						buffer.append(guess.getChar(i));
+					}
+				}
+			}
+		}
 
-        for (int i = 0; i < _letters.length; i++) {
-            _letters[i] = JMatch.NONE;
-        }
+		char[] data = buffer.toString().toCharArray();
+		Arrays.sort(data);
+		return new String(data);
+	}
 
-        _guesses.clear();
-    }
+	/**
+	 * Gets the letters that are confirmed
+	 * 
+	 * @return
+	 */
+	public String getKnown() {
+		return new String(_known.clone());
+	}
+
+	/**
+	 * @return
+	 * */
+	public boolean hasGuessed(String word) {
+		assert word != null;
+
+		for (JGuess guess : _guesses) {
+			if (guess.getGuess().equals(word)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * */
+	public void clear() {
+		for (int i = 0; i < _known.length; i++) {
+			_known[i] = '_';
+		}
+
+		for (int i = 0; i < _letters.length; i++) {
+			_letters[i] = JMatch.NONE;
+		}
+
+		_guesses.clear();
+	}
 }

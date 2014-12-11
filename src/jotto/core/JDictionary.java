@@ -13,36 +13,41 @@ import java.util.Random;
 
 /**
  * A dictionary containing a collection of words available for use in a jotto
- * game
+ * game.
  */
 public final class JDictionary {
 
 	private final Map<Integer, ArrayList<JWord>> _wordmap;
 	private final ArrayList<JWord> _words;
+	private JCharset _characters;
 	private int _minDifficulty;
 	private int _maxDifficulty;
+	private int _size;
 
 	/**
-	 * Initializes the jotto dictionary based on a specific word size
+	 * Initializes the jotto dictionary based on a specific word size.
 	 */
-	public JDictionary() {
+	public JDictionary(int dictSize) {
 		_wordmap = new HashMap<Integer, ArrayList<JWord>>();
 		_words = new ArrayList<JWord>();
-
+		_characters = new JCharset('A', 'Z');
+		
 		_minDifficulty = Integer.MAX_VALUE;
 		_maxDifficulty = Integer.MIN_VALUE;
+		_size = dictSize;
 	}
 
 	/**
-	 * Adds a word to the dictionary
+	 * Adds a word to the dictionary.
 	 *
 	 * @param word
-	 *            the word to add to the dictionary
+	 *            The word to add to the dictionary.
 	 * @param difficulty
-	 *            the difficulty of the specific word
+	 *            The difficulty of the specific word.
 	 */
 	public void add(String word, int difficulty) {
 		assert word != null && difficulty > 0;
+		_size = word.length(); // set word length
 
 		JWord jword = new JWord(word, difficulty);
 		if (!_wordmap.containsKey(difficulty)) {
@@ -61,10 +66,11 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Determines if the specified word is present in the dictionary
+	 * Determines if the specified word is present in the dictionary.
 	 *
 	 * @param word
-	 * @return True if the word exists, false otherwise
+	 *            The word to detect if present within the dictionary.
+	 * @return True if the word exists in the dictionary; false otherwise.
 	 */
 	public Boolean isWordPresent(String word) {
 		assert word != null;
@@ -79,8 +85,12 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Gets a list of words that match the specified regular expression
+	 * Gets a list of words that match the specified regular expression.
 	 *
+	 * @param format
+	 *            The regular expression to which strings are to be matched.
+	 * @return This method returns an array of words if, and only if, this
+	 *         string matches the given regular expression.
 	 */
 	public JWord[] getMatchingWords(String format) {
 		assert format != null;
@@ -96,8 +106,11 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Gets a jotto word that matches the specified string
+	 * Returns the word object associated with the word.
 	 *
+	 * @param word
+	 *            The word to retrieve from the dictionary.
+	 * @return The jotto word object.
 	 */
 	public JWord getWord(String word) {
 		assert word != null;
@@ -111,8 +124,12 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Gets a word present at a specified index
+	 * Returns the element at the specified position in this list.
 	 *
+	 * @param index
+	 *            The index of the element to return.
+	 * @return This method returns the element at the specified position in this
+	 *         list.
 	 */
 	public JWord getWord(int index) {
 		assert index >= 0 && index < _words.size();
@@ -120,24 +137,37 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Gets the words in the jotto dictionary
+	 * Gets the list of words within the dictionary.
 	 *
+	 * @return The words of the dictionary.
 	 */
 	public JWord[] getWords() {
 		return _words.toArray(new JWord[_words.size()]);
 	}
 
+	public JCharset getCharset() {
+		return _characters;
+	}
+
 	/**
-	 * Gets the number of words present in the dictionary
+	 * Returns the number of words that are within the dictionary.
 	 *
+	 * @return The number of words within the dictionary.
 	 */
 	public int count() {
 		return _words.size();
 	}
 
+	public int size() {
+		return _size;
+	}
+
 	/**
-	 * Gets a random word from the dictionary with a specified difficulty
-	 *
+	 * Gets a random word from the dictionary with a specified difficulty.
+	 * 
+	 * @param difficulty
+	 *            The difficulty of the words to query against.
+	 * @return The word within the dictionary.
 	 */
 	public JWord getRandomWord(int difficulty) {
 		if (difficulty < _minDifficulty) {
@@ -155,8 +185,7 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Clears the jotto dictionary
-	 *
+	 * Clears the jotto dictionary.
 	 */
 	public void clear() {
 		_wordmap.clear();
@@ -164,16 +193,19 @@ public final class JDictionary {
 	}
 
 	/**
-	 * Imports the current jotto dictionary from a file
+	 * Imports the a series of words into the jotto dictionary from a file.
 	 *
+	 * @param filepath
+	 *            The file to import into the dictionary.
+	 * @return True if dictionary loading successful; false otherwise.
 	 */
-	public void importFrom(String filepath) {
+	public Boolean importFrom(String filepath) {
 		assert filepath != null;
 
 		File dFile = new File(filepath);
 		if (!dFile.exists()) {
 			System.out.println("Cannot find file: " + dFile.getAbsolutePath());
-			return;
+			return false;
 		}
 
 		try {
@@ -199,14 +231,21 @@ public final class JDictionary {
 			fReader.close();
 		} catch (IOException io_open) {
 			io_open.printStackTrace();
+			return false;
 		}
+
+		return true;
 	}
 
 	/**
-	 * Exports the current jotto dictionary into a file
+	 * Exports the a series of words from the jotto dictionary into a file. If
+	 * the file exists it is overwritten.
 	 *
+	 * @param filepath
+	 *            The file to export the dictionary to.
+	 * @return True if dictionary exporting successful; false otherwise.
 	 */
-	public void exportTo(String filepath) {
+	public Boolean exportTo(String filepath) {
 		assert filepath != null;
 
 		File dFile = new File(filepath);
@@ -235,6 +274,9 @@ public final class JDictionary {
 			fWriter.close();
 		} catch (IOException io_open) {
 			io_open.printStackTrace();
+			return false;
 		}
+
+		return true;
 	}
 }
