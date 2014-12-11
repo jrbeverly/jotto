@@ -28,14 +28,12 @@ public class EndDialog extends JDialog implements ActionListener {
 		JLabel lblImage = new JLabel("");
 		pnlInfo.add(lblImage, BorderLayout.NORTH);
 		lblImage.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImage.setIcon(new ImageIcon(
-				EndDialog.class
-						.getResource("/jotto/resources/difficulty/difficulty_insane.png")));
 
 		JLabel lblMessage = new JLabel("Would you like to play again?");
 		lblMessage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMessage.setVerticalAlignment(SwingConstants.CENTER);
 		lblMessage.setFont(new Font("Tahoma", Font.BOLD, 18));
-		pnlInfo.add(lblMessage, BorderLayout.SOUTH);
+		pnlInfo.add(lblMessage, BorderLayout.CENTER);
 
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
