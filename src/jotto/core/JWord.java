@@ -44,34 +44,3 @@ public final class JWord {
         return _word.length();
     }
 }
-/*
-      public static final char START = 'A';
-    public static final char END = 'Z';
-    public static final int ALPHABET = 26;
-    public static final char UNKNOWN_CHAR = '_';
-
-    public static int getIndex(char character) {
-        if (character < START || character > END) {
-            return -1;
-        }
-
-        return character - START;
-    }
-
-    public static Boolean isCharacterValid(char character) {
-        if (character < START || character > END) {
-            return false;
-        }
-
-        return true;
-    }
-
-    public static Boolean isValid(String word) {
-        for (int i = 0; i < word.length(); i++) {
-            if (JWord.isCharacterValid(word.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
-    }
-*/

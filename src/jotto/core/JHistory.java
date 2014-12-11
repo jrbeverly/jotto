@@ -11,6 +11,7 @@ public class JHistory {
 
     private final ArrayList<JGuess> _guesses;
     private final Jotto _jotto;
+    private final JCharset _characters;
     private final JMatch[] _letters;
     private final char[] _known;
 
@@ -21,6 +22,7 @@ public class JHistory {
     	assert jotto != null;
     	
         _jotto = jotto;
+        _characters = _jotto.getCharset();
         _guesses = new ArrayList<JGuess>();
         _letters = new JMatch[JWord.ALPHABET];
         _known = new char[jotto.getWordSize()];

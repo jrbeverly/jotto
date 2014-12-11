@@ -5,10 +5,7 @@ import jotto.core.*;
 import java.util.ArrayList;
 
 /**
- * Ten
- * 
- * @author Jonathan
- */
+ * */
 public class JottoEventMap {
 
 	private final ArrayList<JottoListener> _listeners;
@@ -19,7 +16,7 @@ public class JottoEventMap {
 	 * 
 	 * @param game The jotto game
 	 * */
-	protected JottoEventMap(Jotto game) {
+	public JottoEventMap(Jotto game) {
 		assert game != null;
 
 		_game = game;
