@@ -14,8 +14,7 @@ public final class JWord {
      * @param difficulty The difficulty of the word
      */
     public JWord(String word, int difficulty) {
-        assert word != null;
-        assert difficulty > 0;
+        assert word != null && difficulty > 0;
         
         _word = word;
         _difficulty = difficulty;
@@ -42,8 +41,6 @@ public final class JWord {
      * @return The length of the word
      */
     public int getWordLength() {
-        assert _word != null;
-        
         return _word.length();
     }
 }

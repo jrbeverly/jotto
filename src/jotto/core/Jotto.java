@@ -1,6 +1,6 @@
 package jotto.core;
 
-import Jotto.core.Listeners.JottoEventMap;
+import jotto.core.listeners.JottoEventMap;
 
 /**
  * Represents an instance of a game of jotto
@@ -25,11 +25,11 @@ public final class Jotto {
 	 *
      */
     public Jotto(JDictionary dictionary) {
+    	assert dictionary != null;
+    	
         _dictionary = dictionary;
-
         _eventMap = new JottoEventMap(this);
         _history = new JHistory(this);
-
         _state = JGameState.IDLE;
     }
 
@@ -117,6 +117,8 @@ public final class Jotto {
 	 *
      */
     public void start(JWord word) {
+    	assert word != null;
+    	
         if (_state == JGameState.IDLE) {
             _secret = new JSecret(this, word);
             setState(JGameState.PLAYING);
@@ -171,7 +173,8 @@ public final class Jotto {
 	 *
      */
     public JValidation validate(String word) {
-
+    	assert word != null;
+    	
         if (word.length() != getWordSize()) {
             return JValidation.INVALID_SIZE;
         } else if (!_dictionary.isWordPresent(word)) {
@@ -192,6 +195,8 @@ public final class Jotto {
 	 *
      */
     public JGuess guess(String word) {
+    	assert word != null;
+    	
         if (isGameOver()) {
             System.err.println("User cannot guess as the game state is not valid");
             return null;

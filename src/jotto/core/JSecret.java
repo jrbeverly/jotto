@@ -2,7 +2,6 @@ package jotto.core;
 
 /**
  * Represents a jotto secret word
- *
  */
 public final class JSecret {
 
@@ -14,6 +13,8 @@ public final class JSecret {
 	 *
      */
     public JSecret(Jotto jotto, JWord secret) {
+    	assert jotto != null && secret != null;
+    	
         _jotto = jotto;
         _secret = secret;
     }
@@ -31,6 +32,8 @@ public final class JSecret {
 	 *
      */
     public JGuess guess(String data) {
+    	assert data != null;
+    	
         //gets the text of the secret
         String secret = _secret.getWord();
 

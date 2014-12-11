@@ -15,6 +15,8 @@ public final class JGuess {
 	 *
      */
     public JGuess(String guess, JMatch[] matches) {
+    	assert guess != null && matches != null;
+    	
         _guess = guess;
         _matches = matches;
 
@@ -76,6 +78,7 @@ public final class JGuess {
 	 *
      */
     public JMatch getMatch(int index) {
+    	assert index >= 0 && index < _matches.length;
         return _matches[index];
     }
 
@@ -84,6 +87,7 @@ public final class JGuess {
 	 *
      */
     public char getChar(int index) {
+    	assert index >= 0 && index < _guess.length();
         return _guess.charAt(index);
     }
 

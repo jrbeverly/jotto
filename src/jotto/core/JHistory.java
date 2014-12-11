@@ -18,6 +18,8 @@ public class JHistory {
      * Initializes the history of a jotto game
      */
     public JHistory(Jotto jotto) {
+    	assert jotto != null;
+    	
         _jotto = jotto;
         _guesses = new ArrayList<JGuess>();
         _letters = new JMatch[JWord.ALPHABET];
@@ -30,6 +32,8 @@ public class JHistory {
      * Adds a guess to the history of the jotto game
      */
     public void add(JGuess guess) {
+    	assert guess != null;
+    	
         _guesses.add(guess);
 
         for (JGuess ges : _guesses) {
@@ -50,8 +54,9 @@ public class JHistory {
     }
 
     private void setState(JMatch match, char character) {
+    	assert match != null;
+    	
         int index = JWord.getIndex(character);
-
         switch (match) {
             case ELIMINATED:
                 _jotto.getEventMap().onCharacterEliminated(character);
@@ -114,6 +119,8 @@ public class JHistory {
     }
 
     public boolean hasGuessed(String word) {
+    	assert word != null;
+    	
         for (JGuess guess : _guesses) {
             if (guess.getGuess().equals(word)) {
                 return true;

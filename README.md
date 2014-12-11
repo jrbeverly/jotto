@@ -4,7 +4,7 @@
 #### Abstract
 The Jotto game was designed as an assignment for a user interfaces course.  Its purpose was to focus on software architectural pattern, Model-View-Controller (MVC).  The expanded version of this assignment offers more options and controls that previous, and additional separation between Presentation (View) and the Model (Application Model). 
 
-Specifically the application is separated into two components: **JottoApp** and **Jotto*.  **Jotto** is the main core logic of the application.  It includes the ability to specify different game modes, and controls the overall logic of a Jotto game.  **JottoApp** is a front-end for the Jotto game implemented in the standard java swing libraries.
+Specifically the application is separated based on the MVC pattern.  This is visible by the *Application* and *Core* components on the repository. **Core** is the main logic of the application.  It includes the ability to specify different game modes, and controls the overall logic of a Jotto game.  **Application** is the front-end for the Jotto game implemented in the standard java swing libraries.
 
 ***
 #### Summary
@@ -22,11 +22,11 @@ Jotto is a logic-oriented word game played with two players. Each player picks a
 
 ##### Architecture Notes	
 
-* **Jotto**
+* **Core**
 	* Note
 	* Note
 	* Note
-* **JottoApp**
+* **Application**
 	* Model
 		* Application Logic defined by *Jotto*
 		* Defines models and related structures (dictionaries/history)
