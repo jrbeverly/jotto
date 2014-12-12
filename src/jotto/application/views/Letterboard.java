@@ -13,6 +13,9 @@ import jotto.core.JGameState;
 import jotto.core.Jotto;
 import jotto.core.listeners.StateListener;
 
+/**
+ * Acts as a visual board displaying which letters have been verified (or partially verified)
+ * */
 public class Letterboard extends JPanel implements StateListener {
 
 	private static final long serialVersionUID = 1L;

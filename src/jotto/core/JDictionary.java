@@ -26,12 +26,15 @@ public final class JDictionary {
 
 	/**
 	 * Initializes the jotto dictionary based on a specific word size.
+	 * 
+	 * @param dictSize
+	 *            The size of the dictionary words.
 	 */
 	public JDictionary(int dictSize) {
 		_wordmap = new HashMap<Integer, ArrayList<JWord>>();
 		_words = new ArrayList<JWord>();
 		_characters = new JCharset('A', 'Z');
-		
+
 		_minDifficulty = Integer.MAX_VALUE;
 		_maxDifficulty = Integer.MIN_VALUE;
 		_size = dictSize;

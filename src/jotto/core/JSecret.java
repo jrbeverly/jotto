@@ -1,7 +1,7 @@
 package jotto.core;
 
 /**
- * Represents a jotto secret word
+ * Represents the secret word from the jotto dictionary.
  */
 public final class JSecret {
 
@@ -9,8 +9,13 @@ public final class JSecret {
 	private final JWord _secret;
 
 	/**
-	 * Initializes a secret word for the jotto game
+	 * Initializes a secret word for the jotto game.
 	 *
+	 * @param jotto
+	 *            The jotto game which this secret is associated with.
+	 * @param secret
+	 *            The word from the jotto dictionary that will be the secret
+	 *            word.
 	 */
 	public JSecret(Jotto jotto, JWord secret) {
 		assert jotto != null && secret != null;
@@ -20,16 +25,20 @@ public final class JSecret {
 	}
 
 	/**
-	 * Returns the number of attempts at the secret word in the jotto game
+	 * Returns the number of attempts at the secret word in the jotto game.
 	 *
+	 * @return The number of attempts at the secret word.
 	 */
 	public int getAttempts() {
 		return _jotto.getAttempts();
 	}
 
 	/**
-	 * Guesses a word against the secret word
+	 * Guesses a word against the secret word.
 	 *
+	 * @param data
+	 *            The word that will be guessed.
+	 * @return A jotto guess object representing the guess outcome.
 	 */
 	public JGuess guess(String data) {
 		assert data != null;

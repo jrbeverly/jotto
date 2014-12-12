@@ -23,7 +23,7 @@ public interface TurnListener extends JottoListener {
 	void onTurnIncorrect(Jotto jotto, JGuess guess);
 
 	/**
-	 * Invoked when a jotto game state has been modified.
+	 * Invoked when a player guess was correct.
 	 * 
 	 * @param jotto
 	 *            the jotto game referenced.
@@ -33,7 +33,7 @@ public interface TurnListener extends JottoListener {
 	void onTurnCorrect(Jotto jotto, JGuess guess);
 
 	/**
-	 * Invoked when a jotto game state has been modified.
+	 * Invoked when a player guesses.
 	 * 
 	 * @param jotto
 	 *            the jotto game referenced.

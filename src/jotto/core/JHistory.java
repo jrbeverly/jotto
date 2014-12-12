@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Represents the history of user guesses in the jotto game
- *
+ * Represents the history of user guesses in the jotto game.
  */
 public class JHistory {
 
@@ -16,9 +15,10 @@ public class JHistory {
 	private final char[] _known;
 
 	/**
-	 * Initializes the history of a jotto game
+	 * Initializes the history of a jotto game.
 	 * 
 	 * @param jotto
+	 *            The jotto game which this history is associated with.
 	 */
 	public JHistory(Jotto jotto) {
 		assert jotto != null;
@@ -34,9 +34,10 @@ public class JHistory {
 	}
 
 	/**
-	 * Adds a guess to the history of the jotto game
+	 * Adds a guess to the history of the jotto game.
 	 * 
 	 * @param guess
+	 *            Adds a jotto guess into the history.
 	 */
 	public void add(JGuess guess) {
 		assert guess != null;
@@ -61,9 +62,12 @@ public class JHistory {
 	}
 
 	/**
+	 * Sets the state of the character match.
 	 * 
 	 * @param match
+	 *            The matching of the character.
 	 * @param character
+	 *            The character match state to assign.
 	 */
 	private void setState(JMatch match, char character) {
 		assert match != null;
@@ -83,19 +87,20 @@ public class JHistory {
 	}
 
 	/**
-	 * Gets the letters that are matched
+	 * Gets the match state of the various characters in the set.
 	 * 
-	 * @return
+	 * @return The match states of characters.
 	 */
 	public JMatch[] getConfirms() {
 		return _letters;
 	}
 
 	/**
-	 * Get the match set for the specific character
+	 * Get the match state for the specific character.
 	 * 
 	 * @param character
-	 * @return
+	 *            The character to retrieve match state for.
+	 * @return The match state of a specified character.
 	 */
 	public JMatch getCharacterMatch(char character) {
 		int index = _characters.getIndex(character);
@@ -107,9 +112,9 @@ public class JHistory {
 	}
 
 	/**
-	 * Gets a list of letters that are partial (suggested to guess)
+	 * Gets a list of letters that are partial (suggested to guess).
 	 * 
-	 * @return
+	 * @return The suggested string.
 	 */
 	public String getSuggestions() {
 		StringBuilder buffer = new StringBuilder();
@@ -131,16 +136,18 @@ public class JHistory {
 	}
 
 	/**
-	 * Gets the letters that are confirmed
+	 * Gets the letters that are confirmed.
 	 * 
-	 * @return
+	 * @return A string containing known characters.
 	 */
 	public String getKnown() {
 		return new String(_known.clone());
 	}
 
 	/**
-	 * @return
+	 * Returns true if the word has been guessed, false otherwise.
+	 * 
+	 * @return True if word has been guessed; false otherwise.
 	 * */
 	public boolean hasGuessed(String word) {
 		assert word != null;
@@ -154,6 +161,7 @@ public class JHistory {
 	}
 
 	/**
+	 * Clears the attributes of the history.
 	 * */
 	public void clear() {
 		for (int i = 0; i < _known.length; i++) {

@@ -14,6 +14,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
+/**
+ * Acts as the visual dialog box fort the message commands (specifically end
+ * game)
+ * */
 public class EndDialog extends JDialog implements ActionListener {
 
 	private final JPanel pnlInfo = new JPanel();

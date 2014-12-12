@@ -14,6 +14,10 @@ import jotto.core.JGuess;
 import jotto.core.Jotto;
 import jotto.core.listeners.TurnListener;
 
+/**
+ * Acts as a visual board for displaying the history of guesses in the jotto
+ * game.
+ * */
 public class Guessboard extends JPanel implements TurnListener {
 
 	private JTable _table;

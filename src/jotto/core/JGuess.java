@@ -1,7 +1,7 @@
 package jotto.core;
 
 /**
- * Represents a guess in the jotto game
+ * Represents a guess in the jotto game.
  */
 public final class JGuess {
 
@@ -11,7 +11,7 @@ public final class JGuess {
 	private final int _exact;
 
 	/**
-	 * Initializes a guess based on the text and match qualifications
+	 * Initializes a guess based on the text and match qualifications.
 	 *
 	 * @param guess
 	 *            The string text that you are guessing.
@@ -46,9 +46,9 @@ public final class JGuess {
 	}
 
 	/**
-	 * The number of partial matches present for this guess
+	 * The number of partial matches present for this guess.
 	 *
-	 * @return
+	 * @return Number of partial character matches.
 	 */
 	public int getPartial() {
 		return _partial;
@@ -57,16 +57,16 @@ public final class JGuess {
 	/**
 	 * The number of exact matches present for this guess
 	 *
-	 * @return
+	 * @return Number of exact character matches.
 	 */
 	public int getExact() {
 		return _exact;
 	}
 
 	/**
-	 * Length of a guess
+	 * Word length of a guess.
 	 *
-	 * @return
+	 * @return Length of the guess word.
 	 */
 	public int getWordSize() {
 		return _guess.length();
@@ -75,17 +75,18 @@ public final class JGuess {
 	/**
 	 * Determines if the guess is correct
 	 *
-	 * @return
+	 * @return True if correct; false otherwise.
 	 */
 	public Boolean isCorrect() {
 		return _exact == _matches.length;
 	}
 
 	/**
-	 * Returns a match for a specified character index
+	 * Returns a match for a specified character based on given index.
 	 *
 	 * @param index
-	 * @return
+	 *            The character index to check for match state.
+	 * @return The match state of the specified character.
 	 */
 	public JMatch getMatch(int index) {
 		assert index >= 0 && index < _matches.length;
@@ -93,10 +94,11 @@ public final class JGuess {
 	}
 
 	/**
-	 * Gets the character at the specified index
+	 * Gets the character at the specified index.
 	 *
 	 * @param index
-	 * @return
+	 *            The character index.
+	 * @return The character at the specified index.
 	 */
 	public char getChar(int index) {
 		assert index >= 0 && index < _guess.length();
@@ -104,25 +106,25 @@ public final class JGuess {
 	}
 
 	/**
-	 * Gets the word that was guessed
+	 * Gets the word that was guessed.
 	 *
-	 * @return
+	 * @return The guess string.
 	 */
 	public String getGuess() {
 		return _guess;
 	}
 
 	/**
-	 * Gets the guess as a character array
+	 * Gets the guess as a character array.
 	 *
-	 * @return
+	 * @return The guess string as a character array.
 	 */
 	public char[] getCharacters() {
 		return _guess.toCharArray();
 	}
 
 	/**
-	 * Gets the matches specified for each character
+	 * Gets the matches specified for each character.
 	 *
 	 * @return The matches of each character within the guess.
 	 */

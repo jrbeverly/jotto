@@ -34,6 +34,10 @@ import jotto.core.JValidation;
 import jotto.core.Jotto;
 import jotto.core.listeners.GameListener;
 
+/**
+ * The core application that makes use of the Guessboard/Letterboard views to
+ * implement a Jotto GUI.
+ * */
 public class Application extends JFrame implements GameListener {
 
 	private static final int JOTTO_DEFAULT_SIZE = 5;

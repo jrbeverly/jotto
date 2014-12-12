@@ -1,5 +1,8 @@
 package jotto.application;
 
+/**
+ * The difficulty level as percieved by the application (not by the jotto core)
+ * */
 public enum JDifficulty {
 	Easy(0), Normal(1), Hard(2);
 

@@ -5,6 +5,7 @@ import jotto.core.*;
 import java.util.ArrayList;
 
 /**
+ * An event map designed to handle game events for the jotto game.
  * */
 public class JottoEventMap {
 
@@ -12,10 +13,11 @@ public class JottoEventMap {
 	private final Jotto _game;
 
 	/**
-	 * 
+	 * Creates the event map designed to handle events for the specified jotto
+	 * game.
 	 * 
 	 * @param game
-	 *            The jotto game
+	 *            The jotto game to handle events for.
 	 * */
 	public JottoEventMap(Jotto game) {
 		assert game != null;
@@ -25,10 +27,10 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * Adds a game event listeners to the jotto events map
+	 * Adds a game event listeners to the jotto events map.
 	 * 
 	 * @param listener
-	 *            The listener to add to the event map
+	 *            The listener to add to the event map.
 	 */
 	public void addListener(JottoListener listener) {
 		assert listener != null;
@@ -37,10 +39,10 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * Removes a game event listeners to the jotto events map
+	 * Removes a game event listeners to the jotto events map.
 	 * 
 	 * @param listener
-	 *            The listener to add to the event map
+	 *            The listener to remove from the event map.
 	 */
 	public void removeListener(JottoListener listener) {
 		assert listener != null;
@@ -49,21 +51,17 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * 
+	 * Returns the jotto game associated with the event map.
 	 */
 	public Jotto getGame() {
 		return _game;
 	}
 
 	/**
+	 * Invoked when a player guess was incorrect.
 	 * 
-	 */
-	private <T> T as(Class<T> t, Object o) {
-		return t.isInstance(o) ? t.cast(o) : null;
-	}
-
-	/**
-	 * 
+	 * @param guess
+	 *            The guess that the player submitted.
 	 */
 	public void onTurnIncorrect(JGuess guess) {
 		assert guess != null;
@@ -76,7 +74,10 @@ public class JottoEventMap {
 	}
 
 	/**
+	 * Invoked when a player guess was correct.
 	 * 
+	 * @param guess
+	 *            The guess that the player submitted.
 	 */
 	public void onTurnCorrect(JGuess guess) {
 		assert guess != null;
@@ -89,7 +90,10 @@ public class JottoEventMap {
 	}
 
 	/**
+	 * Invoked when a player guesses.
 	 * 
+	 * @param guess
+	 *            The guess that the player submitted.
 	 */
 	public void onTurnGuess(JGuess guess) {
 		assert guess != null;
@@ -102,7 +106,12 @@ public class JottoEventMap {
 	}
 
 	/**
+	 * Invoked when a jotto game state has been modified.
 	 * 
+	 * @param oldState
+	 *            the previous game state.
+	 * @param newState
+	 *            the new game state.
 	 */
 	public void onGameStateChanged(JGameState oldState, JGameState newState) {
 		for (int i = 0; i < _listeners.size(); i++) {
@@ -113,7 +122,10 @@ public class JottoEventMap {
 	}
 
 	/**
+	 * Invoked when a character has been eliminated in a jotto game.
 	 * 
+	 * @param character
+	 *            the character eliminated.
 	 */
 	public void onCharacterEliminated(char character) {
 		for (int i = 0; i < _listeners.size(); i++) {
@@ -124,7 +136,10 @@ public class JottoEventMap {
 	}
 
 	/**
+	 * Invoked when a character has been matched in a jotto game.
 	 * 
+	 * @param character
+	 *            the character determined.
 	 */
 	public void onCharacterExact(char character) {
 		for (int i = 0; i < _listeners.size(); i++) {
@@ -135,8 +150,8 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * 
-	 */
+	 * Invoked when a jotto match is started.
+	 * */
 	public void onMatchStart() {
 		for (int i = 0; i < _listeners.size(); i++) {
 			GameListener lst = as(GameListener.class, _listeners.get(i));
@@ -146,8 +161,8 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * 
-	 */
+	 * Invoked when a jotto match is over.
+	 * */
 	public void onMatchOver() {
 		for (int i = 0; i < _listeners.size(); i++) {
 			GameListener lst = as(GameListener.class, _listeners.get(i));
@@ -157,8 +172,8 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * 
-	 */
+	 * Invoked when a player in a jotto match has yielded.
+	 * */
 	public void onPlayerYield() {
 		for (int i = 0; i < _listeners.size(); i++) {
 			GameListener lst = as(GameListener.class, _listeners.get(i));
@@ -168,8 +183,8 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * 
-	 */
+	 * Invoked when the player in a jotto match wins.
+	 * */
 	public void onPlayerWin() {
 		for (int i = 0; i < _listeners.size(); i++) {
 			GameListener lst = as(GameListener.class, _listeners.get(i));
@@ -179,8 +194,8 @@ public class JottoEventMap {
 	}
 
 	/**
-	 * 
-	 */
+	 * Invoked when the player in a jotto match loses.
+	 * */
 	public void onPlayerLoss() {
 		for (int i = 0; i < _listeners.size(); i++) {
 			GameListener lst = as(GameListener.class, _listeners.get(i));
@@ -188,4 +203,20 @@ public class JottoEventMap {
 				lst.onPlayerLoss(_game);
 		}
 	}
+
+	/**
+	 * A function to perform certain types of conversions between compatible
+	 * reference types or nullable types.
+	 * 
+	 * @param type
+	 *            The class to convert to.
+	 * @param obj
+	 *            The object to convert.
+	 * @return Returns the converted object if the type matches; false
+	 *         otherwise.
+	 */
+	private <T> T as(Class<T> type, Object obj) {
+		return type.isInstance(obj) ? type.cast(obj) : null;
+	}
+
 }
