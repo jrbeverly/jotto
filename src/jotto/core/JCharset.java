@@ -50,7 +50,7 @@ public class JCharset {
 	 * @return True if within the set; false otherwise.
 	 * */
 	public Boolean isValid(char character) {
-		return !(character < _start || character > _end);
+		return character >= _start && character <= _end;
 	}
 
 	/**
@@ -59,7 +59,8 @@ public class JCharset {
 	 * @return True if within the set; false otherwise.
 	 * */
 	public Boolean isValid(String word) {
-		for (char wch : word.toCharArray()) {
+		String lcase = word.toLowerCase();
+		for (char wch : lcase.toCharArray()) {
 			if (!isValid(wch)) {
 				return false;
 			}

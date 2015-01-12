@@ -41,7 +41,7 @@ import jotto.core.listeners.GameListener;
 public class Application extends JFrame implements GameListener {
 
 	private static final int JOTTO_DEFAULT_SIZE = 5;
-	private static final String JOTTO_WORD_FILE = "words.txt";
+	private static final String JOTTO_WORD_FILE = "resources/words.txt";
 
 	private Jotto jotto;
 	private JDictionary dictionary;
@@ -166,8 +166,8 @@ public class Application extends JFrame implements GameListener {
 		contentPane.add(lboard, BorderLayout.SOUTH);
 
 		txtGuess.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JValidation test = jotto.validate(txtGuess.getText());
+			public void actionPerformed(ActionEvent arg0) {						
+				JValidation test = jotto.validate(txtGuess.getText());	
 				if (test == JValidation.VALID) {
 					String txt = txtGuess.getText();
 
