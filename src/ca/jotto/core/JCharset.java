@@ -1,9 +1,14 @@
-package jotto.core;
+package ca.jotto.core;
 
 /**
  * A set of characters that can be used within the jotto game.
  * */
 public class JCharset {
+	
+	public static final JCharset DEFAULT = new JCharset('A', 'Z');
+	public static final JCharset UPPERCASE = new JCharset('A', 'Z');
+	public static final JCharset LOWERCASE = new JCharset('a', 'z');
+	
 	private final int _alphabet;
 	private final char _start;
 	private final char _end;
@@ -58,7 +63,7 @@ public class JCharset {
 	 * 
 	 * @return True if within the set; false otherwise.
 	 * */
-	public Boolean isValid(String word) {
+	public Boolean isValid(String word) {		
 		String lcase = word.toLowerCase();
 		for (char wch : lcase.toCharArray()) {
 			if (!isValid(wch)) {
