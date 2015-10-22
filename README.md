@@ -1,4 +1,4 @@
-# Jotto Game #
+# Jotto Game 
 ##### Language: *Java* 
 ***
 #### Abstract

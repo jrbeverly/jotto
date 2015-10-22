@@ -19,12 +19,12 @@ import java.util.regex.Pattern;
  */
 public final class JDictionary {
 
-	private JCharset _charset;
 	private final Map<Integer, ArrayList<JWord>> _difficultyMap;
 	private final ArrayList<JWord> _words;
 	private final HashMap<String, JWord> _wordMap;
 	private final int _wordsize;
-
+	private final JCharset _charset;
+	
 	private int _minDifficulty;
 	private int _maxDifficulty;
 
