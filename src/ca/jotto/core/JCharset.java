@@ -22,6 +22,8 @@ public class JCharset {
 	 *            The end character of the set range.
 	 * */
 	public JCharset(char start, char end) {
+		assert start >= end : "The starting character must be numerically greater than the end character";
+		
 		_start = start;
 		_end = end;
 		_alphabet = end - start;
@@ -42,13 +44,23 @@ public class JCharset {
 	 * @return Returns the index of the character.
 	 * */
 	public int getIndex(char character) {
-		if (character < _start || character > _end) {
+		if (isInvalid(character)) {
 			return -1;
 		}
 
 		return character - _start;
 	}
 
+		
+	/**
+	 * Returns true if the character is not within the set.
+	 * 
+	 * @return True if not within the set; false otherwise.
+	 * */
+	public Boolean isInvalid(char character) {
+		return !isValid(character);
+	}
+	
 	/**
 	 * Returns true if the character is within the set.
 	 * 
@@ -63,7 +75,10 @@ public class JCharset {
 	 * 
 	 * @return True if within the set; false otherwise.
 	 * */
-	public Boolean isValid(String word) {		
+	public Boolean isValid(String word) {
+		assert word != null : "The provided String cannot be null";
+		assert word.isEmpty() : "The provided String does not contain characters";
+				
 		String lcase = word.toLowerCase();
 		for (char wch : lcase.toCharArray()) {
 			if (!isValid(wch)) {
