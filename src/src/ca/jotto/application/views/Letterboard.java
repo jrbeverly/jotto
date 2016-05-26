@@ -1,111 +1,92 @@
 package ca.jotto.application.views;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
+import ca.jotto.JCharset;
+import ca.jotto.JGameState;
+import ca.jotto.Jotto;
+import ca.jotto.listeners.StateListener;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
-
-import jotto.core.JGameState;
-import jotto.core.Jotto;
-import jotto.core.listeners.StateListener;
+import java.awt.*;
 
 /**
  * Acts as a visual board displaying which letters have been verified (or partially verified)
- * */
+ */
 public class Letterboard extends JPanel implements StateListener {
 
-	private static final long serialVersionUID = 1L;
-	private static final int ALPHABET = 26;
-	private static final char START = 'A';
-	private static final char END = 'Z';
+    private static final long serialVersionUID = 1L;
 
-	private int rowCount = 2;
-	private int columnCount = 26 / 2;
+    private final Color clrEliminated = new Color(232, 10, 28);
+    private final Color clrPartial = Color.ORANGE;
+    private final Color clrExact = new Color(42, 185, 7);
+    private Color clrDefault = Color.BLACK;
+    private final JLabel[] lblCharacters;
 
-	private Color _isEliminated = new Color(232, 10, 28); // red
-	private Color _isPartial = Color.ORANGE;
-	private Color _isExact = new Color(42, 185, 7); // green
-	private Color _default = Color.BLACK;
+    private JCharset _charset;
+    private int _rows;
+    private int _columns;
 
-	private JLabel[] _labels;
+    public Letterboard(JCharset charset) {
+        _charset = charset;
 
-	public Letterboard() {
-		setLayout(new GridLayout(rowCount, columnCount, 2, 2));
+        _rows = 2;
+        _columns = charset.length() / _rows;
 
-		_labels = new JLabel[ALPHABET];
-		char ch = START;
-		for (int i = 0; i < ALPHABET; i++) {
-			_labels[i] = new JLabel(ch + "");
+        setLayout(new GridLayout(_rows, _columns, 2, 2));
+        Font defaultFont = new Font("Aharoni", Font.BOLD, 20);
 
-			_labels[i].setFont(new Font("Aharoni", Font.BOLD, 20));
-			_labels[i].setOpaque(true);
-			_labels[i].setHorizontalAlignment(SwingConstants.CENTER);
-			_labels[i].setVerticalAlignment(SwingConstants.CENTER);
-			_labels[i].setBorder(new LineBorder(new Color(152, 152, 152)));
+        lblCharacters = new JLabel[charset.length()];
+        for (int i = 0; i < lblCharacters.length; i++) {
+            String label = String.valueOf(charset.at(i));
+            lblCharacters[i] = new JLabel(label);
 
-			add(_labels[i]);
-			ch++;
-		}
+            lblCharacters[i].setFont(defaultFont);
+            lblCharacters[i].setOpaque(true);
+            lblCharacters[i].setHorizontalAlignment(SwingConstants.CENTER);
+            lblCharacters[i].setVerticalAlignment(SwingConstants.CENTER);
+            lblCharacters[i].setBorder(new LineBorder(new Color(152, 152, 152)));
 
-		_default = _labels[0].getBackground();
-	}
+            add(lblCharacters[i]);
+        }
+    }
 
-	public void reset() {
-		for (int i = 0; i < ALPHABET; i++) {
-			_labels[i].setBackground(_default);
-		}
-	}
+    public void reset() {
+        for (int i = 0; i < lblCharacters.length; i++) {
+            lblCharacters[i].setBackground(clrDefault);
+        }
+    }
 
-	public void setRows(int rows) {
-		rowCount = rows;
-		columnCount = 26 / rows;
-		setLayout(new GridLayout(rowCount, columnCount));
-	}
+    public void setEliminated(char ch) {
+        int index = _charset.get(ch);
+        lblCharacters[index].setBackground(clrEliminated);
+    }
 
-	public void setEliminated(char ch) {
-		int index = ch - START;
-		if (index < 0 && index >= ALPHABET) {
-			return;
-		}
+    public void setExact(char ch) {
+        int index = _charset.get(ch);
+        lblCharacters[index].setBackground(clrExact);
+    }
 
-		_labels[index].setBackground(_isEliminated);
-	}
+    public void setRows(int rows) {
+        _rows = rows;
+        _columns = lblCharacters.length / _rows;
+        setLayout(new GridLayout(_rows, _columns));
+    }
 
-	public void setExact(char ch) {
-		int index = ch - START;
-		if (index < 0 && index >= ALPHABET) {
-			return;
-		}
+    public void setPotential(char ch) {
+        int index = _charset.get(ch);
+        lblCharacters[index].setBackground(clrPartial);
+    }
 
-		_labels[index].setBackground(_isExact);
-	}
+    public void onCharacterEliminated(Jotto jotto, char character) {
+        setEliminated(character);
+    }
 
-	public void setPotential(char ch) {
-		int index = ch - START;
-		if (index < 0 && index >= ALPHABET) {
-			return;
-		}
+    public void onCharacterExact(Jotto jotto, char character) {
+        setExact(character);
+    }
 
-		_labels[index].setBackground(_isPartial);
-	}
-
-	public void onCharacterEliminated(Jotto jotto, char character) {
-		setEliminated(character);
-	}
-
-	public void onCharacterExact(Jotto jotto, char character) {
-		setExact(character);
-
-	}
-
-	@Override
-	public void onGameStateChanged(Jotto jotto, JGameState oldState,
-			JGameState newState) {
-		// TODO Auto-generated method stub
-
-	}
+    @Override
+    public void onGameStateChanged(Jotto jotto, JGameState oldState, JGameState newState) {
+        // TODO Auto-generated method stub
+    }
 }

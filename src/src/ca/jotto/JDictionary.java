@@ -1,15 +1,10 @@
 package ca.jotto;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 /**
@@ -87,6 +82,27 @@ public final class JDictionary {
         assert word != null : "The provided String 'word' cannot be null";
 
         return _wordMap.containsKey(word.getWord());
+    }
+
+    /**
+     * Gets a random word from the dictionary with a specified difficulty.
+     *
+     * @param difficulty The difficulty of the words to query against.
+     * @return The word within the dictionary.
+     */
+    public JWord getRandomWord(int difficulty) {
+        if (difficulty < _minDifficulty) {
+            return null;
+        } else if (difficulty > _maxDifficulty) {
+            return null;
+        }
+
+        Random ran = new Random();
+        ArrayList<JWord> list = _difficultyMap.get(difficulty);
+        int index = ran.nextInt(list.size() - 1);
+        JWord result = list.get(index);
+
+        return result;
     }
 
     /**
@@ -250,7 +266,7 @@ public final class JDictionary {
                 throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
             }
 
-            if (charset.valid(word)) {
+            if (charset.invalid(word)) {
                 throw new IllegalArgumentException("The argument 'word' does not match the character set of the dictionary.");
             }
 

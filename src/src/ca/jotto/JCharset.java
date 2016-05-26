@@ -45,6 +45,15 @@ public class JCharset {
         return -1;
     }
 
+    /**
+     * Returns the normalized index of the specified character.
+     *
+     * @return Returns the index of the character.
+     */
+    public char at(int index) {
+        return _charset[index];
+    }
+
 
     /**
      * Returns true if the character is not within the set.
@@ -53,6 +62,16 @@ public class JCharset {
      */
     public Boolean invalid(char character) {
         return get(character) == -1;
+    }
+
+    /**
+     * Returns true if the character is within the set.
+     *
+     * @param word The word to check.
+     * @return True if within the set; false otherwise.
+     */
+    public Boolean invalid(String word) {
+        return !valid(word);
     }
 
     /**
@@ -67,6 +86,7 @@ public class JCharset {
     /**
      * Returns true if the string is within the set.
      *
+     * @param word The word to check.
      * @return True if within the set; false otherwise.
      */
     public Boolean valid(String word) {

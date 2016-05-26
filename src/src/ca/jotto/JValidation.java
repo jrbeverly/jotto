@@ -4,7 +4,6 @@ package ca.jotto;
  * Enumeration for determining whether a jotto guess is valid.
  */
 public enum JValidation {
-
     /**
      * The jotto guess is valid.
      */
