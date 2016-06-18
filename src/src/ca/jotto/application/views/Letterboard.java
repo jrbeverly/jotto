@@ -52,7 +52,7 @@ public class Letterboard extends JPanel implements StateListener {
 
     public void reset() {
         for (int i = 0; i < lblCharacters.length; i++) {
-            lblCharacters[i].setBackground(clrDefault);
+            lblCharacters[i].setBackground(null);
         }
     }
 

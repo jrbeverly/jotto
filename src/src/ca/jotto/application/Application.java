@@ -51,7 +51,7 @@ public class Application extends JFrame implements GameListener {
     private void reset() {
         gboard.reset();
         lboard.reset();
-        //jotto.reset();
+        match = null;
     }
 
     public Application() throws IOException {
@@ -148,7 +148,7 @@ public class Application extends JFrame implements GameListener {
 
         txtGuess.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                JValidation test = JValidation.VALID; //jotto.validate(txtGuess.getText());
+                JValidation test = match.validate(txtGuess.getText());
                 if (test == JValidation.VALID) {
                     String txt = txtGuess.getText();
 
@@ -246,6 +246,8 @@ public class Application extends JFrame implements GameListener {
 
                 JWord word = dictionary.getRandomWord(difficulty.getLevel());
                 match = jotto.start(word);
+                match.start();
+                System.out.println(word.getWord());
             }
         });
 

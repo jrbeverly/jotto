@@ -13,7 +13,6 @@ public class JHistory {
     private final ArrayList<JGuess> _guesses;
     private final JCharset _charset;
     private final int _wordsize;
-    private final JAnalytics _analytics;
 
     /**
      * Initializes the history of a jotto game.
@@ -28,7 +27,6 @@ public class JHistory {
         _wordsize = size;
         _charset = charset;
         _guesses = new ArrayList<JGuess>();
-        _analytics = new JAnalytics(charset, size);
     }
 
     /**
@@ -40,6 +38,13 @@ public class JHistory {
         return _guesses.size();
     }
 
+    /***
+     * Returns the list of guesses recorded in the history.
+     *
+     * @return The guess array.
+     */
+    public ArrayList<JGuess> guesses() { return (ArrayList<JGuess>)_guesses.clone();}
+
     /**
      * Adds a guess to the history of the jotto game.
      *
@@ -50,9 +55,6 @@ public class JHistory {
 
         // add guess to history
         _guesses.add(guess);
-
-        // compute analytics with new guess added
-        _analytics.compute(_guesses);
     }
 
     /**

@@ -1,5 +1,7 @@
 package ca.jotto;
 
+import ca.jotto.listeners.JottoEventMap;
+
 import java.util.ArrayList;
 
 /**
@@ -54,12 +56,15 @@ public class JAnalytics {
         return _exactMatches.toArray(new JCharIndex[_exactMatches.size()]);
     }
 
-    public void compute(ArrayList<JGuess> guesses) {
-        for (JGuess ges : guesses) {
+    public void compute(Jotto jotto, JottoEventMap eventMap, JHistory history) {
+        for (JGuess ges : history.guesses()) {
             if (ges.getPartial() == 0 && ges.getExact() == 0) {
                 for (int l = 0; l < _wordsize; l++) {
-                    int index = _charset.get(ges.getChar(l));
+                    Character ch = ges.getChar(l);
+                    int index = _charset.get(ch);
                     _letters[index] = JWordMatch.ELIMINATED;
+
+                    eventMap.onCharacterEliminated(jotto, ch);
                 }
             } else {
                 for (int l = 0; l < _wordsize; l++) {
@@ -69,6 +74,8 @@ public class JAnalytics {
 
                         _letters[index] = JWordMatch.EXACT;
                         _known[l] = exactChar;
+
+                        eventMap.onCharacterExact(jotto, exactChar);
                     }
                 }
             }
