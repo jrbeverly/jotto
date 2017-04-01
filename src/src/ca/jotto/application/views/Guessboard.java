@@ -1,18 +1,13 @@
 package ca.jotto.application.views;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-
 import ca.jotto.JGuess;
 import ca.jotto.Jotto;
 import ca.jotto.listeners.TurnListener;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 /**
  * Acts as a visual board for displaying the history of guesses in the jotto

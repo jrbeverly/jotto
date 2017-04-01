@@ -4,7 +4,6 @@ package ca.jotto;
  * Defines a general exception by Jotto.
  */
 public class JottoException extends Exception {
-
     /**
      * Initializes a new instance of the JottoException class with its message string set to message.
      *

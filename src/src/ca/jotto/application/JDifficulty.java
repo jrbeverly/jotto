@@ -18,7 +18,6 @@ public enum JDifficulty {
      */
     Hard(2);
 
-
     private final int _level;
 
     /**

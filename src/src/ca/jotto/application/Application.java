@@ -21,39 +21,21 @@ public class Application extends JFrame implements GameListener {
 
     private static final int JOTTO_DEFAULT_SIZE = 5;
     private static final String JOTTO_WORD_FILE = "resources/words.txt";
-
+    private final ButtonGroup btgDifficulty = new ButtonGroup();
     private Jotto jotto;
     private JMatch match;
     private JDictionary dictionary;
     private JDifficulty difficulty;
-
     private JPanel contentPane;
     private JPanel pnlMain;
     private JFormattedTextField txtGuess;
     private JLabel lblMessage;
-    private final ButtonGroup btgDifficulty = new ButtonGroup();
     private Guessboard gboard;
     private Letterboard lboard;
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Application frame = new Application();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    private void reset() {
-        gboard.reset();
-        lboard.reset();
-        match = null;
-    }
-
+    private JMenuItem btnStart;
+    private JMenuItem btnReset;
+    private JMenuItem btnYield;
+    private JMenu mnuDifficulty;
     public Application() throws IOException {
         try {
             dictionary = JDictionary.fromFile(JCharset.DEFAULT, JOTTO_WORD_FILE);
@@ -194,10 +176,24 @@ public class Application extends JFrame implements GameListener {
         setComponents(pnlMain, false);
     }
 
-    private JMenuItem btnStart;
-    private JMenuItem btnReset;
-    private JMenuItem btnYield;
-    private JMenu mnuDifficulty;
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Application frame = new Application();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void reset() {
+        gboard.reset();
+        lboard.reset();
+        match = null;
+    }
 
     private JMenuBar setupMenu() {
         JMenuBar mnbItems = new JMenuBar();

@@ -9,8 +9,8 @@ public final class Jotto {
 
     private final static int MAXIMUM_GUESS = 10;
     private final JDictionary _dictionary;
-    private JottoEventMap _eventMap;
-    private JCharset _charset;
+    private final JottoEventMap _eventMap;
+    private final JCharset _charset;
 
     /**
      * Initializes the jotto game based on a dictionary.

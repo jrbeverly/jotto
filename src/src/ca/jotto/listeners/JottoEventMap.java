@@ -1,11 +1,11 @@
 package ca.jotto.listeners;
 
-import java.util.ArrayList;
-
 import ca.jotto.JGameState;
 import ca.jotto.JGuess;
-import ca.jotto.Jotto;
 import ca.jotto.JMatch;
+import ca.jotto.Jotto;
+
+import java.util.ArrayList;
 
 /**
  * An event map designed to handle game events for the jotto game.

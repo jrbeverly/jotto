@@ -1,9 +1,6 @@
 package ca.jotto;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import ca.jotto.listeners.JottoEventMap;
 
 /**
  * Represents the history of user guesses in the jotto game.
@@ -43,7 +40,9 @@ public class JHistory {
      *
      * @return The guess array.
      */
-    public ArrayList<JGuess> guesses() { return (ArrayList<JGuess>)_guesses.clone();}
+    public ArrayList<JGuess> guesses() {
+        return (ArrayList<JGuess>) _guesses.clone();
+    }
 
     /**
      * Adds a guess to the history of the jotto game.
@@ -53,7 +52,6 @@ public class JHistory {
     public void add(JGuess guess) {
         assert guess != null : "The provided JGuess 'guess' cannot be null";
 
-        // add guess to history
         _guesses.add(guess);
     }
 
@@ -75,10 +73,9 @@ public class JHistory {
      *
      * @return True if word has been guessed; false otherwise.
      */
-    public boolean hasGuessed(String word) {
+    public boolean contains(String word) {
         assert word != null : "The provided String 'word' cannot be null";
 
-        // check if guessed
         for (JGuess guess : _guesses) {
             if (guess.getGuess().equals(word)) {
                 return true;

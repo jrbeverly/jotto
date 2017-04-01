@@ -61,6 +61,89 @@ public final class JDictionary {
     }
 
     /**
+     * Exports the a series of words from the jotto dictionary into a file. If
+     * the file exists it is overwritten.
+     *
+     * @param filepath The file to export the dictionary to.
+     * @return True if dictionary exporting successful; false otherwise.
+     * @throws IOException IO exception related to the reading of a file.
+     */
+    static public void exportTo(JDictionary dictionary, String filepath) throws IOException {
+        assert filepath != null;
+
+        File dFile = new File(filepath);
+        if (!dFile.exists()) {
+            dFile.delete();
+        }
+
+        FileWriter fWriter = new FileWriter(dFile);
+        BufferedWriter bWriter = new BufferedWriter(fWriter);
+
+        try {
+            JWord[] words = dictionary.getWords();
+            for (int i = 0; i < words.length; i++) {
+                JWord word = words[i];
+
+                bWriter.write(word.getWord());
+                bWriter.write(" ");
+                bWriter.write(word.getDifficulty());
+                bWriter.newLine();
+            }
+        } catch (IOException io_read) {
+            io_read.printStackTrace();
+        }
+
+        bWriter.close();
+        fWriter.close();
+    }
+
+    /**
+     * Creates a JDictionary resource from a file.
+     *
+     * @param filepath The name of the file containing the jotto dictionary.
+     * @return The JDictionary resource that has been created from the specified file.
+     * @throws IOException IO exception related to the reading of a file.
+     */
+    static public JDictionary fromFile(JCharset charset, String filepath) throws IOException {
+        assert filepath != null;
+
+        File dFile = new File(filepath);
+        if (!dFile.exists()) {
+            throw new FileNotFoundException("The specified file could not be found: " + dFile.getAbsolutePath());
+        }
+
+        FileReader fReader = new FileReader(dFile);
+        BufferedReader bReader = new BufferedReader(fReader);
+
+        ArrayList<JWord> words = new ArrayList<JWord>();
+        int size = 0;
+        while (bReader.ready()) {
+            String txt = bReader.readLine();
+            String[] data = txt.split(" ");
+
+            String word = data[0];
+            int difficulty = Integer.parseInt(data[1]);
+            size = word.length();
+
+            if (word.isEmpty()) {
+                throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
+            }
+
+            if (charset.invalid(word)) {
+                throw new IllegalArgumentException("The argument 'word' does not match the character set of the dictionary.");
+            }
+
+            JWord jword = new JWord(word, difficulty);
+            words.add(jword);
+        }
+
+        bReader.close();
+        fReader.close();
+
+        return new JDictionary(charset, size, words);
+    }
+
+    /**
      * Determines if the specified word is present in the dictionary.
      *
      * @param word The word to detect if present within the dictionary.
@@ -195,88 +278,5 @@ public final class JDictionary {
      */
     public int size() {
         return _size;
-    }
-
-    /**
-     * Exports the a series of words from the jotto dictionary into a file. If
-     * the file exists it is overwritten.
-     *
-     * @param filepath The file to export the dictionary to.
-     * @return True if dictionary exporting successful; false otherwise.
-     * @throws IOException IO exception related to the reading of a file.
-     */
-    static public void exportTo(JDictionary dictionary, String filepath) throws IOException {
-        assert filepath != null;
-
-        File dFile = new File(filepath);
-        if (!dFile.exists()) {
-            dFile.delete();
-        }
-
-        FileWriter fWriter = new FileWriter(dFile);
-        BufferedWriter bWriter = new BufferedWriter(fWriter);
-
-        try {
-            JWord[] words = dictionary.getWords();
-            for (int i = 0; i < words.length; i++) {
-                JWord word = words[i];
-
-                bWriter.write(word.getWord());
-                bWriter.write(" ");
-                bWriter.write(word.getDifficulty());
-                bWriter.newLine();
-            }
-        } catch (IOException io_read) {
-            io_read.printStackTrace();
-        }
-
-        bWriter.close();
-        fWriter.close();
-    }
-
-    /**
-     * Creates a JDictionary resource from a file.
-     *
-     * @param filepath The name of the file containing the jotto dictionary.
-     * @return The JDictionary resource that has been created from the specified file.
-     * @throws IOException IO exception related to the reading of a file.
-     */
-    static public JDictionary fromFile(JCharset charset, String filepath) throws IOException {
-        assert filepath != null;
-
-        File dFile = new File(filepath);
-        if (!dFile.exists()) {
-            throw new FileNotFoundException("The specified file could not be found: " + dFile.getAbsolutePath());
-        }
-
-        FileReader fReader = new FileReader(dFile);
-        BufferedReader bReader = new BufferedReader(fReader);
-
-        ArrayList<JWord> words = new ArrayList<JWord>();
-        int size = 0;
-        while (bReader.ready()) {
-            String txt = bReader.readLine();
-            String[] data = txt.split(" ");
-
-            String word = data[0];
-            int difficulty = Integer.parseInt(data[1]);
-            size = word.length();
-
-            if (word.isEmpty()) {
-                throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
-            }
-
-            if (charset.invalid(word)) {
-                throw new IllegalArgumentException("The argument 'word' does not match the character set of the dictionary.");
-            }
-
-            JWord jword = new JWord(word, difficulty);
-            words.add(jword);
-        }
-
-        bReader.close();
-        fReader.close();
-
-        return new JDictionary(charset, size, words);
     }
 }

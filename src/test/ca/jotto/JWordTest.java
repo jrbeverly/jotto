@@ -1,10 +1,9 @@
-package test.ca.jotto;
+package ca.jotto;
 
-import ca.jotto.JWord;
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class JWordTest {
+public class JWordTest  {
 
     @Test
     public void get() throws Exception {
@@ -13,8 +12,8 @@ public class JWordTest {
 
         JWord word = new JWord(name, difficult);
 
-        Assert.assertEquals(name, word.getWord());
-        Assert.assertEquals(difficult, word.getDifficulty());
+        assertEquals(name, word.getWord());
+        assertEquals(difficult, word.getDifficulty());
     }
 
     @Test
@@ -30,7 +29,8 @@ public class JWordTest {
             String name = names[i];
             JWord word = new JWord(name, difficult);
 
-            Assert.assertEquals(name, word.getWord());
+            assertEquals(name, word.getWord());
+            assertEquals(difficult, word.getDifficulty());
         }
     }
 
@@ -40,7 +40,9 @@ public class JWordTest {
 
         for (int difficult = 0; difficult < 10; difficult++) {
             JWord word = new JWord(name, difficult);
-            Assert.assertEquals(difficult, word.getDifficulty());
+
+            assertEquals(name, word.getWord());
+            assertEquals(difficult, word.getDifficulty());
         }
     }
 }

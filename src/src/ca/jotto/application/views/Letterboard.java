@@ -19,9 +19,8 @@ public class Letterboard extends JPanel implements StateListener {
     private final Color clrEliminated = new Color(232, 10, 28);
     private final Color clrPartial = Color.ORANGE;
     private final Color clrExact = new Color(42, 185, 7);
-    private Color clrDefault = Color.BLACK;
     private final JLabel[] lblCharacters;
-
+    private Color clrDefault = Color.BLACK;
     private JCharset _charset;
     private int _rows;
     private int _columns;
@@ -85,7 +84,6 @@ public class Letterboard extends JPanel implements StateListener {
         setExact(character);
     }
 
-    @Override
     public void onGameStateChanged(Jotto jotto, JGameState oldState, JGameState newState) {
         // TODO Auto-generated method stub
     }

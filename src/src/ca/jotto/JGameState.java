@@ -4,7 +4,6 @@ package ca.jotto;
  * An enumeration that reflects the current state of the jotto game.
  */
 public enum JGameState {
-
     /**
      * The game is idle, no match is in progress.
      */

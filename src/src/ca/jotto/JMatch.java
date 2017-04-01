@@ -1,6 +1,7 @@
 package ca.jotto;
 
-import ca.jotto.exception.*;
+import ca.jotto.exception.JottoStateException;
+import ca.jotto.exception.JottoValidationException;
 
 /**
  * Defines a jotto match.
@@ -85,6 +86,44 @@ public final class JMatch {
     }
 
     /**
+     * Sets the state of the jotto game.
+     *
+     * @param state The state to assign to the jotto game.
+     */
+    private void setState(JGameState state) {
+        assert state != null : "The provided JGameState 'state' cannot be null";
+
+        if (state == _state) {
+            return;
+        }
+
+        _game.getEventMap().onGameStateChanged(_game, _state, state);
+        _state = state;
+
+        switch (state) {
+            case IDLE:
+                break;
+            case PLAYING:
+                _game.getEventMap().onMatchStart(_game, this);
+                break;
+            case LOST:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerLoss(_game, this);
+                break;
+            case YIELDED:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerYield(_game, this);
+                break;
+            case WON:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerWin(_game, this);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
      * Gets the current number of attempts.
      *
      * @return The current number of attempts.
@@ -116,7 +155,7 @@ public final class JMatch {
      *
      * @return An analytics instance.
      */
-    public JAnalytics getAnalytics(){
+    public JAnalytics getAnalytics() {
         return _analytics;
     }
 
@@ -193,7 +232,7 @@ public final class JMatch {
             return JValidation.NOT_IN_DICTIONARY;
         } else if (_game.getCharset().invalid(word)) {
             return JValidation.INVALID_CHARACTER;
-        } else if (_history.hasGuessed(word)) {
+        } else if (_history.contains(word)) {
             return JValidation.PREVIOUSLY_GUESSED;
         }
 
@@ -209,43 +248,5 @@ public final class JMatch {
         }
 
         setState(JGameState.YIELDED);
-    }
-
-    /**
-     * Sets the state of the jotto game.
-     *
-     * @param state The state to assign to the jotto game.
-     */
-    private void setState(JGameState state) {
-        assert state != null : "The provided JGameState 'state' cannot be null";
-
-        if (state == _state) {
-            return;
-        }
-
-        _game.getEventMap().onGameStateChanged(_game, _state, state);
-        _state = state;
-
-        switch (state) {
-            case IDLE:
-                break;
-            case PLAYING:
-                _game.getEventMap().onMatchStart(_game, this);
-                break;
-            case LOST:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerLoss(_game, this);
-                break;
-            case YIELDED:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerYield(_game, this);
-                break;
-            case WON:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerWin(_game, this);
-                break;
-            default:
-                break;
-        }
     }
 }
