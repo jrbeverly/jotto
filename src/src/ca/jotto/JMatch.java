@@ -12,7 +12,6 @@ public final class JMatch {
     private final JHistory _history;
     private final JSecret _secret;
     private final int _maximumAttempts;
-    private final JAnalytics _analytics;
 
     private JGameState _state;
     private int _attempts = 0;
@@ -28,7 +27,6 @@ public final class JMatch {
         _state = JGameState.IDLE;
         _maximumAttempts = maximumAttempt;
         _history = new JHistory(game.getCharset(), game.getWordSize());
-        _analytics = new JAnalytics(game.getCharset(), game.getWordSize());
     }
 
     /**
@@ -148,15 +146,6 @@ public final class JMatch {
         return _history;
     }
 
-    /***
-     * Returns an analytics instance responsible for the current jotto match.
-     *
-     * @return An analytics instance.
-     */
-    public JAnalytics getAnalytics() {
-        return _analytics;
-    }
-
     /**
      * Gets the secret word in the jotto game.
      *
@@ -195,8 +184,6 @@ public final class JMatch {
         JGuess guess = _secret.guess(word);
         _history.add(guess);
         _attempts++;
-
-        _analytics.compute(_game, _game.getEventMap(), _history);
 
         _game.getEventMap().onTurnGuess(_game, guess);
 

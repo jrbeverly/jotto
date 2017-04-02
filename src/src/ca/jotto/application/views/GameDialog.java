@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
  * Acts as the visual dialog box fort the message commands (specifically end
  * game)
  */
-public class EndDialog extends JDialog implements ActionListener {
+public class GameDialog extends JDialog implements ActionListener {
 
     private final JPanel pnlInfo = new JPanel();
 
-    public EndDialog() {
+    public GameDialog() {
         setBounds(100, 100, 450, 233);
         getContentPane().setLayout(new BorderLayout());
         pnlInfo.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -117,14 +117,6 @@ public class JMatchTest  {
     }
 
     @Test
-    public void getAnalytics() throws Exception {
-        Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
-
-        assertNotNull(match.getAnalytics());
-    }
-
-    @Test
     public void getSecret() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
         JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));

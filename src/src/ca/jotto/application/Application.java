@@ -1,7 +1,8 @@
 package ca.jotto.application;
 
 import ca.jotto.*;
-import ca.jotto.application.views.EndDialog;
+import ca.jotto.application.model.Letters;
+import ca.jotto.application.views.GameDialog;
 import ca.jotto.application.views.Guessboard;
 import ca.jotto.application.views.Letterboard;
 import ca.jotto.listeners.GameListener;
@@ -129,7 +130,8 @@ public class Application extends JFrame implements GameListener {
         gboard = new Guessboard();
         pnlHistory.add(gboard, BorderLayout.CENTER);
 
-        lboard = new Letterboard(JCharset.DEFAULT);
+        Letters letters = new Letters(JCharset.DEFAULT);
+        lboard = new Letterboard(letters);
         contentPane.add(lboard, BorderLayout.SOUTH);
 
         txtGuess.addActionListener(new ActionListener() {
@@ -173,6 +175,7 @@ public class Application extends JFrame implements GameListener {
             }
         });
 
+        jotto.getEventMap().addListener(letters);
         jotto.getEventMap().addListener(lboard);
         jotto.getEventMap().addListener(gboard);
         jotto.getEventMap().addListener(this);
@@ -270,8 +273,9 @@ public class Application extends JFrame implements GameListener {
                 match = jotto.start(word);
                 try {
                     match.start();
-                } catch (Exception exc) { exc.printStackTrace(); }
-                System.out.println(word.word());
+                } catch (Exception exc) {
+                    exc.printStackTrace();
+                }
             }
         });
 
@@ -344,7 +348,7 @@ public class Application extends JFrame implements GameListener {
     }
 
     private void showDialog() {
-        EndDialog dialog = new EndDialog();
+        GameDialog dialog = new GameDialog();
         switch (match.getState()) {
             case LOST:
                 dialog.setTitle("You have lost!");

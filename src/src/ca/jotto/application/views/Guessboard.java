@@ -61,13 +61,9 @@ public class Guessboard extends JPanel implements TurnListener {
 
     @Override
     public void onTurnIncorrect(Jotto jotto, JGuess guess) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
     public void onTurnCorrect(Jotto jotto, JGuess guess) {
-        // TODO Auto-generated method stub
-
     }
 }
