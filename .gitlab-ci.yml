@@ -8,19 +8,19 @@ stages:
 build:
   stage: build
   script:
-    - cd src/
+    - cd jotto/
     - mvn compile
 
 test:
   stage: test
   script:
-    - cd src/
+    - cd jotto/
     - mvn test
 
 deploy:
   stage: deploy
   script:
-    - cd src/
+    - cd jotto/
     - mvn package
     - mv target/*.jar ../jotto.jar
   only: 
