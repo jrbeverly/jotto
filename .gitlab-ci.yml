@@ -1,0 +1,31 @@
+image: maven:3-jdk-8
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - cd src/
+    - mvn compile
+
+test:
+  stage: test
+  script:
+    - cd src/
+    - mvn test
+
+deploy:
+  stage: deploy
+  script:
+    - cd src/
+    - mvn package
+    - mv target/*.jar ../jotto.jar
+  only: 
+    - master
+  artifacts:
+    paths:
+      - jotto.jar
+      - resources/*
