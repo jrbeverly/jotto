@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -36,11 +38,13 @@ public class Application extends JFrame implements GameListener {
     private JMenuItem btnReset;
     private JMenuItem btnYield;
     private JMenu mnuDifficulty;
+
+
     public Application() throws IOException {
-        try {
-            dictionary = JDictionary.fromFile(JCharset.DEFAULT, JOTTO_WORD_FILE);
-        } catch (IOException ioexc) {
-            System.err.println("");
+        dictionary = readDictionary(JOTTO_WORD_FILE);
+        if (dictionary == null) {
+            System.err.println("Could not read the file " + JOTTO_WORD_FILE);
+            System.exit(1);
         }
 
         jotto = new Jotto(dictionary);
@@ -176,6 +180,28 @@ public class Application extends JFrame implements GameListener {
         setComponents(pnlMain, false);
     }
 
+    public JDictionary readDictionary(String filepath) {
+        File file = new File(filepath);
+        FileInputStream fis = null;
+        JDictionary dictionary = null;
+
+        try {
+            fis = new FileInputStream(file);
+            dictionary = JDictionary.fromStream(JCharset.DEFAULT, fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fis != null)
+                    fis.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        return dictionary;
+    }
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -242,8 +268,10 @@ public class Application extends JFrame implements GameListener {
 
                 JWord word = dictionary.getRandomWord(difficulty.getLevel());
                 match = jotto.start(word);
-                match.start();
-                System.out.println(word.getWord());
+                try {
+                    match.start();
+                } catch (Exception exc) { exc.printStackTrace(); }
+                System.out.println(word.word());
             }
         });
 

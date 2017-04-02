@@ -51,9 +51,11 @@ public class JCharset {
      * @return Returns the index of the character.
      */
     public char at(int index) {
+        assert index >= 0 : "The provided Integer 'index' cannot be less than zero";
+        assert index < _charset.length : "The provided Integer 'index' exceeds the charset size";
+
         return _charset[index];
     }
-
 
     /**
      * Returns true if the character is not within the set.
@@ -91,7 +93,7 @@ public class JCharset {
      */
     public Boolean valid(String word) {
         assert word != null : "The provided String 'word' cannot be null";
-        assert word.isEmpty() : "The provided String 'word' does not contain characters";
+        assert !word.isEmpty() : "The provided String 'word' does not contain characters";
 
         for (char wch : word.toCharArray()) {
             if (!valid(wch)) {

@@ -1,11 +1,10 @@
 package ca.jotto;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Pattern;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * A dictionary containing a collection of words available for use in a jotto
@@ -44,14 +43,14 @@ public final class JDictionary {
         int maxDifficulty = Integer.MIN_VALUE;
         for (int i = 0; i < words.size(); i++) {
             JWord word = words.get(i);
-            minDifficulty = Math.min(minDifficulty, word.getDifficulty());
-            maxDifficulty = Math.max(maxDifficulty, word.getDifficulty());
+            minDifficulty = Math.min(minDifficulty, word.difficulty());
+            maxDifficulty = Math.max(maxDifficulty, word.difficulty());
 
-            _wordMap.put(word.getWord(), word);
-            ArrayList<JWord> lists = _difficultyMap.getOrDefault(word.getDifficulty(), null);
+            _wordMap.put(word.word(), word);
+            ArrayList<JWord> lists = _difficultyMap.getOrDefault(word.difficulty(), null);
             if (lists == null) {
                 lists = new ArrayList<JWord>();
-                _difficultyMap.put(word.getDifficulty(), lists);
+                _difficultyMap.put(word.difficulty(), lists);
             }
             lists.add(word);
         }
@@ -61,68 +60,31 @@ public final class JDictionary {
     }
 
     /**
-     * Exports the a series of words from the jotto dictionary into a file. If
-     * the file exists it is overwritten.
+     * Creates a JDictionary resource from an InputStream.
      *
-     * @param filepath The file to export the dictionary to.
-     * @return True if dictionary exporting successful; false otherwise.
-     * @throws IOException IO exception related to the reading of a file.
+     * @param charset The character set for the words.
+     * @param inputStream The input stream containing the jotto dictionary.
+     * @return The JDictionary resource that has been created from the stream.
+     * @throws IOException IO exception related to the reading of the stream.
      */
-    static public void exportTo(JDictionary dictionary, String filepath) throws IOException {
-        assert filepath != null;
+    static public JDictionary fromStream(JCharset charset, InputStream inputStream) throws IOException {
+        assert charset != null : "The provided JCharset 'charset' cannot be null";
+        assert inputStream != null : "The provided InputStream 'inputStream' cannot be null";
 
-        File dFile = new File(filepath);
-        if (!dFile.exists()) {
-            dFile.delete();
-        }
-
-        FileWriter fWriter = new FileWriter(dFile);
-        BufferedWriter bWriter = new BufferedWriter(fWriter);
-
-        try {
-            JWord[] words = dictionary.getWords();
-            for (int i = 0; i < words.length; i++) {
-                JWord word = words[i];
-
-                bWriter.write(word.getWord());
-                bWriter.write(" ");
-                bWriter.write(word.getDifficulty());
-                bWriter.newLine();
-            }
-        } catch (IOException io_read) {
-            io_read.printStackTrace();
-        }
-
-        bWriter.close();
-        fWriter.close();
-    }
-
-    /**
-     * Creates a JDictionary resource from a file.
-     *
-     * @param filepath The name of the file containing the jotto dictionary.
-     * @return The JDictionary resource that has been created from the specified file.
-     * @throws IOException IO exception related to the reading of a file.
-     */
-    static public JDictionary fromFile(JCharset charset, String filepath) throws IOException {
-        assert filepath != null;
-
-        File dFile = new File(filepath);
-        if (!dFile.exists()) {
-            throw new FileNotFoundException("The specified file could not be found: " + dFile.getAbsolutePath());
-        }
-
-        FileReader fReader = new FileReader(dFile);
-        BufferedReader bReader = new BufferedReader(fReader);
+        Scanner reader = new Scanner(inputStream);
 
         ArrayList<JWord> words = new ArrayList<JWord>();
         int size = 0;
-        while (bReader.ready()) {
-            String txt = bReader.readLine();
+        while (reader.hasNextLine()) {
+            String txt = reader.nextLine();
             String[] data = txt.split(" ");
 
+            if (data.length != 2) {
+                throw new IllegalArgumentException("The input format is not of the form [WORD DIFFICULTY].");
+            }
+
             String word = data[0];
-            int difficulty = Integer.parseInt(data[1]);
+            int difficulty = parseInt(data[1]);
             size = word.length();
 
             if (word.isEmpty()) {
@@ -137,8 +99,7 @@ public final class JDictionary {
             words.add(jword);
         }
 
-        bReader.close();
-        fReader.close();
+        reader.close();
 
         return new JDictionary(charset, size, words);
     }
@@ -156,24 +117,14 @@ public final class JDictionary {
     }
 
     /**
-     * Determines if the specified word is present in the dictionary.
-     *
-     * @param word The word to detect if present within the dictionary.
-     * @return True if the word exists in the dictionary; false otherwise.
-     */
-    public Boolean contains(JWord word) {
-        assert word != null : "The provided String 'word' cannot be null";
-
-        return _wordMap.containsKey(word.getWord());
-    }
-
-    /**
      * Gets a random word from the dictionary with a specified difficulty.
      *
      * @param difficulty The difficulty of the words to query against.
      * @return The word within the dictionary.
      */
     public JWord getRandomWord(int difficulty) {
+        assert difficulty >= 0 : "The provided Integer 'difficulty' cannot less than zero";
+
         if (difficulty < _minDifficulty) {
             return null;
         } else if (difficulty > _maxDifficulty) {
@@ -182,32 +133,13 @@ public final class JDictionary {
 
         Random ran = new Random();
         ArrayList<JWord> list = _difficultyMap.get(difficulty);
-        int index = ran.nextInt(list.size() - 1);
-        JWord result = list.get(index);
-
-        return result;
-    }
-
-    /**
-     * Gets a list of words that match the specified regular expression.
-     *
-     * @param format The regular expression to which strings are to be matched.
-     * @return This method returns an array of words if, and only if, this
-     * string matches the given regular expression.
-     */
-    public JWord[] getMatchingWords(String format) {
-        assert format != null : "The provided String 'format' cannot be null";
-
-        Pattern pattern = Pattern.compile(format);
-
-        ArrayList<JWord> words = new ArrayList<JWord>();
-        for (JWord wrd : _words) {
-            if (pattern.matcher(wrd.getWord()).matches()) {
-                words.add(wrd);
-            }
+        if (list == null || list.isEmpty()) {
+            return null;
         }
 
-        return words.toArray(new JWord[words.size()]);
+        int index = ran.nextInt(list.size());
+        JWord result = list.get(index);
+        return result;
     }
 
     /**
@@ -218,30 +150,13 @@ public final class JDictionary {
      */
     public JWord getWord(String word) {
         assert word != null : "The provided String 'word' cannot be null";
-
-        if (word.isEmpty()) {
-            throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
-        }
+        assert !word.isEmpty() : "The argument 'word' cannot be the empty string";
 
         if (!contains(word)) {
             throw new IllegalArgumentException("The argument 'word' is not present in the dictionary.");
         }
 
         return _wordMap.get(word);
-    }
-
-    /**
-     * Returns the element at the specified position in this list.
-     *
-     * @param index The index of the element to return.
-     * @return This method returns the element at the specified position in this
-     * list.
-     */
-    public JWord getWord(int index) {
-        assert index >= 0 : "The provided Integer 'index' cannot be less than zero";
-        assert index < _words.size() : "The provided Integer 'index' exceed the word count";
-
-        return _words.get(index);
     }
 
     /**

@@ -15,6 +15,16 @@ public class JHistoryTest  {
         };
     }
 
+    @Test(expected = AssertionError.class)
+    public void constructor_zero() throws Exception {
+        JHistory history = new JHistory(JCharset.DEFAULT, 0);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void constructor_null() throws Exception {
+        JHistory history = new JHistory(null, 5);
+    }
+
     @Test
     public void empty() throws Exception {
         JCharset charset = JCharset.DEFAULT;

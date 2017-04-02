@@ -41,7 +41,6 @@ public class JAnalytics {
         return _letters.clone();
     }
 
-
     public JCharIndex[] getSuggested(int index) {
         assert index > 0;
         return null;

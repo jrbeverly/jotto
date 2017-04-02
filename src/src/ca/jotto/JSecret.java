@@ -1,7 +1,5 @@
 package ca.jotto;
 
-import java.util.*;
-
 /**
  * Represents the secret word from the jotto dictionary.
  */
@@ -30,7 +28,7 @@ public final class JSecret {
         assert word != null : "The provided String 'word' cannot be null";
         assert word.length() == _secret.length() : "The provided String 'word' must equal the dictionary word length";
 
-        String secret = _secret.getWord();
+        String secret = _secret.word();
 
         JWordMatch[] matches = new JWordMatch[secret.length()];
         for (int i = 0; i < secret.length(); i++) {

@@ -103,15 +103,6 @@ public final class JGuess {
     }
 
     /**
-     * Gets the guess as a character array.
-     *
-     * @return The guess string as a character array.
-     */
-    public char[] toCharArray() {
-        return _guess.toCharArray();
-    }
-
-    /**
      * Gets the matches specified for each character.
      *
      * @return The matches of each character within the guess.

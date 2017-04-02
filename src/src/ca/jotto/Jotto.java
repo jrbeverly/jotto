@@ -7,7 +7,8 @@ import ca.jotto.listeners.JottoEventMap;
  */
 public final class Jotto {
 
-    private final static int MAXIMUM_GUESS = 10;
+    public static final int MAXIMUM_GUESS = 10;
+
     private final JDictionary _dictionary;
     private final JottoEventMap _eventMap;
     private final JCharset _charset;
@@ -68,14 +69,10 @@ public final class Jotto {
      */
     public JMatch start(JWord word) {
         assert word != null : "The provided JWord 'word' cannot be null";
-        assert _dictionary.contains(word) : "The provided JWord 'word' is not present in the dictionary";
+        assert _dictionary.contains(word.word()) : "The provided JWord 'word' is not present in the dictionary";
 
-        // create the new match
         JSecret secret = new JSecret(word);
         JMatch match = new JMatch(this, secret, MAXIMUM_GUESS);
-
-        // notify event map that the match has started
-        _eventMap.onMatchStart(this, match);
 
         return match;
     }

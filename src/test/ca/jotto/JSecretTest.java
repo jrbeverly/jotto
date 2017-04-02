@@ -7,6 +7,11 @@ import org.junit.Test;
 
 public class JSecretTest {
 
+    @Test(expected = AssertionError.class)
+    public void constructor_null() throws Exception {
+        JSecret jsecret = new JSecret(null);
+    }
+
     @Test
     public void match() throws Exception {
         JWord secret = new JWord("AAAAA", 0);

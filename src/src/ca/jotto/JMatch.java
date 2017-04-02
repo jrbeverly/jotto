@@ -90,19 +90,17 @@ public final class JMatch {
      *
      * @param state The state to assign to the jotto game.
      */
-    private void setState(JGameState state) {
+    private void setState(JGameState state) throws JottoStateException {
         assert state != null : "The provided JGameState 'state' cannot be null";
 
         if (state == _state) {
-            return;
+            throw new JottoStateException("The JGameState cannot be set to the current state");
         }
 
         _game.getEventMap().onGameStateChanged(_game, _state, state);
         _state = state;
 
         switch (state) {
-            case IDLE:
-                break;
             case PLAYING:
                 _game.getEventMap().onMatchStart(_game, this);
                 break;
@@ -171,8 +169,8 @@ public final class JMatch {
     /**
      * Starts the jotto match.
      */
-    public void start() {
-        _state = JGameState.PLAYING;
+    public void start() throws JottoStateException {
+        setState(JGameState.PLAYING);
     }
 
     /**
@@ -194,19 +192,14 @@ public final class JMatch {
             throw new JottoValidationException("Guess phrase is not valid");
         }
 
-        // compare the guess to the secret
         JGuess guess = _secret.guess(word);
         _history.add(guess);
         _attempts++;
 
-        // compute analytics
         _analytics.compute(_game, _game.getEventMap(), _history);
 
-        // notify eventmap of a turn guess
         _game.getEventMap().onTurnGuess(_game, guess);
 
-        // if we are right, then win
-        // if we reach maximum guesses then lost
         boolean correct = guess.isCorrect();
         if (correct) {
             setState(JGameState.WON);
@@ -228,10 +221,10 @@ public final class JMatch {
 
         if (word.length() != _game.getWordSize()) {
             return JValidation.INVALID_SIZE;
-        } else if (!_game.getDictionary().contains(word)) {
-            return JValidation.NOT_IN_DICTIONARY;
         } else if (_game.getCharset().invalid(word)) {
             return JValidation.INVALID_CHARACTER;
+        } else if (!_game.getDictionary().contains(word)) {
+            return JValidation.NOT_IN_DICTIONARY;
         } else if (_history.contains(word)) {
             return JValidation.PREVIOUSLY_GUESSED;
         }

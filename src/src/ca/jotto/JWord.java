@@ -16,6 +16,7 @@ public final class JWord {
      */
     public JWord(String word, int difficulty) {
         assert word != null : "The provided String 'word' cannot be null";
+        assert !word.isEmpty() : "The provided String 'word' cannot be empty";
         assert difficulty >= 0 : "The provided Integer 'difficulty' cannot less than zero";
 
         _word = word;
@@ -27,7 +28,7 @@ public final class JWord {
      *
      * @return The string representation of the word.
      */
-    public String getWord() {
+    public String word() {
         return _word;
     }
 
@@ -36,7 +37,7 @@ public final class JWord {
      *
      * @return The difficulty of the word.
      */
-    public int getDifficulty() {
+    public int difficulty() {
         return _difficulty;
     }
 
