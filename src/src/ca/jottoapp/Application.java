@@ -1,10 +1,10 @@
-package ca.jotto.application;
+package ca.jottoapp;
 
 import ca.jotto.*;
-import ca.jotto.application.model.Letters;
-import ca.jotto.application.views.GameDialog;
-import ca.jotto.application.views.Guessboard;
-import ca.jotto.application.views.Letterboard;
+import ca.jottoapp.model.Letters;
+import ca.jottoapp.views.GameDialog;
+import ca.jottoapp.views.Guessboard;
+import ca.jottoapp.views.Letterboard;
 import ca.jotto.listeners.GameListener;
 
 import javax.swing.*;
@@ -12,6 +12,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -100,11 +102,9 @@ public class Application extends JFrame implements GameListener {
         lblMessage.setForeground(UIManager.getColor("ToolBar.dockingForeground"));
         pnlInput.add(lblMessage);
 
-        // /ADD MENU BAR
         JMenuBar mnbItems = setupMenu();
         pnlTitle.add(mnbItems, BorderLayout.WEST);
 
-        // //ADD HISTORY PANEL
         JPanel pnlHistory = new JPanel();
         JPanel pnlLabels = new JPanel();
         JLabel lblWords = new JLabel("WORDS");
@@ -126,7 +126,6 @@ public class Application extends JFrame implements GameListener {
         pnlLabels.add(lblWords);
         pnlLabels.add(lblVars);
 
-        // //
         gboard = new Guessboard();
         pnlHistory.add(gboard, BorderLayout.CENTER);
 
@@ -159,8 +158,7 @@ public class Application extends JFrame implements GameListener {
                             lblMessage.setText("Guess is not a valid size.");
                             break;
                         case INVALID_CHARACTER:
-                            lblMessage
-                                    .setText("Guess does not contain valid characters.");
+                            lblMessage.setText("Guess does not contain valid characters.");
                             break;
                         case PREVIOUSLY_GUESSED:
                             lblMessage.setText("You have already guessed ["
@@ -270,7 +268,7 @@ public class Application extends JFrame implements GameListener {
                 mnuDifficulty.setEnabled(false);
 
                 JWord word = dictionary.getRandomWord(difficulty.getLevel());
-                match = jotto.start(word);
+                match = jotto.construct(word);
                 try {
                     match.start();
                 } catch (Exception exc) {

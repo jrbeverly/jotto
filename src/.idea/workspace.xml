@@ -2,16 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4d36b33-15a9-407a-a5f9-d8433384ac3b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ca/jotto/application/model/Letters.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ca/jotto/JAnalytics.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ca/jotto/application/views/EndDialog.java" afterPath="$PROJECT_DIR$/src/ca/jotto/application/views/GameDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ca/jotto/JAnalytics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ca/jotto/TestListeners.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/ca/jotto/listeners/JottoEventMapTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JCharIndex.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JCharIndex.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JDictionary.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JDictionary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JHistory.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JHistory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JMatch.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JMatch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JSecret.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JSecret.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JValidation.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JValidation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/Jotto.java" afterPath="$PROJECT_DIR$/src/ca/jotto/Jotto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/JottoException.java" afterPath="$PROJECT_DIR$/src/ca/jotto/JottoException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/application/Application.java" afterPath="$PROJECT_DIR$/src/ca/jotto/application/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/application/views/Guessboard.java" afterPath="$PROJECT_DIR$/src/ca/jotto/application/views/Guessboard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/application/JDifficulty.java" afterPath="$PROJECT_DIR$/src/ca/jotto/application/JDifficulty.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/application/views/Letterboard.java" afterPath="$PROJECT_DIR$/src/ca/jotto/application/views/Letterboard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ca/jotto/listeners/JottoEventMap.java" afterPath="$PROJECT_DIR$/src/ca/jotto/listeners/JottoEventMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/JAnalyticsTest.java" afterPath="$PROJECT_DIR$/test/ca/jotto/JAnalyticsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/JCharIndexTest.java" afterPath="$PROJECT_DIR$/test/ca/jotto/JCharIndexTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/JDictionaryTest.java" afterPath="$PROJECT_DIR$/test/ca/jotto/JDictionaryTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/JMatchEventTest.java" afterPath="$PROJECT_DIR$/test/ca/jotto/JMatchEventTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/JMatchTest.java" afterPath="$PROJECT_DIR$/test/ca/jotto/JMatchTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/JottoTest.java" afterPath="$PROJECT_DIR$/test/ca/jotto/JottoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ca/jotto/TestHelper.java" afterPath="$PROJECT_DIR$/test/ca/jotto/TestHelper.java" />
     </list>
     <ignored path="Jotto.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +49,11 @@
     <SUITE FILE_PATH="coverage/src$EnumTest_gamestate.coverage" NAME="EnumTest.gamestate Coverage Results" MODIFIED="1491086908518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ca.jotto.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/src$All_in_Jotto.coverage" NAME="All in Jotto Coverage Results" MODIFIED="1491102150138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/src$All_in_Jotto.coverage" NAME="All in Jotto Coverage Results" MODIFIED="1491155884444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/src$EnumTest_validation.coverage" NAME="EnumTest.validation Coverage Results" MODIFIED="1491086839797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ca.jotto.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/src$ca_jotto_in_Jotto.coverage" NAME="ca.jotto in Jotto Coverage Results" MODIFIED="1491155892174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ca.jotto.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/src$JHistoryTest.coverage" NAME="JHistoryTest Coverage Results" MODIFIED="1491076258907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -65,21 +81,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JMatch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ca/jotto/JMatch.java">
+      <file leaf-file-name="JAnalytics.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ca/jotto/JAnalytics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="186" column="0" lean-forward="true" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JMatchTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/ca/jotto/JMatchTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+            <state relative-caret-position="115">
+              <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -105,6 +111,14 @@
       <find>System.out.</find>
       <find>DRO</find>
       <find>ROD</find>
+      <find>ECT</find>
+      <find>avy</find>
+      <find>reset</find>
+      <find>oomy</find>
+      <find>omy</find>
+      <find>udio</find>
+      <find>dio</find>
+      <find>io</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,12 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/ca/jotto/JCharsetTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/application/JDifficultyTest.java" />
-        <option value="$PROJECT_DIR$/src/test/ca/jotto/application/views/JDifficultyTest.java" />
-        <option value="$PROJECT_DIR$/src/test/ca/jotto/JDifficultyTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/listeners/JottoEventMapTest.java" />
-        <option value="$PROJECT_DIR$/src/test/ca/jotto/application/JottoEventMapTest.java" />
         <option value="$PROJECT_DIR$/src/test/ca/jotto/listeners/JottoEventMapTest.java" />
         <option value="$PROJECT_DIR$/src/test/ca/jotto/README" />
         <option value="$PROJECT_DIR$/src/test/ca/jotto/JSecretTest.java" />
@@ -131,44 +139,50 @@
         <option value="$PROJECT_DIR$/src/test/ca/jotto/JDictionaryTest.java" />
         <option value="$PROJECT_DIR$/src/test/ca/jotto/JMatchTest.java" />
         <option value="$PROJECT_DIR$/src/test/ca/jotto/application/JDifficultyTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JWordMatch.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/JGameState.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/application/JDifficultyTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/application/JDifficulty.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JSecret.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JHistory.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JWordTest.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/JWord.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JSecretTest.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/JGuess.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JGuessTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JDictionary.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/JCharset.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JCharIndex.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JValidationTest.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JHistoryTest.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JCharsetTest.java" />
-        <option value="$PROJECT_DIR$/test/ca/jotto/JCharIndexTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JValidation.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/EnumTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JottoException.java" />
-        <option value="$PROJECT_DIR$/test/ca/jotto/JDictionaryTest.java" />
-        <option value="$PROJECT_DIR$/test/ca/jotto/JottoTest.java" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/Jotto.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/MatchEventTest.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/listeners/JottoEventMapTest.java" />
-        <option value="$PROJECT_DIR$/test/ca/jotto/TestHelper.java" />
-        <option value="$PROJECT_DIR$/test/ca/jotto/JMatchEventTest.java" />
-        <option value="$PROJECT_DIR$/test/ca/jotto/JAnalyticsTest.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/application/views/Simple.form" />
-        <option value="$PROJECT_DIR$/src/ca/jotto/JAnalytics.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/application/views/Guessboard.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/application/views/GameDialog.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/application/model/Letters.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JWordMatch.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JValidation.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JSecret.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JottoException.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/Jotto.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JHistory.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JDictionary.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/application/JDifficulty.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/application/Application.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/application/views/Letterboard.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/listeners/JottoEventMap.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JCharIndex.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/JCharIndexTest.java" />
         <option value="$PROJECT_DIR$/src/ca/jotto/JMatch.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/JMatchEventTest.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/TestListeners.java" />
         <option value="$PROJECT_DIR$/test/ca/jotto/JMatchTest.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/JAnalyticsTest.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/JAnalytics.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/TestHelper.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/JDictionaryTest.java" />
+        <option value="$PROJECT_DIR$/test/ca/jotto/JottoTest.java" />
+        <option value="$PROJECT_DIR$/src/ca/jottoapp/JDifficulty.java" />
+        <option value="$PROJECT_DIR$/src/ca/jotto/exception/JottoException.java" />
+        <option value="$PROJECT_DIR$/src/ca/jottoapp/views/GameDialog.java" />
+        <option value="$PROJECT_DIR$/src/ca/jottoapp/Application.java" />
       </list>
     </option>
   </component>
@@ -196,8 +210,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,37 +261,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jotto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="listeners" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="ca" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jotto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
+              <option name="myItemId" value="jottoapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,51 +287,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jotto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="ca" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jotto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jotto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
+              <option name="myItemId" value="jottoapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -362,15 +313,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ca" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="jotto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -390,7 +337,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -406,6 +354,9 @@
       <recent name="ca.jotto" />
       <recent name="ca.jotto.listeners" />
       <recent name="ca.jotto.application" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ca.jotto" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -426,59 +377,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Application">
-    <configuration default="false" name="JMatchEventTest.onPlayerLoss_multi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ca.jotto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Jotto" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="ca.jotto" />
-      <option name="MAIN_CLASS_NAME" value="ca.jotto.JMatchEventTest" />
-      <option name="METHOD_NAME" value="onPlayerLoss_multi" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="JMatchEventTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ca.jotto.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Jotto" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="ca.jotto" />
-      <option name="MAIN_CLASS_NAME" value="ca.jotto.JMatchEventTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.ca.jotto in Jotto">
     <configuration default="false" name="All in Jotto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="Jotto" />
@@ -500,10 +399,30 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="JMatchTest.start_state" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="ca.jotto.*" />
+          <option name="PATTERN" value="ca.jotto.exception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="ca.jottoapp.Application" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Jotto" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="JAnalyticsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ca.jotto.exception.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -511,8 +430,34 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="ca.jotto" />
-      <option name="MAIN_CLASS_NAME" value="ca.jotto.JMatchTest" />
-      <option name="METHOD_NAME" value="start_state" />
+      <option name="MAIN_CLASS_NAME" value="ca.jotto.JAnalyticsTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="JAnalyticsTest.compute_eliminated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ca.jotto.exception.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Jotto" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="ca.jotto" />
+      <option name="MAIN_CLASS_NAME" value="ca.jotto.JAnalyticsTest" />
+      <option name="METHOD_NAME" value="compute_eliminated" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -526,24 +471,30 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ca.jotto in Jotto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="ca.jotto.application.*" />
+          <option name="PATTERN" value="ca.jotto.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="ca.jotto.application.Application" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="Jotto" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="ca.jotto" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Jotto" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -751,19 +702,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.JMatchEventTest.onPlayerLoss_multi" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.JMatchEventTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.All in Jotto" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.JMatchTest.start_state" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Application" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All in Jotto" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Application" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.JAnalyticsTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.JAnalyticsTest.compute_eliminated" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ca.jotto in Jotto" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Application" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ca.jotto in Jotto" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.All in Jotto" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.JMatchTest.start_state" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.JMatchEventTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.JMatchEventTest.onPlayerLoss_multi" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Application" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.JAnalyticsTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.JAnalyticsTest.compute_eliminated" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -808,35 +759,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Jotto - 2017.04.01 at 22h 47m 02s.xml">
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 37m 35s.xml">
       <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Jotto - 2017.04.01 at 22h 53m 12s.xml">
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 38m 03s.xml">
       <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Jotto - 2017.04.01 at 22h 54m 45s.xml">
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 39m 40s.xml">
       <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Jotto - 2017.04.01 at 22h 57m 04s.xml">
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 40m 05s.xml">
       <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Jotto - 2017.04.01 at 23h 01m 55s.xml">
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 55m 22s.xml">
       <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_Jotto - 2017.04.01 at 23h 02m 31s.xml">
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 56m 58s.xml">
       <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="JMatchEventTest_onPlayerLoss_multi - 2017.04.01 at 21h 46m 06s.xml">
-      <configuration name="JMatchEventTest.onPlayerLoss_multi" configurationId="JUnit" />
+    <history-entry file="All_in_Jotto - 2017.04.02 at 13h 58m 05s.xml">
+      <configuration name="All in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="JMatchEventTest_onPlayerYield_multi - 2017.04.01 at 21h 45m 15s.xml">
-      <configuration name="JMatchEventTest.onPlayerYield_multi" configurationId="JUnit" />
+    <history-entry file="JAnalyticsTest - 2017.04.02 at 13h 37m 02s.xml">
+      <configuration name="JAnalyticsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="JMatchTest_start_state - 2017.04.01 at 21h 54m 26s.xml">
-      <configuration name="JMatchTest.start_state" configurationId="JUnit" />
+    <history-entry file="ca_jotto_in_Jotto - 2017.04.02 at 13h 57m 09s.xml">
+      <configuration name="ca.jotto in Jotto" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="JMatchTest_start_state - 2017.04.01 at 21h 54m 44s.xml">
-      <configuration name="JMatchTest.start_state" configurationId="JUnit" />
+    <history-entry file="ca_jotto_in_Jotto - 2017.04.02 at 13h 58m 13s.xml">
+      <configuration name="ca.jotto in Jotto" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -853,12 +804,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30338266" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19895834" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23541667" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2359375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -887,7 +838,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="28" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -896,13 +847,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/listeners/JottoListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/ca/jotto/application/JDifficultyTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -965,24 +909,8 @@
         <state relative-caret-position="153">
           <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JCharIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JCharIndexTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="23" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,37 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JValidation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="73" column="32" lean-forward="true" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JGameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JDictionary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="94" column="50" lean-forward="false" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/ca/jotto/JGuessTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1031,64 +928,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JottoException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JDictionaryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="154" column="81" lean-forward="false" selection-start-line="154" selection-start-column="81" selection-end-line="154" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/Jotto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="74" column="8" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JSecret.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ca/jotto/listeners/GameListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="26" column="9" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/listeners/JottoEventMapTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JWord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JWordTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1109,94 +952,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JGuess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/TestHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="33" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/listeners/StateListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/listeners/JottoEventMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="145" column="16" lean-forward="false" selection-start-line="145" selection-start-column="16" selection-end-line="145" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JottoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="42" column="8" lean-forward="false" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JMatchEventTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1683">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#16720#16721#0" expanded="false" />
-            <element signature="e#16756#16757#0" expanded="false" />
-            <element signature="e#17367#17368#0" expanded="false" />
-            <element signature="e#17403#17404#0" expanded="false" />
-            <element signature="e#17928#17929#0" expanded="false" />
-            <element signature="e#17964#17965#0" expanded="false" />
-            <element signature="e#18496#18497#0" expanded="false" />
-            <element signature="e#18532#18533#0" expanded="false" />
-            <element signature="e#19046#19047#0" expanded="false" />
-            <element signature="e#19082#19083#0" expanded="false" />
-            <element signature="e#19592#19593#0" expanded="false" />
-            <element signature="e#19628#19629#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JCharset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JWordMatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JAnalyticsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/Simple.java" />
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/Simple.form" />
     <entry file="file://$PROJECT_DIR$/Jotto.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1205,97 +962,289 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/JDifficulty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/Simple.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JWordMatch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/Simple.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/words.txt">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JWord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="2655" column="7" lean-forward="true" selection-start-line="2655" selection-start-column="7" selection-end-line="2655" selection-end-column="7" />
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/Letterboard.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JSecret.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="829">
-          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+        <state relative-caret-position="170">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/model/Letters.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JGuess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="-896">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JGameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JCharset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1083">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jottoapp/model/Letters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/Guessboard.java">
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/listeners/JottoEventMapTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="58" column="27" lean-forward="true" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+        <state relative-caret-position="102">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/views/GameDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JValidation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="51">
+          <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/application/Application.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/listeners/StateListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="181" column="0" lean-forward="true" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        <state relative-caret-position="56">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JAnalytics.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JHistory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
-          <caret line="53" column="36" lean-forward="false" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+          <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JMatch.java">
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JDictionary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="186" column="0" lean-forward="true" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+        <state relative-caret-position="379">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="79" />
+          <folding>
+            <element signature="e#5842#5843#0" expanded="true" />
+            <element signature="e#5873#5874#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/listeners/JottoEventMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JMatchEventTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1135">
+          <caret line="359" column="5" lean-forward="false" selection-start-line="359" selection-start-column="5" selection-end-line="359" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JWordTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-514">
+          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/ca/jotto/JMatchTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+        <state relative-caret-position="98">
+          <caret line="233" column="23" lean-forward="true" selection-start-line="233" selection-start-column="23" selection-end-line="233" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/TestListeners.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="215" column="11" lean-forward="false" selection-start-line="215" selection-start-column="11" selection-end-line="215" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#4265#4266#0" expanded="false" />
+            <element signature="e#4293#4294#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/Jotto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#915#916#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JAnalyticsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JMatch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding>
+            <element signature="e#4375#4376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/TestHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JDictionaryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="152" column="9" lean-forward="true" selection-start-line="152" selection-start-column="9" selection-end-line="152" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JottoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="31" column="37" lean-forward="false" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jottoapp/JDifficulty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/exception/JottoException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jottoapp/views/Letterboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="81" column="25" lean-forward="false" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2566#2567#0" expanded="true" />
+            <element signature="e#2588#2589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jottoapp/views/Guessboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="52" column="40" lean-forward="true" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/words.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="3661" column="5" lean-forward="false" selection-start-line="3661" selection-start-column="3" selection-end-line="3661" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jottoapp/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jottoapp/views/GameDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JAnalytics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ca/jotto/JCharIndexTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ca/jotto/JCharIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>

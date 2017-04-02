@@ -1,10 +1,11 @@
 package ca.jotto;
 
+import ca.jotto.exception.JottoException;
 import ca.jotto.exception.JottoStateException;
 import ca.jotto.exception.JottoValidationException;
 
 /**
- * Defines a jotto match.
+ * Defines a match of the jotto game.
  */
 public final class JMatch {
 
@@ -12,10 +13,18 @@ public final class JMatch {
     private final JHistory _history;
     private final JSecret _secret;
     private final int _maximumAttempts;
+    private final JAnalytics _analytics;
 
     private JGameState _state;
     private int _attempts = 0;
 
+    /**
+     *  Initializes a match from the game structure.
+     *
+     * @param game The game structure used by the match.
+     * @param secret The secret word for the match.
+     * @param maximumAttempt The maximum number of guess attempts possible.
+     * */
     public JMatch(Jotto game, JSecret secret, int maximumAttempt) {
         assert game != null : "The provided JWord 'word' cannot be null";
         assert secret != null : "The provided JWord 'word' cannot be null";
@@ -27,66 +36,67 @@ public final class JMatch {
         _state = JGameState.IDLE;
         _maximumAttempts = maximumAttempt;
         _history = new JHistory(game.getCharset(), game.getWordSize());
+        _analytics = new JAnalytics(game.getCharset(), game.getWordSize());
     }
 
     /**
-     * Determines if the game is over.
+     * Determines if the match is over.
      *
-     * @return True if game is over; false otherwise.
+     * @return True if match is over; false otherwise.
      */
     public Boolean isGameOver() {
         return hasWon() || hasLost() || hasYielded();
     }
 
     /**
-     * Determines if the game is currently in progress.
+     * Determines if the match is currently in progress.
      *
-     * @return True if game is in progress; false otherwise.
+     * @return True if match is in progress; false otherwise.
      */
     public Boolean isPlaying() {
         return _state == JGameState.PLAYING;
     }
 
     /**
-     * Determines if the game has ended by yielding.
+     * Determines if the match has ended by yielding.
      *
-     * @return True if game is over by yield; false otherwise.
+     * @return True if match is over by yield; false otherwise.
      */
     public Boolean hasYielded() {
         return _state == JGameState.YIELDED;
     }
 
     /**
-     * Determines if the user has won the game.
+     * Determines if the user has won the match.
      *
-     * @return True if game is won by user; false otherwise.
+     * @return True if match is won by user; false otherwise.
      */
     public Boolean hasWon() {
         return _state == JGameState.WON;
     }
 
     /**
-     * Determines if the user has lost the game.
+     * Determines if the user has lost the match.
      *
-     * @return True if game is lost by user; false otherwise.
+     * @return True if match is lost by user; false otherwise.
      */
     public Boolean hasLost() {
         return _state == JGameState.LOST;
     }
 
     /**
-     * Gets the state of the jotto game.
+     * Gets the state of the match.
      *
-     * @return The state of the jotto game.
+     * @return The state of the match.
      */
     public JGameState getState() {
         return _state;
     }
 
     /**
-     * Sets the state of the jotto game.
+     * Sets the state of the match.
      *
-     * @param state The state to assign to the jotto game.
+     * @param state The state to assign to the match.
      */
     private void setState(JGameState state) throws JottoStateException {
         assert state != null : "The provided JGameState 'state' cannot be null";
@@ -138,25 +148,34 @@ public final class JMatch {
     }
 
     /**
-     * Gets the history of guesses of this jotto game.
+     * Gets the history of guesses.
      *
-     * @return The history of guesses for this jotto game.
+     * @return The history of guesses.
      */
     public JHistory getHistory() {
         return _history;
     }
 
-    /**
-     * Gets the secret word in the jotto game.
+    /***
+     * Returns an analytics instance responsible for the current jotto match.
      *
-     * @return The jotto secret word.
+     * @return An analytics instance.
+     */
+    public JAnalytics getAnalytics() {
+        return _analytics;
+    }
+
+    /**
+     * Gets the secret word of the game.
+     *
+     * @return The secret word.
      */
     public JSecret getSecret() {
         return _secret;
     }
 
     /**
-     * Starts the jotto match.
+     * Starts the match.
      */
     public void start() throws JottoStateException {
         setState(JGameState.PLAYING);
@@ -184,6 +203,8 @@ public final class JMatch {
         JGuess guess = _secret.guess(word);
         _history.add(guess);
         _attempts++;
+
+        _analytics.compute(_game, _game.getEventMap(), _history);
 
         _game.getEventMap().onTurnGuess(_game, guess);
 

@@ -6,10 +6,12 @@ import java.util.Arrays;
 public class TestHelper {
 
     static final int SINGLE_DIFFICULTY = 3;
+    static final int WORDS = 4;
 
     static public ArrayList<JWord> getWordList() {
         JWord[] words = new JWord[]{
                 new JWord("OTHER", 1),
+                new JWord("EJECT", 1),
                 new JWord("HELLO", 1),
                 new JWord("WORLD", SINGLE_DIFFICULTY)
         };

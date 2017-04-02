@@ -1,5 +1,6 @@
 package ca.jotto.application;
 
+import ca.jottoapp.JDifficulty;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

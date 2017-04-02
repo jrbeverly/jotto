@@ -1,4 +1,4 @@
-package ca.jotto.application.model;
+package ca.jottoapp.model;
 
 import ca.jotto.*;
 import ca.jotto.listeners.StateListener;

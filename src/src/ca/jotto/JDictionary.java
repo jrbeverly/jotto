@@ -7,17 +7,14 @@ import java.util.regex.Pattern;
 import static java.lang.Integer.parseInt;
 
 /**
- * A dictionary containing a collection of words available for use in a jotto
- * game.
+ * A dictionary containing a collection of words available for use in a game.
  */
 public final class JDictionary {
 
     private final int _size;
     private final int _minDifficulty;
     private final int _maxDifficulty;
-
     private final JCharset _charset;
-
     private final ArrayList<JWord> _words;
     private final Map<Integer, ArrayList<JWord>> _difficultyMap;
     private final HashMap<String, JWord> _wordMap;

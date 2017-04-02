@@ -3,7 +3,6 @@ package ca.jotto;
 import ca.jotto.exception.JottoStateException;
 import ca.jotto.exception.JottoValidationException;
 import ca.jotto.listeners.GameListener;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +12,7 @@ public class JMatchTest  {
     @Test
     public void isGameOver() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         assertFalse(match.isGameOver());
@@ -26,7 +25,7 @@ public class JMatchTest  {
     @Test
     public void isPlaying() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         assertFalse(match.isPlaying());
@@ -39,7 +38,7 @@ public class JMatchTest  {
     @Test
     public void hasYielded() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         assertFalse(match.hasYielded());
@@ -53,7 +52,7 @@ public class JMatchTest  {
     public void hasWon() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
         JWord secret = jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY);
-        JMatch match = jotto.start(secret);
+        JMatch match = jotto.construct(secret);
 
         assertNotNull(match);
         match.start();
@@ -76,7 +75,7 @@ public class JMatchTest  {
     @Test
     public void getState() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         assertEquals(JGameState.IDLE, match.getState());
@@ -89,7 +88,7 @@ public class JMatchTest  {
     @Test
     public void getAttempts() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         match.start();
@@ -102,7 +101,7 @@ public class JMatchTest  {
     @Test
     public void getMaximumAttempts() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         assertEquals(Jotto.MAXIMUM_GUESS, match.getMaximumAttempts());
@@ -111,15 +110,22 @@ public class JMatchTest  {
     @Test
     public void getHistory() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match.getHistory());
     }
 
     @Test
+    public void getAnalytics() throws Exception {
+        Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        assertNotNull(match.getAnalytics());
+    }
+
+    @Test
     public void getSecret() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match.getSecret());
     }
@@ -127,7 +133,7 @@ public class JMatchTest  {
     @Test(expected = AssertionError.class)
     public void guess() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         match.start();
@@ -138,7 +144,7 @@ public class JMatchTest  {
     @Test(expected = JottoStateException.class)
     public void guess_playing() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         match.guess("WORLD");
@@ -147,7 +153,7 @@ public class JMatchTest  {
     @Test(expected = JottoValidationException.class)
     public void guess_validation() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         match.start();
@@ -158,7 +164,7 @@ public class JMatchTest  {
     @Test(expected = AssertionError.class)
     public void guess_null() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
 
         assertNotNull(match);
         match.start();
@@ -169,7 +175,7 @@ public class JMatchTest  {
     @Test
     public void validate() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
         assertNotNull(match);
 
         assertEquals(JValidation.VALID, match.validate("WORLD"));
@@ -178,7 +184,7 @@ public class JMatchTest  {
     @Test(expected = AssertionError.class)
     public void validate_null() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
         assertNotNull(match);
 
         match.validate(null);
@@ -187,7 +193,7 @@ public class JMatchTest  {
     @Test
     public void validate_size() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
         assertNotNull(match);
 
         assertEquals(JValidation.INVALID_SIZE, match.validate("CURRENTLY"));
@@ -196,7 +202,7 @@ public class JMatchTest  {
     @Test
     public void validate_contains() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
         assertNotNull(match);
 
         assertEquals(JValidation.NOT_IN_DICTIONARY, match.validate("WRONG"));
@@ -205,7 +211,7 @@ public class JMatchTest  {
     @Test
     public void validate_invalid() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
         assertNotNull(match);
 
         assertEquals(JValidation.INVALID_CHARACTER, match.validate("OPEN!"));
@@ -214,7 +220,7 @@ public class JMatchTest  {
     @Test
     public void validate_history() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(TestHelper.SINGLE_DIFFICULTY));
         assertNotNull(match);
 
         match.start();
@@ -226,12 +232,12 @@ public class JMatchTest  {
     @Test
     public void yield() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(3));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(3));
         assertNotNull(match);
         match.start();
 
         MutableBoolean flag = new MutableBoolean(false);
-        jotto.getEventMap().addListener(new OnStart(flag));
+        jotto.getEventMap().addListener(new OnYield(flag));
 
         match.yield();
         assertTrue(flag.get());
@@ -240,18 +246,18 @@ public class JMatchTest  {
     @Test(expected = JottoStateException.class)
     public void yield_state() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(3));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(3));
         assertNotNull(match);
         match.yield();
     }
 
     @Test
-    public void start() throws Exception {
+    public void construct() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
         MutableBoolean flag = new MutableBoolean(false);
         jotto.getEventMap().addListener(new OnStart(flag));
 
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(3));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(3));
         assertNotNull(match);
 
         match.start();
@@ -259,64 +265,12 @@ public class JMatchTest  {
     }
 
     @Test(expected = JottoStateException.class)
-    public void start_state() throws Exception {
+    public void construct_state() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
-        JMatch match = jotto.start(jotto.getDictionary().getRandomWord(3));
+        JMatch match = jotto.construct(jotto.getDictionary().getRandomWord(3));
         assertNotNull(match);
 
         match.start();
         match.start();
-    }
-
-    class MutableBoolean {
-        private boolean _value;
-
-        public MutableBoolean(boolean value) {
-            _value = value;
-        }
-
-        public boolean get() {
-            return _value;
-        }
-
-        public void set(boolean value) {
-            _value = value;
-        }
-    }
-
-    class OnStart implements GameListener {
-        private MutableBoolean _flag;
-
-        public OnStart(MutableBoolean flag) {
-            _flag = flag;
-        }
-
-        @Override
-        public void onMatchStart(Jotto jotto, JMatch match) {
-            assertNotNull(jotto);
-            assertNotNull(match);
-
-            _flag.set(true);
-        }
-
-        @Override
-        public void onMatchOver(Jotto jotto, JMatch match) {
-        }
-
-        @Override
-        public void onPlayerYield(Jotto jotto, JMatch match) {
-            assertNotNull(jotto);
-            assertNotNull(match);
-
-            _flag.set(true);
-        }
-
-        @Override
-        public void onPlayerWin(Jotto jotto, JMatch match) {
-        }
-
-        @Override
-        public void onPlayerLoss(Jotto jotto, JMatch match) {
-        }
     }
 }

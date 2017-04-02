@@ -1,4 +1,4 @@
-package ca.jotto.application.views;
+package ca.jottoapp.views;
 
 import ca.jotto.JGuess;
 import ca.jotto.Jotto;

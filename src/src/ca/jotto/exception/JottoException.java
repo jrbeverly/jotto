@@ -1,7 +1,7 @@
-package ca.jotto;
+package ca.jotto.exception;
 
 /**
- * Defines a general exception by Jotto.
+ * Defines a general exception.
  */
 public class JottoException extends Exception {
 

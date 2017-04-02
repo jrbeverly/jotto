@@ -217,5 +217,4 @@ public class JottoEventMap {
     private <T> T as(Class<T> type, Object obj) {
         return type.isInstance(obj) ? type.cast(obj) : null;
     }
-
 }

@@ -3,7 +3,7 @@ package ca.jotto;
 import java.util.ArrayList;
 
 /**
- * Represents the history of user guesses in the jotto game.
+ * Represents the history of user guesses in the game.
  */
 public class JHistory {
 
@@ -12,7 +12,7 @@ public class JHistory {
     private final int _wordsize;
 
     /**
-     * Initializes the history of a jotto game.
+     * Initializes the history of a game.
      *
      * @param charset The character set that the words in the dictionary are defined.
      * @param size    The length of each word in the dictionary.
@@ -45,9 +45,9 @@ public class JHistory {
     }
 
     /**
-     * Adds a guess to the history of the jotto game.
+     * Adds a guess to the history of the game.
      *
-     * @param guess Adds a jotto guess into the history.
+     * @param guess Adds a guess into the history.
      */
     public void add(JGuess guess) {
         assert guess != null : "The provided JGuess 'guess' cannot be null";

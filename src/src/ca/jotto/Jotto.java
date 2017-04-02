@@ -3,7 +3,7 @@ package ca.jotto;
 import ca.jotto.listeners.JottoEventMap;
 
 /**
- * Represents an instance of a game of jotto.
+ * Represents an instance of a jotto game.
  */
 public final class Jotto {
 
@@ -14,9 +14,9 @@ public final class Jotto {
     private final JCharset _charset;
 
     /**
-     * Initializes the jotto game based on a dictionary.
+     * Initializes the game based on a dictionary.
      *
-     * @param dictionary The dictionary of words to use for the jotto game.
+     * @param dictionary The dictionary of words to use for the game.
      */
     public Jotto(JDictionary dictionary) {
         assert dictionary != null : "The provided JDictionary 'dictionary' cannot be null";
@@ -27,7 +27,7 @@ public final class Jotto {
     }
 
     /**
-     * Returns the EventMap associated with the jotto game.
+     * Returns the EventMap associated with the game.
      *
      * @return The event map of the jotto game.
      */
@@ -36,7 +36,7 @@ public final class Jotto {
     }
 
     /**
-     * Returns the character set associated with the jotto game.
+     * Returns the character set associated with the game.
      *
      * @return The character set of the jotto game.
      */
@@ -45,7 +45,7 @@ public final class Jotto {
     }
 
     /**
-     * Gets the size of the words used in this jotto match.
+     * Gets the size of the words used in this match.
      *
      * @return The word length within the dictionary.
      */
@@ -54,20 +54,20 @@ public final class Jotto {
     }
 
     /**
-     * Gets the dictionary that the jotto game is using.
+     * Gets the dictionary of the game.
      *
-     * @return The dictionary of the jotto game.
+     * @return The word dictionary of the game.
      */
     public JDictionary getDictionary() {
         return _dictionary;
     }
 
     /**
-     * Signals that the match is started.
+     * Constructs a match from the game definition.
      *
-     * @param word The secret word to start the game with.
+     * @param word The secret word to construct the match with.
      */
-    public JMatch start(JWord word) {
+    public JMatch construct(JWord word) {
         assert word != null : "The provided JWord 'word' cannot be null";
         assert _dictionary.contains(word.word()) : "The provided JWord 'word' is not present in the dictionary";
 

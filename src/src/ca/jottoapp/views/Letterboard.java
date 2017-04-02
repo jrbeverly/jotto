@@ -1,10 +1,9 @@
-package ca.jotto.application.views;
+package ca.jottoapp.views;
 
-import ca.jotto.JCharset;
 import ca.jotto.JGameState;
 import ca.jotto.JWordMatch;
 import ca.jotto.Jotto;
-import ca.jotto.application.model.Letters;
+import ca.jottoapp.model.Letters;
 import ca.jotto.listeners.StateListener;
 
 import javax.swing.*;
@@ -84,5 +83,6 @@ public class Letterboard extends JPanel implements StateListener {
         sync();
     }
 
-    public void onGameStateChanged(Jotto jotto, JGameState oldState, JGameState newState) {  }
+    public void onGameStateChanged(Jotto jotto, JGameState oldState, JGameState newState) {
+    }
 }

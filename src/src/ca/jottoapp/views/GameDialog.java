@@ -1,4 +1,4 @@
-package ca.jotto.application.views;
+package ca.jottoapp.views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

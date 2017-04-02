@@ -1,10 +1,9 @@
-package ca.jotto.application;
+package ca.jottoapp;
 
 /**
- * The difficulty level as percieved by the application (not by the jotto core)
+ * The difficulty level as perceived by the application.
  */
 public enum JDifficulty {
-
     /**
      * The easy difficulty setting.
      */

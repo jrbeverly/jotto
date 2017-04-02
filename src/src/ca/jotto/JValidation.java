@@ -1,23 +1,23 @@
 package ca.jotto;
 
 /**
- * Enumeration for determining whether a jotto guess is valid.
+ * Enumeration for determining whether a guess is valid.
  */
 public enum JValidation {
     /**
-     * The jotto guess is valid.
+     * The guess is valid.
      */
     VALID,
     /**
-     * The jotto guess is not in the dictionary.
+     * The guess is not in the dictionary.
      */
     NOT_IN_DICTIONARY,
     /**
-     * The jotto guess is not the correct word size.
+     * The guess is not the correct word size.
      */
     INVALID_SIZE,
     /**
-     * The jotto guess contains a character that is not valid.
+     * The guess contains a character that is not valid.
      */
     INVALID_CHARACTER,
     /**

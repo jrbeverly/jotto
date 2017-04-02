@@ -1,16 +1,16 @@
 package ca.jotto;
 
 /**
- * Represents the secret word from the jotto dictionary.
+ * Represents the secret word for the game.
  */
 public final class JSecret {
 
     private final JWord _secret;
 
     /**
-     * Initializes a secret word for the jotto game.
+     * Initializes a secret word for the game.
      *
-     * @param secret The word from the jotto dictionary that will be the secret word.
+     * @param secret The word chosen to be the secret word.
      */
     public JSecret(JWord secret) {
         assert secret != null : "The provided JWord 'secret' cannot be null";

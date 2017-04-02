@@ -153,7 +153,7 @@ public class JDictionaryTest {
     @Test
     public void length() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList());
-        assertEquals(3, dictionary.length());
+        assertEquals(TestHelper.WORDS, dictionary.length());
     }
 
     @Test
