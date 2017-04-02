@@ -22,10 +22,10 @@ deploy:
   script:
     - cd jotto/
     - mvn package
-    - mv target/*.jar ../jotto.jar
+    - mv target/*.jar jotto.jar
   only: 
     - master
   artifacts:
     paths:
-      - jotto.jar
-      - resources/*
+      - jotto/jotto.jar
+      - jotto/resources/*
