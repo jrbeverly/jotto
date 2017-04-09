@@ -1,7 +1,7 @@
 package ca.jotto;
 
 /**
- * Enumeration for determining whether a guess is valid.
+ * Specifies the validation property used for guess validation.
  */
 public enum JValidation {
     /**
@@ -21,7 +21,7 @@ public enum JValidation {
      */
     INVALID_CHARACTER,
     /**
-     * The player has guessed this before.
+     * The guess has been previously guessed.
      */
     PREVIOUSLY_GUESSED
 }

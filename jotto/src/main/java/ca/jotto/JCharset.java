@@ -33,6 +33,7 @@ public class JCharset {
     /**
      * Returns the normalized index of the specified character.
      *
+     * @param character The character.
      * @return Returns the index of the character.
      */
     public int get(char character) {
@@ -48,6 +49,7 @@ public class JCharset {
     /**
      * Returns the normalized index of the specified character.
      *
+     * @param index The index.
      * @return Returns the index of the character.
      */
     public char at(int index) {
@@ -60,6 +62,7 @@ public class JCharset {
     /**
      * Returns true if the character is not within the set.
      *
+     * @param character The character to check.
      * @return True if not within the set; false otherwise.
      */
     public Boolean invalid(char character) {
@@ -79,6 +82,7 @@ public class JCharset {
     /**
      * Returns true if the character is within the set.
      *
+     * @param character The character to check.
      * @return True if within the set; false otherwise.
      */
     public Boolean valid(char character) {

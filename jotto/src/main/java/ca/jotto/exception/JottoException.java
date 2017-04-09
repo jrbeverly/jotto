@@ -1,14 +1,14 @@
 package ca.jotto.exception;
 
 /**
- * Defines a general exception.
+ * Represents errors that occur during application execution.
  */
 public class JottoException extends Exception {
 
     /**
-     * Initializes a new instance of the JottoException class with its message string set to message.
+     * Initializes a new instance of the JottoException class with a specified error message.
      *
-     * @param message A String that describes the error. The content of message is intended to be understood by humans.
+     * @param message The message that describes the error. The content of message is intended to be understood by humans.
      */
     public JottoException(String message) {
         super(message);

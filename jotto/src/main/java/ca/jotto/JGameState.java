@@ -1,27 +1,27 @@
 package ca.jotto;
 
 /**
- * An enumeration that reflects the current state of the jotto game.
+ * An enumeration that reflects the current state of the match.
  */
 public enum JGameState {
     /**
-     * The game is idle, no match is in progress.
+     * The match is idle, no match is in progress.
      */
     IDLE,
     /**
-     * A game is currently in progress.
+     * The match is currently in progress.
      */
     PLAYING,
     /**
-     * The game is over, the player has yielded.
+     * The match is over, the player has yielded.
      */
     YIELDED,
     /**
-     * The game is over, the player has lost.
+     * The match is over, the player has lost.
      */
     LOST,
     /**
-     * The game is over, the player has won.
+     * The match is over, the player has won.
      */
     WON
 }

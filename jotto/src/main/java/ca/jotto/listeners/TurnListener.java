@@ -4,11 +4,7 @@ import ca.jotto.JGuess;
 import ca.jotto.Jotto;
 
 /**
- * The listener interface for receiving turn game events. The class that is
- * interested in processing an game event implements this interface, and the
- * object created with that class is registered with a JottoEventMap, using the
- * component's addListener method. When the action event occurs, that object's
- * event method is invoked.
+ * The listener interface for receiving turn game events.
  */
 public interface TurnListener extends JottoListener {
 

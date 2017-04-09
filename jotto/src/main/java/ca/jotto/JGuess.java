@@ -1,7 +1,7 @@
 package ca.jotto;
 
 /**
- * Represents a guess in the jotto game.
+ * Represents a guess.
  */
 public final class JGuess {
 

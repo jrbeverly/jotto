@@ -1,6 +1,9 @@
 package ca.jottoapp.model;
 
-import ca.jotto.*;
+import ca.jotto.JCharset;
+import ca.jotto.JGameState;
+import ca.jotto.JWordMatch;
+import ca.jotto.Jotto;
 import ca.jotto.listeners.StateListener;
 
 /**

@@ -8,24 +8,23 @@ import ca.jotto.Jotto;
 import java.util.ArrayList;
 
 /**
- * An event map designed to handle game events for the jotto game.
+ * An event map is a notification component for synchronous event handling.
  */
 public class JottoEventMap {
 
     private final ArrayList<JottoListener> _listeners;
 
     /**
-     * Creates the event map designed to handle events for the specified jotto
-     * game.
+     * Initializes a new instance of the JottoEventMap class.
      */
     public JottoEventMap() {
         _listeners = new ArrayList<JottoListener>();
     }
 
     /**
-     * Adds a game event listeners to the jotto events map.
+     * Adds the specified listener to receive game events from this component.
      *
-     * @param listener The listener to add to the event map.
+     * @param listener the game listener.
      */
     public void addListener(JottoListener listener) {
         assert listener != null;
@@ -33,9 +32,9 @@ public class JottoEventMap {
     }
 
     /**
-     * Removes a game event listeners to the jotto events map.
+     * Removes the specified listener so that it no longer receives game events from this component.
      *
-     * @param listener The listener to remove from the event map.
+     * @param listener the game listener.
      */
     public void removeListener(JottoListener listener) {
         assert listener != null;
@@ -45,7 +44,8 @@ public class JottoEventMap {
     /**
      * Invoked when a player guess was incorrect.
      *
-     * @param guess The guess that the player submitted.
+     * @param jotto The Jotto game.
+     * @param guess The player guess.
      */
     public void onTurnIncorrect(Jotto jotto, JGuess guess) {
         assert jotto != null;
@@ -61,7 +61,8 @@ public class JottoEventMap {
     /**
      * Invoked when a player guess was correct.
      *
-     * @param guess The guess that the player submitted.
+     * @param jotto The Jotto game.
+     * @param guess The player guess.
      */
     public void onTurnCorrect(Jotto jotto, JGuess guess) {
         assert jotto != null;
@@ -77,7 +78,8 @@ public class JottoEventMap {
     /**
      * Invoked when a player guesses.
      *
-     * @param guess The guess that the player submitted.
+     * @param jotto The Jotto game.
+     * @param guess The player guess.
      */
     public void onTurnGuess(Jotto jotto, JGuess guess) {
         assert jotto != null;
@@ -91,8 +93,9 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when a jotto game state has been modified.
+     * Invoked when a game state has been modified.
      *
+     * @param jotto    the jotto game referenced.
      * @param oldState the previous game state.
      * @param newState the new game state.
      */
@@ -109,8 +112,9 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when a character has been eliminated in a jotto game.
+     * Invoked when a character has been eliminated in a game.
      *
+     * @param jotto     the jotto game referenced.
      * @param character the character eliminated.
      */
     public void onCharacterEliminated(Jotto jotto, char character) {
@@ -125,8 +129,9 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when a character has been matched in a jotto game.
+     * Invoked when a character has been matched in a game.
      *
+     * @param jotto     the jotto game referenced.
      * @param character the character determined.
      */
     public void onCharacterExact(Jotto jotto, char character) {
@@ -141,7 +146,10 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when a jotto match is started.
+     * Invoked when a match is started.
+     *
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     public void onMatchStart(Jotto jotto, JMatch match) {
         assert jotto != null;
@@ -154,7 +162,10 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when a jotto match is over.
+     * Invoked when a match is over.
+     *
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     public void onMatchOver(Jotto jotto, JMatch match) {
         assert jotto != null;
@@ -167,7 +178,10 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when a player in a jotto match has yielded.
+     * Invoked when a player has yielded.
+     *
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     public void onPlayerYield(Jotto jotto, JMatch match) {
         assert jotto != null;
@@ -180,7 +194,10 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when the player in a jotto match wins.
+     * Invoked when the player wins.
+     *
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     public void onPlayerWin(Jotto jotto, JMatch match) {
         assert jotto != null;
@@ -193,7 +210,10 @@ public class JottoEventMap {
     }
 
     /**
-     * Invoked when the player in a jotto match loses.
+     * Invoked when the player loses.
+     *
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     public void onPlayerLoss(Jotto jotto, JMatch match) {
         assert jotto != null;

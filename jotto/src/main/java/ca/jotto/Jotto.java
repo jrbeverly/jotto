@@ -3,7 +3,7 @@ package ca.jotto;
 import ca.jotto.listeners.JottoEventMap;
 
 /**
- * Represents an instance of a jotto game.
+ * Represents the rules and structure of the jotto game.
  */
 public final class Jotto {
 
@@ -27,9 +27,9 @@ public final class Jotto {
     }
 
     /**
-     * Returns the EventMap associated with the game.
+     * Returns the event map associated with the game.
      *
-     * @return The event map of the jotto game.
+     * @return The event map of the game.
      */
     public JottoEventMap getEventMap() {
         return _eventMap;
@@ -38,7 +38,7 @@ public final class Jotto {
     /**
      * Returns the character set associated with the game.
      *
-     * @return The character set of the jotto game.
+     * @return The character set of the game.
      */
     public JCharset getCharset() {
         return _charset;
@@ -65,7 +65,7 @@ public final class Jotto {
     /**
      * Constructs a match from the game definition.
      *
-     * @param word The secret word to construct the match with.
+     * @param word The secret word of the match.
      */
     public JMatch construct(JWord word) {
         assert word != null : "The provided JWord 'word' cannot be null";

@@ -1,9 +1,7 @@
 package ca.jotto.listeners;
 
 /**
- * The base listener interface for receiving game events. The class is used to
- * distinguish from other listeners, and provide type strength for the jotto
- * listeners.
+ * The base listener interface for receiving game events.
  */
 public interface JottoListener {
 

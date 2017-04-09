@@ -5,7 +5,7 @@ import ca.jotto.exception.JottoStateException;
 import ca.jotto.exception.JottoValidationException;
 
 /**
- * Defines a match of the jotto game.
+ * Defines a match of the game.
  */
 public final class JMatch {
 
@@ -157,7 +157,7 @@ public final class JMatch {
     }
 
     /***
-     * Returns an analytics instance responsible for the current jotto match.
+     * Returns an analytics instance responsible for the current match.
      *
      * @return An analytics instance.
      */
@@ -182,7 +182,7 @@ public final class JMatch {
     }
 
     /**
-     * Performs a guess of the secret word in the jotto game.
+     * Performs a guess of the secret word in the game.
      *
      * @param word The word to guess.
      * @return null if the guess is invalid, otherwise a guess object.

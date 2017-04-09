@@ -1,7 +1,7 @@
 package ca.jotto;
 
 /**
- * Represents a jotto word with associated attributes.
+ * Represents a word with associated attributes.
  */
 public final class JWord {
 
@@ -9,7 +9,7 @@ public final class JWord {
     private final int _difficulty;
 
     /**
-     * Initializes the jotto word with the text and difficulty.
+     * Initializes the word with the text and difficulty.
      *
      * @param word       A string representing the word.
      * @param difficulty The difficulty of the word.

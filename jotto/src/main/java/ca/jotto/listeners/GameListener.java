@@ -4,46 +4,47 @@ import ca.jotto.JMatch;
 import ca.jotto.Jotto;
 
 /**
- * The listener interface for receiving match and player game events. The class
- * that is interested in processing an game event implements this interface, and
- * the object created with that class is registered with a JottoEventMap, using
- * the component's addListener method. When the action event occurs, that
- * object's event method is invoked.
+ * The listener interface for receiving match and player game events.
  */
 public interface GameListener extends JottoListener {
 
     /**
-     * Invoked when a jotto match is started.
+     * Invoked when a match is started.
      *
-     * @param jotto The jotto game whose match has started.
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     void onMatchStart(Jotto jotto, JMatch match);
 
     /**
-     * Invoked when a jotto match is over.
+     * Invoked when a match is over.
      *
-     * @param jotto The jotto game whose match has ended.
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     void onMatchOver(Jotto jotto, JMatch match);
 
     /**
-     * Invoked when a player in a jotto match has yielded.
+     * Invoked when a player has yielded.
      *
-     * @param jotto The jotto game where a player has yielded.
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     void onPlayerYield(Jotto jotto, JMatch match);
 
     /**
-     * Invoked when the player in a jotto match wins.
+     * Invoked when the player wins.
      *
-     * @param jotto The jotto game in which the player has won.
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     void onPlayerWin(Jotto jotto, JMatch match);
 
     /**
-     * Invoked when the player in a jotto match loses.
+     * Invoked when the player loses.
      *
-     * @param jotto The jotto game in which the player has lost.
+     * @param jotto the jotto game referenced.
+     * @param match The current game match.
      */
     void onPlayerLoss(Jotto jotto, JMatch match);
 }

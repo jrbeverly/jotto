@@ -5,7 +5,7 @@ package ca.jotto;
  */
 public enum JWordMatch {
     /**
-     * There is no match for this letter.
+     * There is no match for the letter.
      */
     NONE,
     /**
