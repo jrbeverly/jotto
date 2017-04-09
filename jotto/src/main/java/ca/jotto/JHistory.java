@@ -71,6 +71,7 @@ public class JHistory {
     /**
      * Returns true if the word has been guessed, false otherwise.
      *
+     * @param word The word to locate in the dictionary.
      * @return True if word has been guessed; false otherwise.
      */
     public boolean contains(String word) {
