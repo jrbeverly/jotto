@@ -29,3 +29,4 @@ deploy:
     paths:
       - jotto/jotto.jar
       - jotto/resources/*
+    expire_in: 4 weeks

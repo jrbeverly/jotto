@@ -12,7 +12,7 @@ The Jotto application is built with a single player, playing against a computer.
 
 ## Development
 
-If you are developing on Windows, it is recommended to install the IDE [IntelliJ IDEA](https://www.jetbrains.com/idea/), a java editor.  This will work with the existing `jotto.iml` present in the source directory.
+If you are developing on Windows, it is recommended to install the IDE [IntelliJ IDEA](https://www.jetbrains.com/idea/), a java editor.  This will work with the existing `jotto.iml` present in the source directory. The output of the build process is available [here](/../builds/artifacts/master/download?job=deploy).  The artifacts have an expiration period to ensure that old build artifacts are properly cleaned up.
 
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000
 [license-link]: LICENSE
