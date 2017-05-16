@@ -22,9 +22,9 @@ public final class JDictionary {
     /**
      * Initializes the dictionary based on a specific word size.
      *
-     * @param charset The character set of the dictionary.
+     * @param charset  The character set of the dictionary.
      * @param wordSize The size of the dictionary words.
-     * @param words The words of the area.
+     * @param words    The words of the area.
      */
     public JDictionary(JCharset charset, int wordSize, ArrayList<JWord> words) {
         assert charset != null : "The provided JCharset 'charset' cannot be null";
