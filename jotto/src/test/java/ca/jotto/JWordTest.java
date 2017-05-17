@@ -1,11 +1,13 @@
 package ca.jotto;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.junit.Assert.assertEquals;
 
 public class JWordTest {
 
+    @Category(ValidationTests.class)
     @Test
     public void simple() throws Exception {
         String name = "OTHER";
@@ -18,8 +20,9 @@ public class JWordTest {
         assertEquals(difficult, word.difficulty());
     }
 
+    @Category(ValidationTests.class)
     @Test
-    public void sample() throws Exception {
+    public void constructor_zero() throws Exception {
         String name = "SAMPLE";
         int difficult = 0;
 
@@ -30,30 +33,34 @@ public class JWordTest {
         assertEquals(difficult, word.difficulty());
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void constructor_null() throws Exception {
         String name = null;
         int difficult = 1;
 
-        JWord word = new JWord(name, difficult);
+        new JWord(name, difficult);
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void constructor_empty() throws Exception {
         String name = "";
         int difficult = 1;
 
-        JWord word = new JWord(name, difficult);
+        new JWord(name, difficult);
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void constructor_negative() throws Exception {
         String name = "OTHER";
         int difficult = -1;
 
-        JWord word = new JWord(name, difficult);
+        new JWord(name, difficult);
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void word_iterative() throws Exception {
         int difficult = 1;
@@ -73,6 +80,7 @@ public class JWordTest {
         }
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void difficulty_iterative() throws Exception {
         String name = "WORLD";
@@ -86,6 +94,7 @@ public class JWordTest {
         }
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void length_iterative() throws Exception {
         String name = "";

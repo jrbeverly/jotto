@@ -1,16 +1,19 @@
 package ca.jotto;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.junit.Assert.*;
 
 public class JSecretTest {
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void constructor_null() throws Exception {
         JSecret jsecret = new JSecret(null);
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void match() throws Exception {
         JWord secret = new JWord("AAAAA", 0);
@@ -27,6 +30,7 @@ public class JSecretTest {
         assertEquals(word.length(), guess.getExact());
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void no_match() throws Exception {
         JWord secret = new JWord("AAAAA", 0);
@@ -43,6 +47,7 @@ public class JSecretTest {
         assertEquals(0, guess.getExact());
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void single_match() throws Exception {
         JSecret secret = new JSecret(new JWord("AAAAA", 0));
@@ -67,6 +72,7 @@ public class JSecretTest {
         }
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void exact_matches() throws Exception {
         JSecret secret = new JSecret(new JWord("AAAAA", 0));
@@ -88,6 +94,7 @@ public class JSecretTest {
         }
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void one_exact() throws Exception {
         JSecret secret = new JSecret(new JWord("AAAAA", 0));
@@ -97,6 +104,7 @@ public class JSecretTest {
         assertEquals(1, jguess.getExact());
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void one_partial() throws Exception {
         JSecret secret = new JSecret(new JWord("AAAAC", 0));
@@ -107,6 +115,7 @@ public class JSecretTest {
         assertEquals(0, jguess.getExact());
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void simple() throws Exception {
         JSecret secret = new JSecret(new JWord("OTHER", 0));
@@ -118,6 +127,7 @@ public class JSecretTest {
         assertEquals(0, jguess.getExact());
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void similar() throws Exception {
         JSecret secret = new JSecret(new JWord("MOUTH", 0));
@@ -128,6 +138,7 @@ public class JSecretTest {
         assertEquals(4, jguess.getExact());
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void matching() throws Exception {
         JSecret secret = new JSecret(new JWord("SOOTH", 0));

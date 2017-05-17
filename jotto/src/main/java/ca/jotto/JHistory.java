@@ -51,6 +51,7 @@ public class JHistory {
      */
     public void add(JGuess guess) {
         assert guess != null : "The provided JGuess 'guess' cannot be null";
+        assert _charset.contains(guess.getGuess()) : "The provided JGuess 'guess'  is not within the character set.";
 
         _guesses.add(guess);
     }
@@ -76,6 +77,7 @@ public class JHistory {
      */
     public boolean contains(String word) {
         assert word != null : "The provided String 'word' cannot be null";
+        assert _charset.contains(word) : "The provided String 'word'  is not within the character set.";
 
         for (JGuess guess : _guesses) {
             if (guess.getGuess().equals(word)) {

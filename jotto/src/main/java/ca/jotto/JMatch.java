@@ -12,8 +12,8 @@ public final class JMatch {
     private final Jotto _game;
     private final JHistory _history;
     private final JSecret _secret;
-    private final int _maximumAttempts;
     private final JAnalytics _analytics;
+    private final int _maximumAttempts;
 
     private JGameState _state;
     private int _attempts = 0;
@@ -229,7 +229,7 @@ public final class JMatch {
 
         if (word.length() != _game.getWordSize()) {
             return JValidation.INVALID_SIZE;
-        } else if (_game.getCharset().invalid(word)) {
+        } else if (!_game.getCharset().contains(word)) {
             return JValidation.INVALID_CHARACTER;
         } else if (!_game.getDictionary().contains(word)) {
             return JValidation.NOT_IN_DICTIONARY;

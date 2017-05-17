@@ -1,22 +1,41 @@
 package ca.jotto;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.junit.Assert.*;
 
 public class JCharsetTest {
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void constructor_null() throws Exception {
         new JCharset(null);
     }
 
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void constructor_empty() throws Exception {
+        new JCharset(new char[0]);
+    }
+
+    @Category(ValidationTests.class)
     @Test
     public void length() throws Exception {
         JCharset charset = new JCharset(new char[]{'a'});
         assertEquals(1, charset.length());
     }
 
+    @Category(ValidationTests.class)
+    @Test
+    public void length_iterative() throws Exception {
+        for (int length = 1; length < 10; length++) {
+            JCharset charset = new JCharset(new char[length]);
+            assertEquals(length, charset.length());
+        }
+    }
+
+    @Category(ValidationTests.class)
     @Test
     public void get() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b'});
@@ -24,12 +43,24 @@ public class JCharsetTest {
         assertEquals(1, charset.get('b'));
     }
 
+    @Category(ValidationTests.class)
+    @Test
+    public void get_iterative() throws Exception {
+        char[] chars = new char[]{'a', 'b', 'c', 'd', 'e', 'f'};
+        JCharset charset = new JCharset(chars);
+        for (int i = 0; i < chars.length; i++) {
+            assertEquals(i, charset.get(chars[i]));
+        }
+    }
+
+    @Category(ValidationTests.class)
     @Test
     public void get_bad() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b'});
         assertEquals(-1, charset.get('c'));
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void at() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b'});
@@ -37,44 +68,54 @@ public class JCharsetTest {
         assertEquals('b', charset.at(1));
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void at_bounds_lower() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b'});
-        assertEquals('a', charset.at(-1));
+        charset.at(-1);
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void at_bounds_upper() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b'});
-        assertEquals('a', charset.at(5));
+        charset.at(5);
     }
 
+    @Category(ValidationTests.class)
     @Test
-    public void invalid() throws Exception {
+    public void contains() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b'});
-        assertFalse(charset.invalid('a'));
-        assertTrue(charset.invalid('c'));
+        assertTrue(charset.contains('a'));
+        assertFalse(charset.contains('c'));
     }
 
+    @Category(ValidationTests.class)
     @Test
-    public void invalid1() throws Exception {
+    public void contains_string() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b', 'c', 'd'});
-        assertFalse(charset.invalid("abc"));
-        assertTrue(charset.invalid("abcdef"));
+        assertTrue(charset.contains("abc"));
+        assertFalse(charset.contains("abcde"));
     }
 
-    @Test
-    public void valid() throws Exception {
-        JCharset charset = new JCharset(new char[]{'a', 'b'});
-        assertTrue(charset.valid('a'));
-        assertFalse(charset.valid('c'));
-    }
-
-    @Test
-    public void valid1() throws Exception {
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void contains_empty() throws Exception {
         JCharset charset = new JCharset(new char[]{'a', 'b', 'c', 'd'});
-        assertTrue(charset.valid("abc"));
-        assertFalse(charset.valid("abcdef"));
+        charset.contains("");
     }
 
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void contains_null() throws Exception {
+        JCharset charset = new JCharset(new char[]{'a', 'b', 'c', 'd'});
+        charset.contains(null);
+    }
+
+    @Category(ValidationTests.class)
+    @Test
+    public void contains_single() throws Exception {
+        JCharset charset = new JCharset(new char[]{'a', 'b', 'c', 'd'});
+        charset.contains("a");
+    }
 }

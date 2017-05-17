@@ -265,7 +265,7 @@ public class Application extends JFrame implements GameListener {
                 btnStart.setEnabled(false);
                 mnuDifficulty.setEnabled(false);
 
-                JWord word = dictionary.getRandomWord(difficulty.getLevel());
+                JWord word = dictionary.random(difficulty.getLevel());
                 match = jotto.construct(word);
                 try {
                     match.start();

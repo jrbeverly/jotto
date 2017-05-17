@@ -1,11 +1,13 @@
 package ca.jotto;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.junit.Assert.assertEquals;
 
 public class EnumTest {
 
+    @Category(ValidationTests.class)
     @Test
     public void gamestate() throws Exception {
         assertEquals(JGameState.IDLE, JGameState.valueOf("IDLE"));
@@ -15,6 +17,7 @@ public class EnumTest {
         assertEquals(JGameState.YIELDED, JGameState.valueOf("YIELDED"));
     }
 
+    @Category(ValidationTests.class)
     @Test
     public void validation() throws Exception {
         assertEquals(JValidation.VALID, JValidation.valueOf("VALID"));
