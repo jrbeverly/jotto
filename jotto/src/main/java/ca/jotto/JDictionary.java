@@ -15,24 +15,25 @@ public final class JDictionary {
     private final int _minDifficulty;
     private final int _maxDifficulty;
     private final JCharset _charset;
-    private final ArrayList<JWord> _words;
     private final Map<Integer, ArrayList<JWord>> _difficultyMap;
     private final HashMap<String, JWord> _wordMap;
 
     /**
      * Initializes the dictionary based on a specific word size.
      *
-     * @param charset The character set of the dictionary.
+     * @param charset  The character set of the dictionary.
      * @param wordSize The size of the dictionary words.
-     * @param words The words of the area.
+     * @param words    The words of the area.
      */
     public JDictionary(JCharset charset, int wordSize, ArrayList<JWord> words) {
         assert charset != null : "The provided JCharset 'charset' cannot be null";
         assert words != null : "The provided ArrayList<JWord> 'words' cannot be null";
-        assert wordSize > 0 : "The provided Integer 'wordSize' cannot be null";
+        assert wordSize > 0 : "The provided Integer 'wordSize' must be greater than zero";
+        for (JWord word : words) {
+            assert word.length() == wordSize : String.format("The provided word '%s' is not of size %d", word.word(), wordSize);
+        }
 
         _charset = charset;
-        _words = words;
         _size = wordSize;
 
         _difficultyMap = new HashMap<Integer, ArrayList<JWord>>();
@@ -42,6 +43,9 @@ public final class JDictionary {
         int maxDifficulty = Integer.MIN_VALUE;
         for (int i = 0; i < words.size(); i++) {
             JWord word = words.get(i);
+            assert _charset.contains(word.word()) : String.format("The provided word '%s' is not within the character set.", word.word());
+            assert !_wordMap.containsKey(word.word()) : String.format("The provided word '%s' is already within the dictionary.", word.word());
+
             minDifficulty = Math.min(minDifficulty, word.difficulty());
             maxDifficulty = Math.max(maxDifficulty, word.difficulty());
 
@@ -90,7 +94,7 @@ public final class JDictionary {
                 throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
             }
 
-            if (charset.invalid(word)) {
+            if (!charset.contains(word)) {
                 throw new IllegalArgumentException("The argument 'word' does not match the character set of the dictionary.");
             }
 
@@ -111,6 +115,7 @@ public final class JDictionary {
      */
     public Boolean contains(String word) {
         assert word != null : "The provided String 'word' cannot be null";
+        assert word.length() == _size : "The provided String 'word' is not of length 'size()'";
 
         return _wordMap.containsKey(word);
     }
@@ -121,14 +126,10 @@ public final class JDictionary {
      * @param difficulty The difficulty of the words to query against.
      * @return The word within the dictionary.
      */
-    public JWord getRandomWord(int difficulty) {
+    public JWord random(int difficulty) {
         assert difficulty >= 0 : "The provided Integer 'difficulty' cannot less than zero";
-
-        if (difficulty < _minDifficulty) {
-            return null;
-        } else if (difficulty > _maxDifficulty) {
-            return null;
-        }
+        assert difficulty >= _minDifficulty : "The provided Integer 'difficulty' is less than the minimum difficulty.";
+        assert difficulty <= _maxDifficulty : "The provided Integer 'difficulty' is greater than the maximum difficulty.";
 
         Random ran = new Random();
         ArrayList<JWord> list = _difficultyMap.get(difficulty);
@@ -164,7 +165,7 @@ public final class JDictionary {
      * @return The words of the dictionary.
      */
     public JWord[] getWords() {
-        return _words.toArray(new JWord[_words.size()]);
+        return _wordMap.values().toArray(new JWord[_wordMap.size()]);
     }
 
     /**
@@ -177,12 +178,30 @@ public final class JDictionary {
     }
 
     /**
+     * Returns the lowest difficulty value in the dictionary.
+     *
+     * @return A difficulty value.
+     */
+    public int minimum() {
+        return _minDifficulty;
+    }
+
+    /**
+     * Returns the highest difficulty value in the dictionary.
+     *
+     * @return A difficulty value.
+     */
+    public int maximum() {
+        return _maxDifficulty;
+    }
+
+    /**
      * Returns the number of words that are within the dictionary.
      *
      * @return The number of words within the dictionary.
      */
     public int length() {
-        return _words.size();
+        return _wordMap.size();
     }
 
     /**

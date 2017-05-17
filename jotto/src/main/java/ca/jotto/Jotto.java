@@ -7,6 +7,9 @@ import ca.jotto.listeners.JottoEventMap;
  */
 public final class Jotto {
 
+    /**
+     * The default maximum number of guesses for jotto.
+     */
     public static final int MAXIMUM_GUESS = 10;
 
     private final JDictionary _dictionary;

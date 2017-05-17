@@ -5,9 +5,21 @@ package ca.jotto;
  */
 public class JCharset {
 
+    /**
+     * The set of uppercase alphabetic Unicode characters.
+     */
     public static final JCharset UPPERCASE = new JCharset(new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'});
+
+    /**
+     * The set of lowercase alphabetic Unicode characters.
+     */
     public static final JCharset LOWERCASE = new JCharset(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'});
-    public static final JCharset DEFAULT = new JCharset(new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'});
+
+    /**
+     * The default set of alphabetic Unicode characters.
+     */
+    public static final JCharset DEFAULT = UPPERCASE;
+
     private final char[] _charset;
 
     /**
@@ -16,7 +28,8 @@ public class JCharset {
      * @param characters The characters present in the character set.
      */
     public JCharset(char[] characters) {
-        assert characters != null : "The starting character must be numerically greater than the end character";
+        assert characters != null : "The provided array 'characters' cannot be null";
+        assert characters.length != 0 : "The provided array 'characters' cannot be empty";
 
         _charset = characters;
     }
@@ -60,32 +73,12 @@ public class JCharset {
     }
 
     /**
-     * Returns true if the character is not within the set.
-     *
-     * @param character The character to check.
-     * @return True if not within the set; false otherwise.
-     */
-    public Boolean invalid(char character) {
-        return get(character) == -1;
-    }
-
-    /**
-     * Returns true if the character is within the set.
-     *
-     * @param word The word to check.
-     * @return True if within the set; false otherwise.
-     */
-    public Boolean invalid(String word) {
-        return !valid(word);
-    }
-
-    /**
      * Returns true if the character is within the set.
      *
      * @param character The character to check.
      * @return True if within the set; false otherwise.
      */
-    public Boolean valid(char character) {
+    public Boolean contains(char character) {
         return get(character) != -1;
     }
 
@@ -95,12 +88,12 @@ public class JCharset {
      * @param word The word to check.
      * @return True if within the set; false otherwise.
      */
-    public Boolean valid(String word) {
+    public Boolean contains(String word) {
         assert word != null : "The provided String 'word' cannot be null";
         assert !word.isEmpty() : "The provided String 'word' does not contain characters";
 
         for (char wch : word.toCharArray()) {
-            if (!valid(wch)) {
+            if (!contains(wch)) {
                 return false;
             }
         }

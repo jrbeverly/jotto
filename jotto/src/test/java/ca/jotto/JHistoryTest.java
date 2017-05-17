@@ -1,6 +1,7 @@
 package ca.jotto;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.ArrayList;
 
@@ -14,38 +15,49 @@ public class JHistoryTest {
         };
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
-    public void constructor_zero() throws Exception {
-        JHistory history = new JHistory(JCharset.DEFAULT, 0);
+    public void constructor_zero() {
+        new JHistory(JCharset.DEFAULT, 0);
     }
 
+    @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
-    public void constructor_null() throws Exception {
-        JHistory history = new JHistory(null, 5);
+    public void constructor_negative() {
+        new JHistory(JCharset.DEFAULT, -1);
     }
 
-    @Test
-    public void empty() throws Exception {
-        JCharset charset = JCharset.DEFAULT;
-        JHistory history = new JHistory(charset, 5);
-
-        assertEquals(0, history.length());
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void constructor_null() {
+        new JHistory(null, 1);
     }
 
+    @Category(ValidationTests.class)
     @Test
-    public void length() throws Exception {
+    public void length() {
         JCharset charset = JCharset.DEFAULT;
-        JHistory history = new JHistory(charset, 5);
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
 
         assertEquals(0, history.length());
         history.add(new JGuess("HELLO", getEmptyMatches(), 0, 0));
         assertEquals(1, history.length());
     }
 
+    @Category(ValidationTests.class)
     @Test
-    public void add() throws Exception {
+    public void length_empty() {
         JCharset charset = JCharset.DEFAULT;
-        JHistory history = new JHistory(charset, 5);
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+
+        assertEquals(0, history.length());
+    }
+
+    @Category(BehaviourTests.class)
+    @Test
+    public void add() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
         assertEquals(0, history.length());
 
         String word = "HELLO";
@@ -61,10 +73,58 @@ public class JHistoryTest {
         }
     }
 
-    @Test
-    public void contains() throws Exception {
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void add_null() {
         JCharset charset = JCharset.DEFAULT;
-        JHistory history = new JHistory(charset, 5);
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+
+        history.add(null);
+    }
+
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void add_not() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+
+        history.add(new JGuess("L33TZ", getEmptyMatches(), 1, 0));
+    }
+
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void get() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+
+        history.add(null);
+    }
+
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void get_below() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+
+        history.get(-1);
+    }
+
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void get_above() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+
+        history.get(3);
+    }
+
+    @Category(ValidationTests.class)
+    @Test
+    public void contains() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
         assertEquals(0, history.length());
 
         history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
@@ -75,28 +135,39 @@ public class JHistoryTest {
         assertTrue(history.contains("PEACH"));
         assertTrue(history.contains("OTHER"));
         assertTrue(history.contains("HELLO"));
-    }
-
-    @Test
-    public void contains_not() throws Exception {
-        JCharset charset = JCharset.DEFAULT;
-        JHistory history = new JHistory(charset, 5);
-        assertEquals(0, history.length());
-
-        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
-        history.add(new JGuess("PEACH", getEmptyMatches(), 2, 0));
-        history.add(new JGuess("OTHER", getEmptyMatches(), 3, 0));
-
-        assertEquals(3, history.length());
-        assertTrue(history.contains("HELLO"));
         assertFalse(history.contains("WORLD"));
         assertFalse(history.contains("SOOTH"));
     }
 
-    @Test
-    public void guesses() throws Exception {
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void contains_null() {
         JCharset charset = JCharset.DEFAULT;
-        JHistory history = new JHistory(charset, 5);
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+        assertEquals(0, history.length());
+
+        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+        assertEquals(1, history.length());
+        history.contains(null);
+    }
+
+    @Category(ValidationTests.class)
+    @Test(expected = AssertionError.class)
+    public void contains_not() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
+        assertEquals(0, history.length());
+
+        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+        assertEquals(1, history.length());
+        history.contains("L33TZ");
+    }
+
+    @Category(BehaviourTests.class)
+    @Test
+    public void guesses() {
+        JCharset charset = JCharset.DEFAULT;
+        JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
         assertEquals(0, history.length());
 
         ArrayList<JGuess> guesses = new ArrayList<JGuess>();

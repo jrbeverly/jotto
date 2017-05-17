@@ -1,14 +1,15 @@
 package ca.jotto;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-public class SimpleGameTest {
+public class GameTest {
 
     static public ArrayList<JWord> getWordList() {
         JWord[] words = new JWord[]{
@@ -21,6 +22,7 @@ public class SimpleGameTest {
         return new ArrayList<>(Arrays.asList(words));
     }
 
+    @Category(BehaviourTests.class)
     @Test
     public void simple() throws Exception {
         ArrayList<JWord> words = getWordList();

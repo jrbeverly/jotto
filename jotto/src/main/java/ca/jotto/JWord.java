@@ -3,7 +3,7 @@ package ca.jotto;
 /**
  * Represents a word with associated attributes.
  */
-public final class JWord {
+public final class JWord implements Comparable<JWord> {
 
     private final String _word;
     private final int _difficulty;
@@ -48,5 +48,10 @@ public final class JWord {
      */
     public int length() {
         return _word.length();
+    }
+
+    @Override
+    public int compareTo(JWord o) {
+        return o.word().compareTo(word());
     }
 }
