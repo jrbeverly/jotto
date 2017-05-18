@@ -170,7 +170,7 @@ public final class JMatch {
      *
      * @return The secret word.
      */
-    public JSecret getSecret() {
+    public JSecret secret() {
         return _secret;
     }
 
@@ -208,7 +208,7 @@ public final class JMatch {
 
         _game.getEventMap().onTurnGuess(_game, guess);
 
-        boolean correct = guess.isCorrect();
+        boolean correct = guess.correct();
         if (correct) {
             setState(JGameState.WON);
         } else if (getAttempts() >= getMaximumAttempts()) {

@@ -53,7 +53,7 @@ public class JHistoryTest {
         assertEquals(0, history.length());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void add() {
         JCharset charset = JCharset.DEFAULT;
@@ -68,8 +68,8 @@ public class JHistoryTest {
         assertEquals(3, history.length());
         for (int i = 0; i < history.length(); i++) {
             JGuess guess = history.get(i);
-            assertEquals(word, guess.getGuess());
-            assertEquals(i + 1, guess.getExact());
+            assertEquals(word, guess.guess());
+            assertEquals(i + 1, guess.exact());
         }
     }
 
@@ -163,7 +163,7 @@ public class JHistoryTest {
         history.contains("L33TZ");
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void guesses() {
         JCharset charset = JCharset.DEFAULT;
@@ -182,9 +182,9 @@ public class JHistoryTest {
         ArrayList<JGuess> entries = history.guesses();
         assertEquals(guesses.size(), entries.size());
         for (int i = 0; i < entries.size(); i++) {
-            assertTrue(history.contains(entries.get(i).getGuess()));
-            assertEquals(0, entries.get(i).getPartial());
-            assertEquals(i + 1, entries.get(i).getExact());
+            assertTrue(history.contains(entries.get(i).guess()));
+            assertEquals(0, entries.get(i).partial());
+            assertEquals(i + 1, entries.get(i).exact());
         }
     }
 }

@@ -57,7 +57,7 @@ public class JDictionaryTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void minimum() throws Exception {
         int min = 1;
@@ -66,7 +66,7 @@ public class JDictionaryTest {
         assertEquals(min, dictionary.minimum());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void maximum() throws Exception {
         int min = 1;
@@ -125,7 +125,7 @@ public class JDictionaryTest {
         dictionary.random(min - 1);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void random() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList());
@@ -211,7 +211,7 @@ public class JDictionaryTest {
         assertEquals(0, dictionary.length());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test(expected = AssertionError.class)
     public void length_duplicates() throws Exception {
         ArrayList<JWord> words = TestHelper.getDuplicates();
@@ -227,9 +227,9 @@ public class JDictionaryTest {
 
     @Category(ValidationTests.class)
     @Test
-    public void getWord() throws Exception {
+    public void word() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList());
-        JWord word = dictionary.getWord("OTHER");
+        JWord word = dictionary.get("OTHER");
 
         assertEquals("OTHER", word.word());
         assertEquals(1, word.difficulty());
@@ -237,33 +237,33 @@ public class JDictionaryTest {
 
     @Category(ValidationTests.class)
     @Test(expected = IllegalArgumentException.class)
-    public void getWord_not() throws Exception {
+    public void word_not() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList());
-        dictionary.getWord("SOOTH");
+        dictionary.get("SOOTH");
     }
 
     @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
-    public void getWord_null() throws Exception {
+    public void word_null() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList());
-        dictionary.getWord(null);
+        dictionary.get(null);
     }
 
     @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
-    public void getWord_empty() throws Exception {
+    public void word_empty() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList());
-        dictionary.getWord("");
+        dictionary.get("");
     }
 
     @Category(ValidationTests.class)
     @Test
-    public void getWords() throws Exception {
+    public void toArray() throws Exception {
         ArrayList<JWord> words = TestHelper.getWordList();
 
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList());
         JWord[] items = words.toArray(new JWord[words.size()]);
-        JWord[] elements = dictionary.getWords();
+        JWord[] elements = dictionary.toArray();
 
         Arrays.sort(items);
         Arrays.sort(elements);
@@ -282,11 +282,11 @@ public class JDictionaryTest {
 
     @Category(ValidationTests.class)
     @Test
-    public void getWords_empty() throws Exception {
+    public void toArray_empty() throws Exception {
         JDictionary dictionary = new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, new ArrayList<JWord>());
         assertEquals(JCharset.DEFAULT, dictionary.getCharset());
 
-        JWord[] elements = dictionary.getWords();
+        JWord[] elements = dictionary.toArray();
         assertEquals(0, elements.length);
     }
 

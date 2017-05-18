@@ -32,11 +32,20 @@ public final class JGuess {
     }
 
     /**
+     * Gets the word that was guessed.
+     *
+     * @return The guess string.
+     */
+    public String guess() {
+        return _guess;
+    }
+
+    /**
      * Determines if the guess is correct
      *
      * @return True if correct; false otherwise.
      */
-    public Boolean isCorrect() {
+    public Boolean correct() {
         return _exact == _matches.length;
     }
 
@@ -45,7 +54,7 @@ public final class JGuess {
      *
      * @return Number of partial character matches.
      */
-    public int getPartial() {
+    public int partial() {
         return _partial;
     }
 
@@ -54,7 +63,7 @@ public final class JGuess {
      *
      * @return Number of exact character matches.
      */
-    public int getExact() {
+    public int exact() {
         return _exact;
     }
 
@@ -68,12 +77,21 @@ public final class JGuess {
     }
 
     /**
+     * Gets the matches specified for each character.
+     *
+     * @return The matches of each character within the guess.
+     */
+    public JWordMatch[] matches() {
+        return _matches.clone();
+    }
+
+    /**
      * Returns a match for a specified character based on given index.
      *
      * @param index The character index to check for match state.
      * @return The match state of the specified character.
      */
-    public JWordMatch getMatch(int index) {
+    public JWordMatch matchAt(int index) {
         assert index >= 0 : "The provided Integer 'index' cannot be less than zero";
         assert index < _matches.length : "The provided Integer 'index' exceed the word size";
 
@@ -86,28 +104,10 @@ public final class JGuess {
      * @param index The character index.
      * @return The character at the specified index.
      */
-    public char getChar(int index) {
+    public char charAt(int index) {
         assert index >= 0 : "The provided Integer 'index' cannot be less than zero";
         assert index < _guess.length() : "The provided Integer 'index' exceed the word size";
 
         return _guess.charAt(index);
-    }
-
-    /**
-     * Gets the word that was guessed.
-     *
-     * @return The guess string.
-     */
-    public String getGuess() {
-        return _guess;
-    }
-
-    /**
-     * Gets the matches specified for each character.
-     *
-     * @return The matches of each character within the guess.
-     */
-    public JWordMatch[] getMatches() {
-        return _matches.clone();
     }
 }

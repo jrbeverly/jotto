@@ -51,9 +51,9 @@ public final class JAnalytics {
         assert history != null : "The provided JHistory 'history' cannot be null";
 
         for (JGuess ges : history.guesses()) {
-            if (ges.getPartial() == 0 && ges.getExact() == 0) {
+            if (ges.partial() == 0 && ges.exact() == 0) {
                 for (int l = 0; l < _size; l++) {
-                    Character ch = ges.getChar(l);
+                    Character ch = ges.charAt(l);
                     int index = _charset.get(ch);
                     _letters[index] = JWordMatch.ELIMINATED;
 
@@ -61,8 +61,8 @@ public final class JAnalytics {
                 }
             } else {
                 for (int l = 0; l < _size; l++) {
-                    if (ges.getMatch(l) == JWordMatch.EXACT) {
-                        char exactChar = ges.getChar(l);
+                    if (ges.matchAt(l) == JWordMatch.EXACT) {
+                        char exactChar = ges.charAt(l);
                         int index = _charset.get(exactChar);
 
                         _letters[index] = JWordMatch.EXACT;

@@ -44,7 +44,7 @@ public class JMatchEventTest {
         eventMap.removeListener(null);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onTurnIncorrect_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -67,7 +67,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onTurnCorrect_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -90,7 +90,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onTurnGuess_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -113,7 +113,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onGameStateChanged_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -136,7 +136,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onCharacterEliminated_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -159,7 +159,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onCharacterExact_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -182,7 +182,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onMatchStart_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -206,7 +206,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onMatchOver_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -230,7 +230,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onPlayerYield_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -254,7 +254,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onPlayerWin_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -278,7 +278,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onPlayerLoss_multi() throws Exception {
         JottoEventMap eventMap = new JottoEventMap();
@@ -302,7 +302,7 @@ public class JMatchEventTest {
         }
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onMatchStart() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
@@ -316,7 +316,7 @@ public class JMatchEventTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onMatchOver() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
@@ -331,7 +331,7 @@ public class JMatchEventTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onPlayerWin() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
@@ -347,7 +347,7 @@ public class JMatchEventTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onPlayerLoss() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));
@@ -362,7 +362,7 @@ public class JMatchEventTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void onPlayerYield() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, 5, TestHelper.getWordList()));

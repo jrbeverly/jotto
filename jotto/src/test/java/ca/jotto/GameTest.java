@@ -22,7 +22,7 @@ public class GameTest {
         return new ArrayList<>(Arrays.asList(words));
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void simple() throws Exception {
         ArrayList<JWord> words = getWordList();
@@ -51,9 +51,9 @@ public class GameTest {
             JGuess guess = match.guess(guesses[i]);
 
             assertNotNull(guess);
-            assertEquals(guesses[i], guess.getGuess());
-            assertEquals(exact[i], guess.getExact());
-            assertEquals(partial[i], guess.getPartial());
+            assertEquals(guesses[i], guess.guess());
+            assertEquals(exact[i], guess.exact());
+            assertEquals(partial[i], guess.partial());
         }
     }
 }

@@ -78,21 +78,21 @@ public class JGuessTest {
 
     @Category(ValidationTests.class)
     @Test
-    public void guess() throws Exception {
+    public void simple() throws Exception {
         String word = "HELLO";
         int exact = 0, partial = 0;
         JWordMatch[] matches = getEmptyMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
-        assertFalse(guess.isCorrect());
-        assertEquals(word, guess.getGuess());
-        assertEquals(partial, guess.getPartial());
-        assertEquals(exact, guess.getExact());
+        assertFalse(guess.correct());
+        assertEquals(word, guess.guess());
+        assertEquals(partial, guess.partial());
+        assertEquals(exact, guess.exact());
         assertEquals(word.length(), guess.size());
 
         for (int i = 0; i < matches.length; i++) {
-            assertEquals(matches[i], guess.getMatch(i));
-            assertEquals(word.charAt(i), guess.getChar(i));
+            assertEquals(matches[i], guess.matchAt(i));
+            assertEquals(word.charAt(i), guess.charAt(i));
         }
     }
 
@@ -115,7 +115,7 @@ public class JGuessTest {
         JWordMatch[] matches = getEmptyMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
-        assertEquals(exact, guess.getExact());
+        assertEquals(exact, guess.exact());
     }
 
     @Category(ValidationTests.class)
@@ -126,8 +126,8 @@ public class JGuessTest {
         JWordMatch[] matches = getEmptyMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
-        assertTrue(guess.isCorrect());
-        assertEquals(exact, guess.getExact());
+        assertTrue(guess.correct());
+        assertEquals(exact, guess.exact());
     }
 
     @Category(ValidationTests.class)
@@ -138,24 +138,24 @@ public class JGuessTest {
         JWordMatch[] matches = getEmptyMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
-        assertEquals(partial, guess.getPartial());
+        assertEquals(partial, guess.partial());
     }
 
     @Category(ValidationTests.class)
     @Test
-    public void getGuess() {
+    public void guess() {
         String word = "HELLO";
         int exact = 0, partial = 0;
         JWordMatch[] matches = getEmptyMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
-        assertEquals(word, guess.getGuess());
+        assertEquals(word, guess.guess());
         assertEquals(word.length(), guess.size());
     }
 
     @Category(ValidationTests.class)
     @Test
-    public void getMatch() {
+    public void matchAt() {
         String word = "HELLO";
         int exact = 0, partial = 0;
         JWordMatch[] matches = new JWordMatch[]{
@@ -168,13 +168,13 @@ public class JGuessTest {
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         for (int i = 0; i < matches.length; i++) {
-            assertEquals(matches[i], guess.getMatch(i));
+            assertEquals(matches[i], guess.matchAt(i));
         }
     }
 
     @Category(ValidationTests.class)
     @Test
-    public void getMatches() {
+    public void matches() {
         String word = "HELLO";
         int exact = 0, partial = 0;
         JWordMatch[] matches = new JWordMatch[]{
@@ -186,7 +186,7 @@ public class JGuessTest {
         };
         JGuess guess = new JGuess(word, matches, exact, partial);
 
-        JWordMatch[] results = guess.getMatches();
+        JWordMatch[] results = guess.matches();
         for (int i = 0; i < matches.length; i++) {
             assertEquals(matches[i], results[i]);
         }
@@ -194,7 +194,7 @@ public class JGuessTest {
 
     @Category(ValidationTests.class)
     @Test
-    public void getChar() throws Exception {
+    public void charAt() throws Exception {
         String word = "HELLO";
         int exact = 0, partial = 0;
         JWordMatch[] matches = getEmptyMatches();
@@ -202,7 +202,7 @@ public class JGuessTest {
 
         assertEquals(word.length(), guess.size());
         for (int i = 0; i < matches.length; i++) {
-            assertEquals(word.charAt(i), guess.getChar(i));
+            assertEquals(word.charAt(i), guess.charAt(i));
         }
     }
 }

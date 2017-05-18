@@ -63,7 +63,7 @@ public class JAnalyticsTest {
         analytics.compute(jotto, jotto.getEventMap(), null);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void compute_exact() throws Exception {
         JAnalytics analytics = new JAnalytics(JCharset.DEFAULT, TestHelper.WORD_SIZE);
@@ -79,7 +79,7 @@ public class JAnalyticsTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void compute_eliminated() throws Exception {
         JAnalytics analytics = new JAnalytics(JCharset.DEFAULT, TestHelper.WORD_SIZE);

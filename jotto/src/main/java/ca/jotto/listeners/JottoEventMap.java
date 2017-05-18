@@ -24,7 +24,7 @@ public class JottoEventMap {
     /**
      * Adds the specified listener to receive game events from this component.
      *
-     * @param listener the game listener.
+     * @param listener The object to add as a listener.
      */
     public void addListener(JottoListener listener) {
         assert listener != null;
@@ -34,7 +34,7 @@ public class JottoEventMap {
     /**
      * Removes the specified listener so that it no longer receives game events from this component.
      *
-     * @param listener the game listener.
+     * @param listener The object to remove the listener from.
      */
     public void removeListener(JottoListener listener) {
         assert listener != null;
@@ -44,7 +44,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player guess was incorrect.
      *
-     * @param jotto The Jotto game.
+     * @param jotto the jotto game referenced.
      * @param guess The player guess.
      */
     public void onTurnIncorrect(Jotto jotto, JGuess guess) {
@@ -61,7 +61,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player guess was correct.
      *
-     * @param jotto The Jotto game.
+     * @param jotto the jotto game referenced.
      * @param guess The player guess.
      */
     public void onTurnCorrect(Jotto jotto, JGuess guess) {
@@ -78,7 +78,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player guesses.
      *
-     * @param jotto The Jotto game.
+     * @param jotto the jotto game referenced.
      * @param guess The player guess.
      */
     public void onTurnGuess(Jotto jotto, JGuess guess) {

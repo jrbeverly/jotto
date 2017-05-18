@@ -35,15 +35,6 @@ public class JHistory {
         return _guesses.size();
     }
 
-    /***
-     * Returns the list of guesses recorded in the history.
-     *
-     * @return The guess array.
-     */
-    public ArrayList<JGuess> guesses() {
-        return (ArrayList<JGuess>) _guesses.clone();
-    }
-
     /**
      * Adds a guess to the history of the game.
      *
@@ -51,7 +42,7 @@ public class JHistory {
      */
     public void add(JGuess guess) {
         assert guess != null : "The provided JGuess 'guess' cannot be null";
-        assert _charset.contains(guess.getGuess()) : "The provided JGuess 'guess'  is not within the character set.";
+        assert _charset.contains(guess.guess()) : "The provided JGuess 'guess'  is not within the character set.";
 
         _guesses.add(guess);
     }
@@ -80,10 +71,19 @@ public class JHistory {
         assert _charset.contains(word) : "The provided String 'word'  is not within the character set.";
 
         for (JGuess guess : _guesses) {
-            if (guess.getGuess().equals(word)) {
+            if (guess.guess().equals(word)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /***
+     * Returns the list of guesses recorded in the history.
+     *
+     * @return The guess array.
+     */
+    public ArrayList<JGuess> guesses() {
+        return (ArrayList<JGuess>) _guesses.clone();
     }
 }

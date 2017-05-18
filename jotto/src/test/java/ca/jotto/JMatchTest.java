@@ -47,7 +47,7 @@ public class JMatchTest {
         new JMatch(jotto, secret, 0);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void isGameOver() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -61,7 +61,7 @@ public class JMatchTest {
         assertTrue(match.isGameOver());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void isPlaying() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -77,7 +77,7 @@ public class JMatchTest {
         assertEquals(match.getState(), JGameState.YIELDED);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void hasYielded() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -92,7 +92,7 @@ public class JMatchTest {
         assertEquals(match.getState(), JGameState.YIELDED);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void hasWon() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -106,7 +106,7 @@ public class JMatchTest {
         assertEquals(match.getState(), JGameState.WON);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void hasLost() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -120,7 +120,7 @@ public class JMatchTest {
         assertEquals(match.getState(), JGameState.LOST);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void getState() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -177,14 +177,14 @@ public class JMatchTest {
 
     @Category(ValidationTests.class)
     @Test
-    public void getSecret() throws Exception {
+    public void secret() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
         JMatch match = jotto.construct(jotto.getDictionary().random(TestHelper.SINGLE_DIFFICULTY));
 
-        assertNotNull(match.getSecret());
+        assertNotNull(match.secret());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test(expected = JottoStateException.class)
     public void guess_playing() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -206,7 +206,7 @@ public class JMatchTest {
         match.guess(null);
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test(expected = JottoValidationException.class)
     public void guess_not() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -218,7 +218,7 @@ public class JMatchTest {
         match.guess("L33TZ");
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void guess_onturn() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -296,7 +296,7 @@ public class JMatchTest {
         assertEquals(JValidation.PREVIOUSLY_GUESSED, match.validate("WORLD"));
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void yield() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -311,7 +311,7 @@ public class JMatchTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test(expected = JottoStateException.class)
     public void yield_state() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -320,7 +320,7 @@ public class JMatchTest {
         match.yield();
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test
     public void construct() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));
@@ -334,7 +334,7 @@ public class JMatchTest {
         assertTrue(flag.get());
     }
 
-    @Category(BehaviourTests.class)
+    @Category(FunctionalTests.class)
     @Test(expected = JottoStateException.class)
     public void construct_state() throws Exception {
         Jotto jotto = new Jotto(new JDictionary(JCharset.DEFAULT, TestHelper.WORD_SIZE, TestHelper.getWordList()));

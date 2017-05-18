@@ -148,7 +148,7 @@ public final class JDictionary {
      * @param word The word to retrieve from the dictionary.
      * @return The jotto word object.
      */
-    public JWord getWord(String word) {
+    public JWord get(String word) {
         assert word != null : "The provided String 'word' cannot be null";
         assert !word.isEmpty() : "The argument 'word' cannot be the empty string";
 
@@ -164,7 +164,7 @@ public final class JDictionary {
      *
      * @return The words of the dictionary.
      */
-    public JWord[] getWords() {
+    public JWord[] toArray() {
         return _wordMap.values().toArray(new JWord[_wordMap.size()]);
     }
 

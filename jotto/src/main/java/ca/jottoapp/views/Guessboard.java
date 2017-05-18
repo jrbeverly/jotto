@@ -50,11 +50,11 @@ public class Guessboard extends JPanel implements TurnListener {
         Object[] objs = new Object[7];
 
         for (int i = 0; i < guess.size(); i++) {
-            objs[i] = new Character(guess.getChar(i));
+            objs[i] = new Character(guess.charAt(i));
         }
 
-        objs[guess.size()] = new Integer(guess.getExact());
-        objs[guess.size() + 1] = new Integer(guess.getPartial());
+        objs[guess.size()] = new Integer(guess.exact());
+        objs[guess.size() + 1] = new Integer(guess.partial());
 
         model.addRow(objs);
     }
