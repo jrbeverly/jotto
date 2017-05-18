@@ -1,0 +1,17 @@
+#!/bin/sh
+set -ex
+
+# Variables
+#
+# Build variables for directories.
+SCRIPT=$(readlink -f "$0")
+DIR="$(dirname $SCRIPT)"
+ROOT_DIR="$(dirname $DIR)"
+SRC_DIR="${ROOT_DIR}/jotto"
+BUILD_DIR="${ROOT_DIR}/build"
+
+# Build
+#
+# Build the latex project
+cd $SRC_DIR
+mvn compile

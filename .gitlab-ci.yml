@@ -8,14 +8,20 @@ stages:
 build:
   stage: build
   script:
-    - cd jotto/
-    - mvn compile
+    - sh build/build.sh
+  artifacts:
+    paths:
+      - jotto/target/
+    expire_in: 1 hour
 
 test:
   stage: test
   script:
-    - cd jotto/
-    - mvn test
+    - sh tests/tests.sh
+  artifacts:
+    paths:
+      - jotto/target/
+    expire_in: 1 hour
 
 deploy:
   stage: deploy
