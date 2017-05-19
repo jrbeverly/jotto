@@ -30,6 +30,8 @@ public enum JDifficulty {
 
     /**
      * Gets a numeric value representing the level.
+     *
+     * @return The difficulty level.
      */
     public int getLevel() {
         return _level;

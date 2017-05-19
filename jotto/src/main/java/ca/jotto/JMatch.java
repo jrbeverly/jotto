@@ -174,8 +174,11 @@ public final class JMatch {
         return _secret;
     }
 
+
     /**
      * Starts the match.
+     *
+     * @throws JottoStateException If the match is not in the idle state.
      */
     public void start() throws JottoStateException {
         setState(JGameState.PLAYING);
@@ -242,6 +245,8 @@ public final class JMatch {
 
     /**
      * Yields the match.
+     *
+     * @throws JottoStateException If the match is not in the playing state.
      */
     public void yield() throws JottoException {
         if (_state != JGameState.PLAYING) {

@@ -69,6 +69,7 @@ public final class Jotto {
      * Constructs a match from the game definition.
      *
      * @param word The secret word of the match.
+     * @return A new jotto match for the specified secret word.
      */
     public JMatch construct(JWord word) {
         assert word != null : "The provided JWord 'word' cannot be null";
