@@ -3,7 +3,7 @@ package ca.jotto.model;
 import java.util.ArrayList;
 
 /**
- * Represents the history of user guesses in the game.
+ * Represents a collection of guesses.
  */
 public class JHistory {
 
@@ -27,18 +27,18 @@ public class JHistory {
     }
 
     /**
-     * Returns the number of words in the history.
+     * Returns the number of guesses contained in the {@link JHistory}.
      *
-     * @return The number of words within the history.
+     * @return The number of guesses contained in the {@link JHistory}.
      */
     public int length() {
         return _guesses.size();
     }
 
     /**
-     * Adds a guess to the history of the game.
+     * Adds the specified guess to the dictionary.
      *
-     * @param guess Adds a guess into the history.
+     * @param guess The value of the {@link JGuess} to add.
      */
     public void add(JGuess guess) {
         assert guess != null : "The provided JGuess 'guess' cannot be null";
@@ -61,10 +61,10 @@ public class JHistory {
     }
 
     /**
-     * Returns true if the word has been guessed, false otherwise.
+     * Determines whether the {@link JHistory} contains the specified string.
      *
      * @param word The word to locate in the dictionary.
-     * @return True if word has been guessed; false otherwise.
+     * @return true if the {@link JHistory} contains the string; otherwise, false.
      */
     public boolean contains(String word) {
         assert word != null : "The provided String 'word' cannot be null";
@@ -81,7 +81,7 @@ public class JHistory {
     /***
      * Returns the list of guesses recorded in the history.
      *
-     * @return The guess array.
+     * @return An ArrayList containing the values in the {@link JHistory}.
      */
     public ArrayList<JGuess> guesses() {
         return (ArrayList<JGuess>) _guesses.clone();

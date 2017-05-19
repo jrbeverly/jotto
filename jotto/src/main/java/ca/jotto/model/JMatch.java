@@ -5,7 +5,7 @@ import ca.jotto.model.exception.JottoStateException;
 import ca.jotto.model.exception.JottoValidationException;
 
 /**
- * Defines a match of the game.
+ * Represents a match of the jotto game.
  */
 public final class JMatch {
 
@@ -42,7 +42,7 @@ public final class JMatch {
     /**
      * Determines if the match is over.
      *
-     * @return True if match is over; false otherwise.
+     * @return true if match is over; false otherwise.
      */
     public Boolean isGameOver() {
         return hasWon() || hasLost() || hasYielded();
@@ -51,7 +51,7 @@ public final class JMatch {
     /**
      * Determines if the match is currently in progress.
      *
-     * @return True if match is in progress; false otherwise.
+     * @return true if match is in progress; false otherwise.
      */
     public Boolean isPlaying() {
         return _state == JGameState.PLAYING;
@@ -60,43 +60,43 @@ public final class JMatch {
     /**
      * Determines if the match has ended by yielding.
      *
-     * @return True if match is over by yield; false otherwise.
+     * @return true if match is over by yield; false otherwise.
      */
     public Boolean hasYielded() {
         return _state == JGameState.YIELDED;
     }
 
     /**
-     * Determines if the user has won the match.
+     * Determines if the victory conditions have been met.
      *
-     * @return True if match is won by user; false otherwise.
+     * @return true if match is won; false otherwise.
      */
     public Boolean hasWon() {
         return _state == JGameState.WON;
     }
 
     /**
-     * Determines if the user has lost the match.
+     * Determines if the loss conditions have been met.
      *
-     * @return True if match is lost by user; false otherwise.
+     * @return true if match is lost; false otherwise.
      */
     public Boolean hasLost() {
         return _state == JGameState.LOST;
     }
 
     /**
-     * Gets the state of the match.
+     * Returns the state of the match.
      *
-     * @return The state of the match.
+     * @return The match state.
      */
     public JGameState getState() {
         return _state;
     }
 
     /**
-     * Returns the current number of attempts.
+     * Returns the current number of guesses.
      *
-     * @return The current number of attempts.
+     * @return The current number of guesses.
      */
     public int getAttempts() {
         return _attempts;
@@ -112,18 +112,18 @@ public final class JMatch {
     }
 
     /**
-     * Returns the history of guesses.
+     * Returns the {@link JMatch} guess history.
      *
-     * @return The history of guesses.
+     * @return The historical data.
      */
     public JHistory getHistory() {
         return _history;
     }
 
     /***
-     * Returns an analytics instance responsible for the current match.
+     * Returns computed historical data for the {@link JMatch}.
      *
-     * @return An analytics instance.
+     * @return The computed historical data.
      */
     public JAnalytics getAnalytics() {
         return _analytics;

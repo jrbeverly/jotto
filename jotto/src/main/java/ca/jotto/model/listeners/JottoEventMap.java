@@ -44,7 +44,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player guess was incorrect.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param guess The player guess.
      */
     public void onTurnIncorrect(Jotto jotto, JGuess guess) {
@@ -61,7 +61,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player guess was correct.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param guess The player guess.
      */
     public void onTurnCorrect(Jotto jotto, JGuess guess) {
@@ -78,7 +78,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player guesses.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param guess The player guess.
      */
     public void onTurnGuess(Jotto jotto, JGuess guess) {
@@ -95,9 +95,9 @@ public class JottoEventMap {
     /**
      * Invoked when a game state has been modified.
      *
-     * @param jotto    the jotto game referenced.
-     * @param oldState the previous game state.
-     * @param newState the new game state.
+     * @param jotto    The jotto game referenced.
+     * @param oldState The previous game state.
+     * @param newState The new game state.
      */
     public void onGameStateChanged(Jotto jotto, JGameState oldState, JGameState newState) {
         assert jotto != null;
@@ -114,8 +114,8 @@ public class JottoEventMap {
     /**
      * Invoked when a character has been eliminated in a game.
      *
-     * @param jotto     the jotto game referenced.
-     * @param character the character eliminated.
+     * @param jotto     The jotto game referenced.
+     * @param character The character eliminated.
      */
     public void onCharacterEliminated(Jotto jotto, char character) {
         assert jotto != null;
@@ -131,8 +131,8 @@ public class JottoEventMap {
     /**
      * Invoked when a character has been matched in a game.
      *
-     * @param jotto     the jotto game referenced.
-     * @param character the character determined.
+     * @param jotto     The jotto game referenced.
+     * @param character The character determined.
      */
     public void onCharacterExact(Jotto jotto, char character) {
         assert jotto != null;
@@ -148,7 +148,7 @@ public class JottoEventMap {
     /**
      * Invoked when a match is started.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     public void onMatchStart(Jotto jotto, JMatch match) {
@@ -164,7 +164,7 @@ public class JottoEventMap {
     /**
      * Invoked when a match is over.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     public void onMatchOver(Jotto jotto, JMatch match) {
@@ -180,7 +180,7 @@ public class JottoEventMap {
     /**
      * Invoked when a player has yielded.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     public void onPlayerYield(Jotto jotto, JMatch match) {
@@ -196,7 +196,7 @@ public class JottoEventMap {
     /**
      * Invoked when the player wins.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     public void onPlayerWin(Jotto jotto, JMatch match) {
@@ -212,7 +212,7 @@ public class JottoEventMap {
     /**
      * Invoked when the player loses.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     public void onPlayerLoss(Jotto jotto, JMatch match) {
@@ -231,8 +231,7 @@ public class JottoEventMap {
      *
      * @param type The class to convert to.
      * @param obj  The object to convert.
-     * @return Returns the converted object if the type matches; false
-     * otherwise.
+     * @return Returns the converted object if the type matches; false otherwise.
      */
     private <T> T as(Class<T> type, Object obj) {
         return type.isInstance(obj) ? type.cast(obj) : null;

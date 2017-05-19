@@ -1,24 +1,24 @@
 package ca.jotto.model;
 
 /**
- * A set of characters that can be used within the jotto game.
+ * Represents a set of character values.
  */
 public class JCharset {
 
     /**
      * The set of uppercase alphabetic Unicode characters.
      */
-    public static final JCharset UPPERCASE = new JCharset(new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'});
+    static public final JCharset UPPERCASE = new JCharset(new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'});
 
     /**
      * The set of lowercase alphabetic Unicode characters.
      */
-    public static final JCharset LOWERCASE = new JCharset(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'});
+    static public final JCharset LOWERCASE = new JCharset(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'});
 
     /**
      * The default set of alphabetic Unicode characters.
      */
-    public static final JCharset DEFAULT = UPPERCASE;
+    static public final JCharset DEFAULT = UPPERCASE;
 
     private final char[] _charset;
 
@@ -76,7 +76,7 @@ public class JCharset {
      * Returns true if the character is within the set.
      *
      * @param character The character to check.
-     * @return True if within the set; false otherwise.
+     * @return true if within the set; false otherwise.
      */
     public Boolean contains(char character) {
         return get(character) != -1;
@@ -86,7 +86,7 @@ public class JCharset {
      * Returns true if the string is within the set.
      *
      * @param word The word to check.
-     * @return True if within the set; false otherwise.
+     * @return true if within the set; false otherwise.
      */
     public Boolean contains(String word) {
         assert word != null : "The provided String 'word' cannot be null";

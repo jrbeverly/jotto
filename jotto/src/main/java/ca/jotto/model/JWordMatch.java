@@ -1,24 +1,24 @@
 package ca.jotto.model;
 
 /**
- * Represents the results from a single letter {@link JGuess} match.
+ * Represents the results from a single character {@link JGuess} match.
  */
 public enum JWordMatch {
     /**
-     * The letter occurs within the {@link String}.
+     * The character occurs within the {@link String}.
      */
     PARTIAL,
     /**
-     * The letter occurs within the {@link String} at the same index.
+     * The character occurs within the {@link String} at the same index.
      */
     EXACT,
     /**
-     * The letter does not occur within the {@link String}.
+     * The character does not occur within the {@link String}.
      */
     NONE;
 
     /**
-     * Compares two specified String objects, and returns an array of letter matches that indicates their similarity.
+     * Compares two specified String objects, and returns an array of character matches that indicates their similarity.
      *
      * @param guess The first string to compare.
      * @param secret The second string to compare.

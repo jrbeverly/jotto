@@ -10,7 +10,7 @@ public final class Jotto {
     /**
      * The default maximum number of guesses for a {@link JMatch}.
      */
-    public static final int MAXIMUM_GUESS = 10;
+    static public final int MAXIMUM_GUESS = 10;
 
     private final JDictionary _dictionary;
     private final JottoEventMap _eventMap;

@@ -11,7 +11,7 @@ public interface GameListener extends JottoListener {
     /**
      * Invoked when a match is started.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     void onMatchStart(Jotto jotto, JMatch match);
@@ -19,7 +19,7 @@ public interface GameListener extends JottoListener {
     /**
      * Invoked when a match is over.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     void onMatchOver(Jotto jotto, JMatch match);
@@ -27,7 +27,7 @@ public interface GameListener extends JottoListener {
     /**
      * Invoked when a player has yielded.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     void onPlayerYield(Jotto jotto, JMatch match);
@@ -35,7 +35,7 @@ public interface GameListener extends JottoListener {
     /**
      * Invoked when the player wins.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     void onPlayerWin(Jotto jotto, JMatch match);
@@ -43,7 +43,7 @@ public interface GameListener extends JottoListener {
     /**
      * Invoked when the player loses.
      *
-     * @param jotto the jotto game referenced.
+     * @param jotto The jotto game referenced.
      * @param match The current game match.
      */
     void onPlayerLoss(Jotto jotto, JMatch match);

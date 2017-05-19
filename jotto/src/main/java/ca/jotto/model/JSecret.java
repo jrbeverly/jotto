@@ -8,7 +8,7 @@ public final class JSecret {
     private final JWord _secret;
 
     /**
-     * Initializes a secret word for the match.
+     * Initializes a new instance of the {@link JSecret} class with the specified secret.
      *
      * @param secret The {@link JWord} to set as the secret.
      */

@@ -3,7 +3,7 @@ package ca.jotto.model;
 import ca.jotto.model.listeners.JottoEventMap;
 
 /**
- * Defines analytics for the match.
+ * Provides various capabilities related to historical analytics.
  */
 public final class JAnalytics {
 
@@ -13,7 +13,7 @@ public final class JAnalytics {
     private final JCharset _charset;
 
     /**
-     * Initializes the analytics module of the match.
+     * Initializes the analytics object for the match.
      *
      * @param charset The character set of the match.
      * @param size    The size of words in the dictionary.
@@ -39,7 +39,7 @@ public final class JAnalytics {
     }
 
     /**
-     * Computes the analytics based on the current state of the match.
+     * Computes the historical analytics based on the latest changes to the history.
      *
      * @param jotto    The jotto game.
      * @param eventMap The event map for the match.

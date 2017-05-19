@@ -1,7 +1,7 @@
 package ca.jotto.model;
 
 /**
- * Represents a guess.
+ * Represents a guess with associated computed match data.
  */
 public final class JGuess {
 
@@ -11,12 +11,12 @@ public final class JGuess {
     private final int _exact;
 
     /**
-     * Initializes a guess based on the text and match qualifications.
+     * Initializes a guess based on the text and match data.
      *
-     * @param guess   The string text that you are guessing.
-     * @param matches The matches of the string.
-     * @param exact   The number of letters that exactly match the secret.
-     * @param partial The number of letters that partially match the secret.
+     * @param guess   The guessed string.
+     * @param matches The similarity of characters between the guess and secret.
+     * @param exact   Number of exact character matches.
+     * @param partial Number of partial character matches.
      */
     public JGuess(String guess, JWordMatch[] matches, int exact, int partial) {
         assert guess != null : "The provided String 'guess' cannot be null";
@@ -32,7 +32,7 @@ public final class JGuess {
     }
 
     /**
-     * Gets the word that was guessed.
+     * Returns the guessed phrase.
      *
      * @return The guess string.
      */
@@ -41,16 +41,16 @@ public final class JGuess {
     }
 
     /**
-     * Determines if the guess is correct
+     * Determines if the guess is equal to the {@link JSecret}.
      *
-     * @return True if correct; false otherwise.
+     * @return true if guess is equal to the {@link JSecret}; false otherwise.
      */
     public Boolean correct() {
         return _exact == _matches.length;
     }
 
     /**
-     * The number of partial matches present for this guess.
+     * The number of characters in common with the {@link JSecret}.
      *
      * @return Number of partial character matches.
      */
@@ -59,7 +59,7 @@ public final class JGuess {
     }
 
     /**
-     * The number of exact matches present for this guess
+     * The number of characters with the same character value as the {@link JSecret}.
      *
      * @return Number of exact character matches.
      */
@@ -68,16 +68,16 @@ public final class JGuess {
     }
 
     /**
-     * Word length of a guess.
+     * Returns the length of this guess.
      *
-     * @return Length of the guess word.
+     * @return The length of the sequence of characters represented by this object.
      */
     public int size() {
         return _guess.length();
     }
 
     /**
-     * Gets the matches specified for each character.
+     * Returns an array of character matches that indicates their similarity.
      *
      * @return The matches of each character within the guess.
      */
@@ -86,10 +86,10 @@ public final class JGuess {
     }
 
     /**
-     * Returns a match for a specified character based on given index.
+     * Returns the {@Link JWordMatch} at the specified index.
      *
-     * @param index The character index to check for match state.
-     * @return The match state of the specified character.
+     * @param index The index of the word match.
+     * @return The match at the specified index of this {@link JGuess}.
      */
     public JWordMatch matchAt(int index) {
         assert index >= 0 : "The provided Integer 'index' cannot be less than zero";
@@ -99,10 +99,10 @@ public final class JGuess {
     }
 
     /**
-     * Gets the character at the specified index.
+     * Returns the character at the specified index.
      *
-     * @param index The character index.
-     * @return The character at the specified index.
+     * @param index The index of the character.
+     * @return The character at the specified index of this {@link JGuess}.
      */
     public char charAt(int index) {
         assert index >= 0 : "The provided Integer 'index' cannot be less than zero";
