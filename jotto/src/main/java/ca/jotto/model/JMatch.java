@@ -19,11 +19,11 @@ public final class JMatch {
     private int _attempts = 0;
 
     /**
-     * Initializes a match from the game structure.
+     * Initializes a new instance of the {@link JMatch} class from the {@link Jotto} game.
      *
-     * @param game           The game structure used by the match.
-     * @param secret         The secret word for the match.
-     * @param maximumAttempt The maximum number of guess attempts possible.
+     * @param game           An object that contains information about the guess.
+     * @param secret         The {@link JWord} to set as the secret.
+     * @param maximumAttempt The maximum number of guesses allowed.
      */
     public JMatch(Jotto game, JSecret secret, int maximumAttempt) {
         assert game != null : "The provided JWord 'word' cannot be null";
@@ -94,43 +94,7 @@ public final class JMatch {
     }
 
     /**
-     * Sets the state of the match.
-     *
-     * @param state The state to assign to the match.
-     */
-    private void setState(JGameState state) throws JottoStateException {
-        assert state != null : "The provided JGameState 'state' cannot be null";
-
-        if (state == _state) {
-            throw new JottoStateException("The JGameState cannot be set to the current state");
-        }
-
-        _game.getEventMap().onGameStateChanged(_game, _state, state);
-        _state = state;
-
-        switch (state) {
-            case PLAYING:
-                _game.getEventMap().onMatchStart(_game, this);
-                break;
-            case LOST:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerLoss(_game, this);
-                break;
-            case YIELDED:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerYield(_game, this);
-                break;
-            case WON:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerWin(_game, this);
-                break;
-            default:
-                break;
-        }
-    }
-
-    /**
-     * Gets the current number of attempts.
+     * Returns the current number of attempts.
      *
      * @return The current number of attempts.
      */
@@ -139,7 +103,7 @@ public final class JMatch {
     }
 
     /**
-     * Gets the maximum number of guesses allowed.
+     * Returns the maximum number of guesses allowed.
      *
      * @return The maximum number of guess attempts allowed.
      */
@@ -148,7 +112,7 @@ public final class JMatch {
     }
 
     /**
-     * Gets the history of guesses.
+     * Returns the history of guesses.
      *
      * @return The history of guesses.
      */
@@ -166,7 +130,7 @@ public final class JMatch {
     }
 
     /**
-     * Gets the secret word of the game.
+     * Returns the secret word of the game.
      *
      * @return The secret word.
      */
@@ -174,33 +138,24 @@ public final class JMatch {
         return _secret;
     }
 
-
     /**
-     * Starts the match.
+     * Guesses the specified input string against the secret specified in the constructor.
      *
-     * @throws JottoStateException If the match is not in the idle state.
-     */
-    public void start() throws JottoStateException {
-        setState(JGameState.PLAYING);
-    }
-
-    /**
-     * Performs a guess of the secret word in the game.
-     *
-     * @param word The word to guess.
-     * @return null if the guess is invalid, otherwise a guess object.
-     * @throws JottoStateException      If the match is not in a state where the player can guess.
-     * @throws JottoValidationException If the guess is not valid.
+     * @param word The string to guess for a match.
+     * @return An object that contains information about the guess.
+     * @throws JottoStateException      An error occurred as the current state of the {@link JMatch} does not permit guessing.
+     * @throws JottoValidationException An error occurred as the guess is not of a valid form.
      */
     public JGuess guess(String word) throws JottoStateException, JottoValidationException {
         assert word != null : "The provided String 'word' cannot be null";
 
         if (!isPlaying()) {
-            throw new JottoStateException("User cannot guess as the game state is not valid");
+            throw new JottoStateException("The method 'guess' can only be called when the game is being played");
         }
 
-        if (validate(word) != JValidation.VALID) {
-            throw new JottoValidationException("Guess phrase is not valid");
+        JValidation result = validate(word);
+        if (result != JValidation.VALID) {
+            throw new JottoValidationException(result, String.format("The guessed String 'word' is not valid form %s", result));
         }
 
         JGuess guess = _secret.guess(word);
@@ -221,11 +176,12 @@ public final class JMatch {
         return guess;
     }
 
+    //
     /**
-     * Validates a string against conditions present in the game.
+     * Validates the {@link String} against the {@link JMatch} structure.
      *
-     * @param word The word is validate.
-     * @return The validation property of the word.
+     * @param word The string to validate for a guess.
+     * @return An enumeration value that indicates the validation value.
      */
     public JValidation validate(String word) {
         assert word != null : "The provided String 'word' cannot be null";
@@ -244,9 +200,18 @@ public final class JMatch {
     }
 
     /**
+     * Starts the match.
+     *
+     * @throws JottoStateException An error occurred as the current state of the {@link JMatch} cannot transition to playing.
+     */
+    public void start() throws JottoStateException {
+        setState(JGameState.PLAYING);
+    }
+
+    /**
      * Yields the match.
      *
-     * @throws JottoStateException If the match is not in the playing state.
+     * @throws JottoStateException An error occurred as the current state of the {@link JMatch} cannot transition to yielded.
      */
     public void yield() throws JottoException {
         if (_state != JGameState.PLAYING) {
@@ -254,5 +219,41 @@ public final class JMatch {
         }
 
         setState(JGameState.YIELDED);
+    }
+
+    /**
+     * Provides a transition to a specified {@link JGameState}.
+     *
+     * @param targetState The {@link JGameState} to transition to.
+     */
+    private void setState(JGameState targetState) throws JottoStateException {
+        assert targetState != null : "The provided JGameState 'targetState' cannot be null";
+
+        if (targetState == _state) {
+            throw new JottoStateException("The game state cannot be set to the current state");
+        }
+
+        _game.getEventMap().onGameStateChanged(_game, _state, targetState);
+        _state = targetState;
+
+        switch (targetState) {
+            case PLAYING:
+                _game.getEventMap().onMatchStart(_game, this);
+                break;
+            case LOST:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerLoss(_game, this);
+                break;
+            case YIELDED:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerYield(_game, this);
+                break;
+            case WON:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerWin(_game, this);
+                break;
+            default:
+                break;
+        }
     }
 }

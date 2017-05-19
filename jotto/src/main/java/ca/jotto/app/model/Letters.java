@@ -2,7 +2,7 @@ package ca.jotto.app.model;
 
 import ca.jotto.model.JCharset;
 import ca.jotto.model.JGameState;
-import ca.jotto.model.JWordMatch;
+import ca.jotto.model.JLetterStatus;
 import ca.jotto.model.Jotto;
 import ca.jotto.model.listeners.StateListener;
 
@@ -12,13 +12,13 @@ import ca.jotto.model.listeners.StateListener;
 public class Letters implements StateListener {
 
     public JCharset Characters;
-    public JWordMatch[] Matches;
+    public JLetterStatus[] Matches;
 
     public Letters(JCharset chars) {
         Characters = chars;
-        Matches = new JWordMatch[chars.length()];
+        Matches = new JLetterStatus[chars.length()];
         for (int i = 0; i < Matches.length; i++) {
-            Matches[i] = JWordMatch.NONE;
+            Matches[i] = JLetterStatus.NONE;
         }
     }
 
@@ -30,12 +30,12 @@ public class Letters implements StateListener {
     @Override
     public void onCharacterEliminated(Jotto jotto, char character) {
         int index = Characters.get(character);
-        Matches[index] = JWordMatch.ELIMINATED;
+        Matches[index] = JLetterStatus.ELIMINATED;
     }
 
     @Override
     public void onCharacterExact(Jotto jotto, char character) {
         int index = Characters.get(character);
-        Matches[index] = JWordMatch.EXACT;
+        Matches[index] = JLetterStatus.DISCOVERED;
     }
 }

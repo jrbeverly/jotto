@@ -1,7 +1,7 @@
 package ca.jotto.model;
 
 /**
- * Represents the secret word for the match.
+ * Represents the secret word that should be kept confidential.
  */
 public final class JSecret {
 
@@ -10,7 +10,7 @@ public final class JSecret {
     /**
      * Initializes a secret word for the match.
      *
-     * @param secret The word chosen to be the secret word.
+     * @param secret The {@link JWord} to set as the secret.
      */
     public JSecret(JWord secret) {
         assert secret != null : "The provided JWord 'secret' cannot be null";
@@ -19,44 +19,26 @@ public final class JSecret {
     }
 
     /**
-     * Guesses a word against the secret word.
+     * Guesses the specified input string against the secret specified in the constructor.
      *
-     * @param word The word that will be guessed.
-     * @return A guess object representing the guess outcome.
+     * @param word The string to guess for a match.
+     * @return An object that contains information about the guess.
      */
     public JGuess guess(String word) {
         assert word != null : "The provided String 'word' cannot be null";
-        assert word.length() == _secret.length() : "The provided String 'word' must equal the dictionary word length";
-
-        StringBuilder secret = new StringBuilder(_secret.word());
-
-        JWordMatch[] matches = new JWordMatch[secret.length()];
-        for (int i = 0; i < secret.length(); i++) {
-            matches[i] = JWordMatch.NONE;
-        }
+        assert word.length() == _secret.length() : "The provided String 'word' must equal the secret word length";
 
         int exact = 0;
         int partial = 0;
-
-        for (int i = 0; i < word.length(); i++) {
-            if (secret.charAt(i) == word.charAt(i)) {
-                secret.setCharAt(i, (char) Character.UNASSIGNED);
-                matches[i] = JWordMatch.EXACT;
-                exact++;
-            }
-        }
-
-        for (int i = 0; i < word.length(); i++) {
-            if (matches[i] != JWordMatch.NONE) {
-                continue;
-            }
-
-            for (int r = 0; r < secret.length(); r++) {
-                if (word.charAt(i) == secret.charAt(r)) {
-                    secret.setCharAt(r, (char) Character.UNASSIGNED);
-                    matches[i] = JWordMatch.PARTIAL;
+        JWordMatch[] matches = JWordMatch.compareTo(word, _secret.word());
+        for (int i = 0; i < _secret.length(); i++) {
+            switch(matches[i]) {
+                case EXACT:
+                    exact++;
+                    break;
+                case PARTIAL:
                     partial++;
-                }
+                    break;
             }
         }
 

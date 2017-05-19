@@ -9,12 +9,6 @@ import static org.junit.Assert.*;
 
 public class JHistoryTest {
 
-    private JWordMatch[] getEmptyMatches() {
-        return new JWordMatch[]{
-                JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE
-        };
-    }
-
     @Category(ValidationTests.class)
     @Test(expected = AssertionError.class)
     public void constructor_zero() {
@@ -40,7 +34,7 @@ public class JHistoryTest {
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
 
         assertEquals(0, history.length());
-        history.add(new JGuess("HELLO", getEmptyMatches(), 0, 0));
+        history.add(new JGuess("HELLO", TestHelper.getNoMatches(), 0, 0));
         assertEquals(1, history.length());
     }
 
@@ -61,9 +55,9 @@ public class JHistoryTest {
         assertEquals(0, history.length());
 
         String word = "HELLO";
-        history.add(new JGuess(word, getEmptyMatches(), 1, 0));
-        history.add(new JGuess(word, getEmptyMatches(), 2, 0));
-        history.add(new JGuess(word, getEmptyMatches(), 3, 0));
+        history.add(new JGuess(word, TestHelper.getNoMatches(), 1, 0));
+        history.add(new JGuess(word, TestHelper.getNoMatches(), 2, 0));
+        history.add(new JGuess(word, TestHelper.getNoMatches(), 3, 0));
 
         assertEquals(3, history.length());
         for (int i = 0; i < history.length(); i++) {
@@ -88,7 +82,7 @@ public class JHistoryTest {
         JCharset charset = JCharset.DEFAULT;
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
 
-        history.add(new JGuess("L33TZ", getEmptyMatches(), 1, 0));
+        history.add(new JGuess("L33TZ", TestHelper.getNoMatches(), 1, 0));
     }
 
     @Category(ValidationTests.class)
@@ -105,7 +99,7 @@ public class JHistoryTest {
     public void get_below() {
         JCharset charset = JCharset.DEFAULT;
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
-        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+        history.add(new JGuess("HELLO", TestHelper.getNoMatches(), 1, 0));
 
         history.get(-1);
     }
@@ -115,7 +109,7 @@ public class JHistoryTest {
     public void get_above() {
         JCharset charset = JCharset.DEFAULT;
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
-        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+        history.add(new JGuess("HELLO", TestHelper.getNoMatches(), 1, 0));
 
         history.get(3);
     }
@@ -127,9 +121,9 @@ public class JHistoryTest {
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
         assertEquals(0, history.length());
 
-        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
-        history.add(new JGuess("PEACH", getEmptyMatches(), 2, 0));
-        history.add(new JGuess("OTHER", getEmptyMatches(), 3, 0));
+        history.add(new JGuess("HELLO", TestHelper.getNoMatches(), 1, 0));
+        history.add(new JGuess("PEACH", TestHelper.getNoMatches(), 2, 0));
+        history.add(new JGuess("OTHER", TestHelper.getNoMatches(), 3, 0));
 
         assertEquals(3, history.length());
         assertTrue(history.contains("PEACH"));
@@ -146,7 +140,7 @@ public class JHistoryTest {
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
         assertEquals(0, history.length());
 
-        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+        history.add(new JGuess("HELLO", TestHelper.getNoMatches(), 1, 0));
         assertEquals(1, history.length());
         history.contains(null);
     }
@@ -158,7 +152,7 @@ public class JHistoryTest {
         JHistory history = new JHistory(charset, TestHelper.WORD_SIZE);
         assertEquals(0, history.length());
 
-        history.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
+        history.add(new JGuess("HELLO", TestHelper.getNoMatches(), 1, 0));
         assertEquals(1, history.length());
         history.contains("L33TZ");
     }
@@ -171,9 +165,9 @@ public class JHistoryTest {
         assertEquals(0, history.length());
 
         ArrayList<JGuess> guesses = new ArrayList<JGuess>();
-        guesses.add(new JGuess("HELLO", getEmptyMatches(), 1, 0));
-        guesses.add(new JGuess("PEACH", getEmptyMatches(), 2, 0));
-        guesses.add(new JGuess("OTHER", getEmptyMatches(), 3, 0));
+        guesses.add(new JGuess("HELLO", TestHelper.getNoMatches(), 1, 0));
+        guesses.add(new JGuess("PEACH", TestHelper.getNoMatches(), 2, 0));
+        guesses.add(new JGuess("OTHER", TestHelper.getNoMatches(), 3, 0));
 
         for (int i = 0; i < guesses.size(); i++) {
             history.add(guesses.get(i));

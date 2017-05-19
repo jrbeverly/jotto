@@ -3,12 +3,12 @@ package ca.jotto.model;
 import ca.jotto.model.listeners.JottoEventMap;
 
 /**
- * Represents the rules and structure of the jotto game.
+ * Represents the structure of a jotto game.
  */
 public final class Jotto {
 
     /**
-     * The default maximum number of guesses for jotto.
+     * The default maximum number of guesses for a {@link JMatch}.
      */
     public static final int MAXIMUM_GUESS = 10;
 
@@ -17,9 +17,9 @@ public final class Jotto {
     private final JCharset _charset;
 
     /**
-     * Initializes the game based on a dictionary.
+     * Initializes a new instance of the {@link Jotto} class with the specified word dictionary.
      *
-     * @param dictionary The dictionary of words to use for the game.
+     * @param dictionary The object that contains the words.
      */
     public Jotto(JDictionary dictionary) {
         assert dictionary != null : "The provided JDictionary 'dictionary' cannot be null";
@@ -48,16 +48,16 @@ public final class Jotto {
     }
 
     /**
-     * Gets the size of the words used in this match.
+     * Returns the size of the words associated with the game.
      *
-     * @return The word length within the dictionary.
+     * @return The word length of the dictionary.
      */
     public int getWordSize() {
         return _dictionary.size();
     }
 
     /**
-     * Gets the dictionary of the game.
+     * Returns the dictionary associated with the game.
      *
      * @return The word dictionary of the game.
      */
@@ -66,10 +66,10 @@ public final class Jotto {
     }
 
     /**
-     * Constructs a match from the game definition.
+     * Constructs a {@link JMatch} with the specified secret.
      *
-     * @param word The secret word of the match.
-     * @return A new jotto match for the specified secret word.
+     * @param word The {@link JWord} to set as the secret for the {@link JMatch}.
+     * @return A new {@link JMatch} that is constructed from the jotto game.
      */
     public JMatch construct(JWord word) {
         assert word != null : "The provided JWord 'word' cannot be null";

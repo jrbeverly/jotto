@@ -7,18 +7,12 @@ import static org.junit.Assert.*;
 
 public class JGuessTest {
 
-    private JWordMatch[] getEmptyMatches() {
-        return new JWordMatch[]{
-                JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE
-        };
-    }
-
     @Category(ValidationTests.class)
     @Test
     public void constructor_zeroes() throws Exception {
         String word = "OTHER";
         int exact = 0, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         new JGuess(word, matches, exact, partial);
     }
 
@@ -27,7 +21,7 @@ public class JGuessTest {
     public void constructor_partial_neg() throws Exception {
         String word = "OTHER";
         int exact = 0, partial = -1;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         new JGuess(word, matches, exact, partial);
     }
 
@@ -36,7 +30,7 @@ public class JGuessTest {
     public void constructor_exact_neg() throws Exception {
         String word = "OTHER";
         int exact = -1, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         new JGuess(word, matches, exact, partial);
     }
 
@@ -63,7 +57,7 @@ public class JGuessTest {
     public void constructor_guess_null() throws Exception {
         String word = null;
         int exact = 0, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         new JGuess(word, matches, exact, partial);
     }
 
@@ -72,7 +66,7 @@ public class JGuessTest {
     public void constructor_guess_empty() throws Exception {
         String word = "";
         int exact = 0, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         new JGuess(word, matches, exact, partial);
     }
 
@@ -81,7 +75,7 @@ public class JGuessTest {
     public void simple() throws Exception {
         String word = "HELLO";
         int exact = 0, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertFalse(guess.correct());
@@ -101,7 +95,7 @@ public class JGuessTest {
     public void size() {
         String word = "HELLO";
         int exact = 5, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertEquals(word.length(), guess.size());
@@ -112,7 +106,7 @@ public class JGuessTest {
     public void exact() {
         String word = "HELLO";
         int exact = 5, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertEquals(exact, guess.exact());
@@ -123,7 +117,7 @@ public class JGuessTest {
     public void correct() {
         String word = "HELLO";
         int exact = word.length(), partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertTrue(guess.correct());
@@ -135,7 +129,7 @@ public class JGuessTest {
     public void partial() {
         String word = "HELLO";
         int exact = 0, partial = 3;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertEquals(partial, guess.partial());
@@ -146,7 +140,7 @@ public class JGuessTest {
     public void guess() {
         String word = "HELLO";
         int exact = 0, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertEquals(word, guess.guess());
@@ -161,7 +155,7 @@ public class JGuessTest {
         JWordMatch[] matches = new JWordMatch[]{
                 JWordMatch.NONE,
                 JWordMatch.EXACT,
-                JWordMatch.ELIMINATED,
+                JWordMatch.NONE,
                 JWordMatch.PARTIAL,
                 JWordMatch.NONE
         };
@@ -180,7 +174,7 @@ public class JGuessTest {
         JWordMatch[] matches = new JWordMatch[]{
                 JWordMatch.NONE,
                 JWordMatch.EXACT,
-                JWordMatch.ELIMINATED,
+                JWordMatch.NONE,
                 JWordMatch.PARTIAL,
                 JWordMatch.NONE
         };
@@ -197,7 +191,7 @@ public class JGuessTest {
     public void charAt() throws Exception {
         String word = "HELLO";
         int exact = 0, partial = 0;
-        JWordMatch[] matches = getEmptyMatches();
+        JWordMatch[] matches = TestHelper.getNoMatches();
         JGuess guess = new JGuess(word, matches, exact, partial);
 
         assertEquals(word.length(), guess.size());

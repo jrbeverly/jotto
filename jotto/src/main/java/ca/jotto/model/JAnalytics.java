@@ -7,7 +7,7 @@ import ca.jotto.model.listeners.JottoEventMap;
  */
 public final class JAnalytics {
 
-    private final JWordMatch[] _letters;
+    private final JLetterStatus[] _letters;
     private final char[] _known;
     private final int _size;
     private final JCharset _charset;
@@ -26,7 +26,7 @@ public final class JAnalytics {
 
         _size = size;
         _known = new char[size];
-        _letters = new JWordMatch[characters];
+        _letters = new JLetterStatus[characters];
         _charset = charset;
 
         for (int i = 0; i < _known.length; i++) {
@@ -34,7 +34,7 @@ public final class JAnalytics {
         }
 
         for (int i = 0; i < _letters.length; i++) {
-            _letters[i] = JWordMatch.NONE;
+            _letters[i] = JLetterStatus.NONE;
         }
     }
 
@@ -55,7 +55,7 @@ public final class JAnalytics {
                 for (int l = 0; l < _size; l++) {
                     Character ch = ges.charAt(l);
                     int index = _charset.get(ch);
-                    _letters[index] = JWordMatch.ELIMINATED;
+                    _letters[index] = JLetterStatus.NONE;
 
                     eventMap.onCharacterEliminated(jotto, ch);
                 }
@@ -65,7 +65,7 @@ public final class JAnalytics {
                         char exactChar = ges.charAt(l);
                         int index = _charset.get(exactChar);
 
-                        _letters[index] = JWordMatch.EXACT;
+                        _letters[index] = JLetterStatus.DISCOVERED;
                         _known[l] = exactChar;
 
                         eventMap.onCharacterExact(jotto, exactChar);

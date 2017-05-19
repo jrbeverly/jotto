@@ -1,9 +1,5 @@
 package ca.jotto.model;
 
-import ca.jotto.model.JGuess;
-import ca.jotto.model.JWord;
-import ca.jotto.model.JWordMatch;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,6 +15,17 @@ public class TestHelper {
                 new JWord("EJECT", 1),
                 new JWord("HELLO", 1),
                 new JWord("WORLD", SINGLE_DIFFICULTY)
+        };
+        return new ArrayList<>(Arrays.asList(words));
+    }
+
+    static public ArrayList<JWord> getTestWords() {
+        JWord[] words = new JWord[]{
+                getWord(),
+                new JWord("NYMPH", 1),
+                new JWord("QUAKE", 1),
+                new JWord("PYGMY", 1),
+                new JWord("PSYCH", 1)
         };
         return new ArrayList<>(Arrays.asList(words));
     }
@@ -46,14 +53,15 @@ public class TestHelper {
         return new ArrayList<>(Arrays.asList(words));
     }
 
-    static public JWordMatch[] getEmptyMatches() {
+    static public JWordMatch[] getNoMatches() {
         return new JWordMatch[]{
                 JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE, JWordMatch.NONE
         };
     }
 
     static public JGuess getGuess() {
-        return new JGuess("OTHER", getEmptyMatches(), 0, 0);
+        return new JGuess("OTHER", getNoMatches(), 0, 0);
     }
 
+    static public JWord getWord() { return new JWord("MYTHS", 1); }
 }

@@ -106,7 +106,7 @@ public class Application extends JFrame implements GameListener {
         JPanel pnlHistory = new JPanel();
         JPanel pnlLabels = new JPanel();
         JLabel lblWords = new JLabel("WORDS");
-        JLabel lblVars = new JLabel("EXACT/PARTIAL");
+        JLabel lblVars = new JLabel("DISCOVERED/PARTIAL");
 
         pnlHistory.setLayout(new BorderLayout(0, 0));
         pnlLabels.setLayout(new GridLayout(1, 0, 0, 0));

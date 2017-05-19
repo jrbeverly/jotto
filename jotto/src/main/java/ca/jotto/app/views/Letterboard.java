@@ -2,7 +2,7 @@ package ca.jotto.app.views;
 
 import ca.jotto.app.model.Letters;
 import ca.jotto.model.JGameState;
-import ca.jotto.model.JWordMatch;
+import ca.jotto.model.JLetterStatus;
 import ca.jotto.model.Jotto;
 import ca.jotto.model.listeners.StateListener;
 
@@ -56,14 +56,12 @@ public class Letterboard extends JPanel implements StateListener {
 
     public void sync() {
         for (int i = 0; i < _lblCharacters.length; i++) {
-            JWordMatch match = _letters.Matches[i];
+            JLetterStatus match = _letters.Matches[i];
             switch (match) {
                 case NONE:
                     _lblCharacters[i].setBackground(null);
                     break;
-                case PARTIAL:
-                    break;
-                case EXACT:
+                case DISCOVERED:
                     _lblCharacters[i].setBackground(_clrExact);
                     break;
                 case ELIMINATED:
