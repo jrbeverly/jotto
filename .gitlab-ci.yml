@@ -29,6 +29,7 @@ deploy:
     - cd jotto/
     - mvn package
     - mvn javadoc:javadoc
+    - mv target/site/apidocs docs/
     - mv target/*.jar jotto.jar
   only: 
     - master
@@ -36,5 +37,5 @@ deploy:
     paths:
       - jotto/jotto.jar
       - jotto/resources/*
-      - jotto/doc/
+      - jotto/docs/
     expire_in: 4 weeks
