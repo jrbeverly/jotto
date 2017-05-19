@@ -35,9 +35,13 @@ public class JWordMatchTest {
         assertNotNull(matches);
 
         for (JWordMatch match : matches) {
-            switch(match) {
-                case EXACT: exact++; break;
-                case PARTIAL: partial++; break;
+            switch (match) {
+                case EXACT:
+                    exact++;
+                    break;
+                case PARTIAL:
+                    partial++;
+                    break;
             }
         }
         assertEquals(1, exact);

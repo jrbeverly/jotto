@@ -63,5 +63,7 @@ public class TestHelper {
         return new JGuess("OTHER", getNoMatches(), 0, 0);
     }
 
-    static public JWord getWord() { return new JWord("MYTHS", 1); }
+    static public JWord getWord() {
+        return new JWord("MYTHS", 1);
+    }
 }

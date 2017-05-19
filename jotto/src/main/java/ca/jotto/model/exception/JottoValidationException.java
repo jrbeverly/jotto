@@ -13,7 +13,7 @@ public final class JottoValidationException extends JottoException {
      * Initializes a new instance of the JottoValidationException class with a specified error message.
      *
      * @param validation The validation enumeration value.
-     * @param message The message that describes the error. The content of message is intended to be understood by humans.
+     * @param message    The message that describes the error. The content of message is intended to be understood by humans.
      */
     public JottoValidationException(JValidation validation, String message) {
         super(message);

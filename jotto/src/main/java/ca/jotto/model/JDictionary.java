@@ -63,6 +63,51 @@ public final class JDictionary {
     }
 
     /**
+     * Creates a {@link JDictionary} resource from an {@link InputStream}.
+     *
+     * @param charset     The character set for the words.
+     * @param inputStream The input stream containing the jotto dictionary.
+     * @return The {@link JDictionary} resource that has been created from the stream.
+     * @throws IOException An error occurred while attempting to read from the {@link InputStream}.
+     */
+    static public JDictionary fromStream(JCharset charset, InputStream inputStream) throws IOException {
+        assert charset != null : "The provided JCharset 'charset' cannot be null";
+        assert inputStream != null : "The provided InputStream 'inputStream' cannot be null";
+
+        Scanner reader = new Scanner(inputStream);
+
+        ArrayList<JWord> words = new ArrayList<JWord>();
+        int size = 0;
+        while (reader.hasNextLine()) {
+            String txt = reader.nextLine();
+            String[] data = txt.split(" ");
+
+            if (data.length != 2) {
+                throw new IllegalArgumentException("The input format is not of the form [<WORD> <DIFFICULTY>].");
+            }
+
+            String word = data[0];
+            int difficulty = parseInt(data[1]);
+            size = word.length();
+
+            if (word.isEmpty()) {
+                throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
+            }
+
+            if (!charset.contains(word)) {
+                throw new IllegalArgumentException("The argument 'word' does not match the character set of the dictionary.");
+            }
+
+            JWord jword = new JWord(word, difficulty);
+            words.add(jword);
+        }
+
+        reader.close();
+
+        return new JDictionary(charset, size, words);
+    }
+
+    /**
      * Determines whether the {@link JDictionary} contains the specified string.
      *
      * @param word The string to locate in the {@link JDictionary}.
@@ -166,50 +211,5 @@ public final class JDictionary {
      */
     public JWord[] toArray() {
         return _wordMap.values().toArray(new JWord[_wordMap.size()]);
-    }
-
-    /**
-     * Creates a {@link JDictionary} resource from an {@link InputStream}.
-     *
-     * @param charset     The character set for the words.
-     * @param inputStream The input stream containing the jotto dictionary.
-     * @return The {@link JDictionary} resource that has been created from the stream.
-     * @throws IOException An error occurred while attempting to read from the {@link InputStream}.
-     */
-    static public JDictionary fromStream(JCharset charset, InputStream inputStream) throws IOException {
-        assert charset != null : "The provided JCharset 'charset' cannot be null";
-        assert inputStream != null : "The provided InputStream 'inputStream' cannot be null";
-
-        Scanner reader = new Scanner(inputStream);
-
-        ArrayList<JWord> words = new ArrayList<JWord>();
-        int size = 0;
-        while (reader.hasNextLine()) {
-            String txt = reader.nextLine();
-            String[] data = txt.split(" ");
-
-            if (data.length != 2) {
-                throw new IllegalArgumentException("The input format is not of the form [<WORD> <DIFFICULTY>].");
-            }
-
-            String word = data[0];
-            int difficulty = parseInt(data[1]);
-            size = word.length();
-
-            if (word.isEmpty()) {
-                throw new IllegalArgumentException("The argument 'word' cannot be the empty string.");
-            }
-
-            if (!charset.contains(word)) {
-                throw new IllegalArgumentException("The argument 'word' does not match the character set of the dictionary.");
-            }
-
-            JWord jword = new JWord(word, difficulty);
-            words.add(jword);
-        }
-
-        reader.close();
-
-        return new JDictionary(charset, size, words);
     }
 }

@@ -1,12 +1,12 @@
 package ca.jotto.model;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Test;
-
-import org.junit.runners.Parameterized;
-import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -25,12 +25,12 @@ public class JWordMatchCheckerTest {
 
     @Parameterized.Parameters
     public static Collection values() {
-        return Arrays.asList(new Object[][] {
-                {"NYMPH", 1, 2 },
-                {"QUAKE", 0, 0 },
-                {"PYGMY", 1, 1 },
-                {"PSYCH", 0, 3 },
-                {"MYTHS", 5, 0 },
+        return Arrays.asList(new Object[][]{
+                {"NYMPH", 1, 2},
+                {"QUAKE", 0, 0},
+                {"PYGMY", 1, 1},
+                {"PSYCH", 0, 3},
+                {"MYTHS", 5, 0},
         });
     }
 
@@ -42,9 +42,13 @@ public class JWordMatchCheckerTest {
         assertNotNull(matches);
 
         for (JWordMatch match : matches) {
-            switch(match) {
-                case EXACT: exact++; break;
-                case PARTIAL: partial++; break;
+            switch (match) {
+                case EXACT:
+                    exact++;
+                    break;
+                case PARTIAL:
+                    partial++;
+                    break;
             }
         }
         assertEquals(exactExpected, exact);

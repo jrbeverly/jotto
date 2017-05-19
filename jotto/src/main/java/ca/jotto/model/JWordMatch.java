@@ -20,7 +20,7 @@ public enum JWordMatch {
     /**
      * Compares two specified String objects, and returns an array of character matches that indicates their similarity.
      *
-     * @param guess The first string to compare.
+     * @param guess  The first string to compare.
      * @param secret The second string to compare.
      * @return A {@link JWordMatch} array whose elements indicates the similarity relationship between the two comparands.
      */

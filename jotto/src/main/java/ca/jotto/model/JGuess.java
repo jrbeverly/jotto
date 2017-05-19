@@ -86,7 +86,7 @@ public final class JGuess {
     }
 
     /**
-     * Returns the {@Link JWordMatch} at the specified index.
+     * Returns the {@link JWordMatch} at the specified index.
      *
      * @param index The index of the word match.
      * @return The match at the specified index of this {@link JGuess}.

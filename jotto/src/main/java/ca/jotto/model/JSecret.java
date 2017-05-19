@@ -32,7 +32,7 @@ public final class JSecret {
         int partial = 0;
         JWordMatch[] matches = JWordMatch.compareTo(word, _secret.word());
         for (int i = 0; i < _secret.length(); i++) {
-            switch(matches[i]) {
+            switch (matches[i]) {
                 case EXACT:
                     exact++;
                     break;

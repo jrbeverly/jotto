@@ -28,6 +28,7 @@ deploy:
   script:
     - cd jotto/
     - mvn package
+    - mvn javadoc:javadoc
     - mv target/*.jar jotto.jar
   only: 
     - master
@@ -35,4 +36,5 @@ deploy:
     paths:
       - jotto/jotto.jar
       - jotto/resources/*
+      - jotto/doc/
     expire_in: 4 weeks

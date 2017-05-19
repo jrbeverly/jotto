@@ -94,6 +94,42 @@ public final class JMatch {
     }
 
     /**
+     * Provides a transition to a specified {@link JGameState}.
+     *
+     * @param targetState The {@link JGameState} to transition to.
+     */
+    private void setState(JGameState targetState) throws JottoStateException {
+        assert targetState != null : "The provided JGameState 'targetState' cannot be null";
+
+        if (targetState == _state) {
+            throw new JottoStateException("The game state cannot be set to the current state");
+        }
+
+        _game.getEventMap().onGameStateChanged(_game, _state, targetState);
+        _state = targetState;
+
+        switch (targetState) {
+            case PLAYING:
+                _game.getEventMap().onMatchStart(_game, this);
+                break;
+            case LOST:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerLoss(_game, this);
+                break;
+            case YIELDED:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerYield(_game, this);
+                break;
+            case WON:
+                _game.getEventMap().onMatchOver(_game, this);
+                _game.getEventMap().onPlayerWin(_game, this);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
      * Returns the current number of guesses.
      *
      * @return The current number of guesses.
@@ -138,6 +174,8 @@ public final class JMatch {
         return _secret;
     }
 
+    //
+
     /**
      * Guesses the specified input string against the secret specified in the constructor.
      *
@@ -176,7 +214,6 @@ public final class JMatch {
         return guess;
     }
 
-    //
     /**
      * Validates the {@link String} against the {@link JMatch} structure.
      *
@@ -219,41 +256,5 @@ public final class JMatch {
         }
 
         setState(JGameState.YIELDED);
-    }
-
-    /**
-     * Provides a transition to a specified {@link JGameState}.
-     *
-     * @param targetState The {@link JGameState} to transition to.
-     */
-    private void setState(JGameState targetState) throws JottoStateException {
-        assert targetState != null : "The provided JGameState 'targetState' cannot be null";
-
-        if (targetState == _state) {
-            throw new JottoStateException("The game state cannot be set to the current state");
-        }
-
-        _game.getEventMap().onGameStateChanged(_game, _state, targetState);
-        _state = targetState;
-
-        switch (targetState) {
-            case PLAYING:
-                _game.getEventMap().onMatchStart(_game, this);
-                break;
-            case LOST:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerLoss(_game, this);
-                break;
-            case YIELDED:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerYield(_game, this);
-                break;
-            case WON:
-                _game.getEventMap().onMatchOver(_game, this);
-                _game.getEventMap().onPlayerWin(_game, this);
-                break;
-            default:
-                break;
-        }
     }
 }
