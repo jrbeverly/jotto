@@ -41,7 +41,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>ca.jottoapp.Application</mainClass>
+							<mainClass>ca.jotto.app.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
