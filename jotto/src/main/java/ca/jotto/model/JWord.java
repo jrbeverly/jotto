@@ -24,7 +24,7 @@ public final class JWord implements Comparable<JWord> {
     }
 
     /**
-     * Gets the String representation of the word.
+     * Returns the String representation of the word.
      *
      * @return The string representation of the word.
      */
@@ -33,7 +33,7 @@ public final class JWord implements Comparable<JWord> {
     }
 
     /**
-     * Gets the difficulty of the word.
+     * Returns the difficulty of the word.
      *
      * @return The difficulty of the word.
      */
@@ -42,7 +42,7 @@ public final class JWord implements Comparable<JWord> {
     }
 
     /**
-     * Gets the length of the word.
+     * Returns the length of the word.
      *
      * @return The length of the word.
      */

@@ -1,27 +1,27 @@
 package ca.jotto.model;
 
 /**
- * Specifies the validation property used for guess validation.
+ * An enumeration of values that represent guess validation errors.
  */
 public enum JValidation {
     /**
-     * The guess is valid.
+     * A value that indicates that a guess is valid.
      */
     VALID,
     /**
-     * The guess is not in the dictionary.
+     * A value that indicates that the word could not be found in the dictionary.
      */
     NOT_IN_DICTIONARY,
     /**
-     * The guess is not the correct word size.
+     * A value that represents that word is not of the word size.
      */
     INVALID_SIZE,
     /**
-     * The guess contains a character that is not valid.
+     * A value that represents that validation found an invalid character.
      */
     INVALID_CHARACTER,
     /**
-     * The guess has been previously guessed.
+     * A value that represents that validation found a word had been previously guessed.
      */
     PREVIOUSLY_GUESSED
 }
