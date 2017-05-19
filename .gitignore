@@ -49,3 +49,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .vscode/
+jotto/.idea/uiDesigner.xml
+jotto/doc/
