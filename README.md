@@ -13,7 +13,7 @@ The Jotto application is built with a single player, playing against a computer.
 
 ## Development
 
-If you are developing on Windows, it is recommended to install the IDE [IntelliJ IDEA](https://www.jetbrains.com/idea/).  This will work with the existing `jotto.iml` present in the `source/` directory. The output of the build process is available [here](/../builds/artifacts/master/download?job=deploy).  The artifacts have an expiration period to ensure that old build artifacts are properly cleaned up.
+If you are developing on Windows, it is recommended to install the IDE [IntelliJ IDEA](https://www.jetbrains.com/idea/).  This will work with the existing `jotto.iml` present in the `jotto/` directory. The output of the build process is available in the CI artifacts browser.  The artifacts have an expiration period to ensure that old build artifacts are properly cleaned up.
 
 ### Building
 
@@ -37,13 +37,13 @@ sh build/compile.sh
 
 ### GitLab CI
 
-This project's application is built by [GitLab CI](https://about.gitlab.com/gitlab-ci/), following the steps defined in [`.gitlab-ci.yml`](.gitlab-ci.yml).  The build scripts are available in `build/`, which are used to compile the java project.
+This project is built by [GitLab CI](https://about.gitlab.com/gitlab-ci/), following the steps defined in [`.gitlab-ci.yml`](.gitlab-ci.yml).  The build scripts are available in `build/`, which are used to compile the java project.
 
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000
 [license-link]: LICENSE
 
-[build-badge]: /../badges/master/build.svg
-[build-link]: /../commits/master
+[build-badge]: https://gitlab.com/jrbeverly/Jotto/badges/master/build.svg
+[build-link]: https://gitlab.com/jrbeverly/Jotto/commits/master
 
 [download-badge]: https://img.shields.io/badge/artifacts-jotto-red.svg?maxAge=2592000
-[download-link]: /../builds/artifacts/master/download?job=deploy
+[download-link]: https://gitlab.com/jrbeverly/Jotto/builds/artifacts/master/download?job=deploy
