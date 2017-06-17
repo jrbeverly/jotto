@@ -1,9 +1,17 @@
 image: maven:3-jdk-8-alpine
 
+# ---------------------------------------
+# Global
+# ---------------------------------------
+
 stages:
   - build
   - test
   - deploy
+
+# ----------------------------------------
+# Build
+# ----------------------------------------
 
 build:
   stage: build
@@ -11,8 +19,12 @@ build:
     - sh build/build.sh
   artifacts:
     paths:
-      - jotto/target/
+      - src/target/
     expire_in: 1 hour
+
+# ----------------------------------------
+# Tests
+# ----------------------------------------
 
 test:
   stage: test
@@ -20,13 +32,17 @@ test:
     - sh tests/tests.sh
   artifacts:
     paths:
-      - jotto/target/
+      - src/target/
     expire_in: 1 hour
+
+# ----------------------------------------
+# Deploy
+# ----------------------------------------
 
 deploy:
   stage: deploy
   script:
-    - cd jotto/
+    - cd src/
     - mvn package
     - mvn javadoc:javadoc
     - mv target/site/apidocs docs/
@@ -35,7 +51,7 @@ deploy:
     - master
   artifacts:
     paths:
-      - jotto/jotto.jar
-      - jotto/resources/*
-      - jotto/docs/
+      - src/jotto.jar
+      - src/resources/*
+      - src/docs/
     expire_in: 4 weeks

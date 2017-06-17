@@ -7,7 +7,7 @@ set -ex
 SCRIPT=$(readlink -f "$0")
 DIR="$(dirname $SCRIPT)"
 ROOT_DIR="$(dirname $DIR)"
-SRC_DIR="${ROOT_DIR}/jotto"
+SRC_DIR="${ROOT_DIR}/src"
 DOC_DIR="${ROOT_DIR}/doc"
 
 # Build
