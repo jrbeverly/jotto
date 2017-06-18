@@ -54,3 +54,4 @@ jotto/doc/
 jotto/docs/
 *.jar
 doc/images/
+src/.idea/workspace.xml
