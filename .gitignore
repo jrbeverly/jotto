@@ -57,3 +57,6 @@ jotto/doc/
 jotto/docs/
 *.jar
 src/.idea/workspace.xml
+
+# Documentation:
+docs/**/images/
