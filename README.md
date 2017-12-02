@@ -1,9 +1,4 @@
 # Jotto
-[![Build][build-badge]][build-link]
-[![License][license-badge]][license-link]
-[![Download][download-badge]][download-link]
-
----
 
 ## Summary
 
@@ -35,15 +30,8 @@ It is recommend to use the build scripts available in `build/`.   These scripts 
 sh build/compile.sh
 ```
 
-### GitLab CI
+## Acknowledgements
 
-This project is built by [GitLab CI](https://about.gitlab.com/gitlab-ci/), following the steps defined in [`.gitlab-ci.yml`](.gitlab-ci.yml).  The build scripts are available in `build/`, which are used to compile the java project.
+The project icon is retrieved from [the Noun Project](docs/icon/icon.json). The original source material has been altered for the purposes of the project. The icon is used under the terms of the [Public Domain](https://creativecommons.org/publicdomain/zero/1.0/).
 
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?maxAge=2592000
-[license-link]: LICENSE
-
-[build-badge]: https://gitlab.com/jrbeverly/Jotto/badges/master/build.svg
-[build-link]: https://gitlab.com/jrbeverly/Jotto/commits/master
-
-[download-badge]: https://img.shields.io/badge/artifacts-jotto-red.svg?maxAge=2592000
-[download-link]: https://gitlab.com/jrbeverly/Jotto/builds/artifacts/master/download?job=deploy
+The project icon is by [Five by Five from the Noun Project](https://thenounproject.com/term/startup/38246/).
