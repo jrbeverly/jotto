@@ -1,0 +1,22 @@
+{
+  "slug": "Jotto",
+  "namespace": "jrbeverly",
+  "status": "archived",
+  "icon": "icon.svg",
+  "license": {
+    "type": "MIT",
+    "content": "Jonathan Beverly <jrbeverly>"
+  },
+  "topics": [
+    "java",
+    "junit",
+    "gitalb-ci",
+    "maven",
+    "makefile"
+  ],
+  "languages": [
+    "Dockerfile",
+    "Java",
+    "Shell"
+  ]
+}
