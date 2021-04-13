@@ -1,0 +1,18 @@
+slug: jotto
+description: Jotto is a logic-oriented word game played with two players.
+project: uwaterloo
+namespace:
+status: archived
+icon: icon.svg
+license:
+  type: MIT
+  content: Jonathan Beverly <jrbeverly>
+  year: 2017
+topics: |-
+  [
+    "java",
+    "junit",
+    "gitalb-ci",
+    "maven",
+    "makefile"
+  ]
